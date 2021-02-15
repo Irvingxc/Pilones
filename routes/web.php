@@ -26,12 +26,21 @@ Route::post('/procedencia/store', [App\Http\Controllers\ProcedenciaController::c
 Route::get('/procedencia/index', [App\Http\Controllers\ProcedenciaController::class, 'index'])->name('procedencia.index');
 Route::get('/procedencia/edit/{id}', [App\Http\Controllers\ProcedenciaController::class, 'show'])->name('procedencia.show');
 Route::post('/procedencia/update/{procedencias}/nose', [App\Http\Controllers\ProcedenciaController::class, 'update'])->name('procedencia.update');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
 
-//Detalle Pilones
+
+
+/*------------------------------HOME-------------------------------*/
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); \
+Route::get('/home/menu', [App\Http\Controllers\HomeController::class, 'menu'])->name('home.menu'); 
+
+
+/*------------------------------Detalle Pilones-------------------------------*/
 
 Route::get('/detalledatopilon/index', [App\Http\Controllers\DetalleDatoPilonController::class, 'index'])->name('calendario');
 
+
+/*------------------------------Finca-------------------------------*/
 
 Route::post('/fincas/store', [App\Http\Controllers\FincaController::class,'store'])->name('fincas.store');
 
@@ -79,6 +88,7 @@ Route::delete('/variedad/{variedad}',[App\Http\Controllers\variedadController::c
 
 
 
+/*------------------------------UBICACION-------------------------------*/
 
 Route::post('/ubicacion/stored', [App\Http\Controllers\UbicacionController::class, 'store'])->name('ubicacion.store');
 Route::get('/ubicacion/index', [App\Http\Controllers\UbicacionController::class, 'index'])->name('ubicacion.index');
