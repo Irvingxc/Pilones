@@ -33,7 +33,7 @@
 }
 
     /*.card input{
-        margin-left: 180px; jajajajajajaaja
+        margin-left: 180px; jajajaja
     }*/
     </style>
 
