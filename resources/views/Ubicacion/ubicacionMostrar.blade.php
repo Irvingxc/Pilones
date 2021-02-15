@@ -1,6 +1,17 @@
-<div class= "container"> 
 @extends('layouts.app')
 @section('content')
+<div class= "container"> 
+<div class="row">
+<label for="" class="offset-md-7">Buscar por:</label>
+<div class="">
+<select id="inputState" class="form-control offset-md-1" name="checkbox_name">
+        <option selected >Codigo</option>
+        <option>Descripcion</option>
+        <option >Estado</option>
+      </select>
+	  </div>
+
+</div>
 <table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
