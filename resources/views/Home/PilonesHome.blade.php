@@ -9,8 +9,8 @@
         <h4>Pilones</h4>
       </div>
       <div class="text-center col-md-6 pt-5 tintar">
-      <a href="{{route('procedencia.index')}}">
-         <h4>Procendecia</h4>
+      <a href="{{route('fincas.index')}}">
+         <h4>Fincas</h4>
       </div>
       <div class="text-center col-6 pt-5   tintar">
       <a href="{{route('variedad.index')}}">
