@@ -4,6 +4,51 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+
+h4 {
+  color:#fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Módulos contenido */
+.row-fluid {
+  
+    background: -webkit-linear-gradient(175deg, rgb(246, 246, 246), rgb(183, 183, 183));
+  background: linear-gradient(175deg, rgb(246, 246, 246), rgb(183, 183, 183));
+}
+.col-sm {
+      min-height:250px;
+    margin:3px;
+ }
+    .col-sm:nth-child(1) {
+      background-color: #bdbdbd; 
+  }
+    .col-sm:nth-child(2) {
+      background-color: #e0e0e0; 
+    }
+    .col-sm:nth-child(3) {
+      background-color: #f5f5f5; 
+    }
+    .col-sm:nth-child(4) {
+      background-color: #fafafa; 
+}
+.tintar {
+    height:280px;
+  background: linear-gradient(
+    rgba(144, 144, 144, 0.6),
+    rgba(0, 0, 0, .1)), url("https://lh3.googleusercontent.com/proxy/neBm9DVlCcf0ArQZez6Hw2KoWDcMU6A1nsUfBei5MRSOSYO80K0IiK12YdJU30M4R0uTR-wQwlhQlG51PQl4_la1pfsRo18XrnAGHJLNpq17QgYgE4NtdJOymC9nCt0gJFU_oB__uw")  center / cover;
+  
+   
+  padding: 2.9em;
+}
+
+
+
+
+
+
+
+    /*================================================================================================== */
     .card label{
         font: oblique bold 120% cursive;
     }
@@ -16,7 +61,7 @@
         display:block;
         width:70px;
         height:70px;
-        color#fff;
+        color:#fff;
         position: fixed;
         right:20px;
         bottom:20px;
@@ -74,13 +119,13 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login')) 
+                            @if (Route::has('Inicio Sesión')) 
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesion') }}</a>
                                 </li>
                             @endif
                             
-                            @if (Route::has('register'))
+                            @if (Route::has('Registrar'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
                                 </li>
@@ -95,7 +140,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar Sesión') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
