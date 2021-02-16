@@ -28,16 +28,14 @@
                 </form>
                     </td>
                 </tr>
-			
-				<div class="btn-whatsapp">
-<a href="{{route('variedad')}}">
-<button class="btn btn-primary">Nuevo</button> 
-</a>
-</div>
 
 			@endforeach
 		</tbody>
 	</table>
-
+	<div class="btn-whatsapp">
+<a href="{{route('variedad')}}">
+<button class="btn btn-primary">Nuevo</button> 
+</a>
+</div>
 </div>
 @endsection
