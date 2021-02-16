@@ -31,7 +31,7 @@ Route::post('/procedencia/update/{procedencias}/nose', [App\Http\Controllers\Pro
 
 /*------------------------------HOME-------------------------------*/
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); \
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/menu', [App\Http\Controllers\HomeController::class, 'menu'])->name('home.menu'); 
 
 
@@ -96,6 +96,10 @@ Route::get('/ubicacion/ubicacion', [App\Http\Controllers\UbicacionController::cl
 Route::get('/ubicacion/edit/{codigo_ubicacion}', [App\Http\Controllers\UbicacionController::class, 'show'])->name('ubicacion.show');
 Route::post('/ubicacion/update/{ubicaciones}', [App\Http\Controllers\UbicacionController::class, 'update'])->name('ubicacion.update');
 Route::delete('/ubicacion/{codigo_ubicacion}', [App\Http\Controllers\UbicacionController::class, 'destroy'])->name('ubicacion.destroy');
+
+
+
+/*------------------------------CLASES-------------------------------*/
 
 Route::post('/tipoclase/stored', [App\Http\Controllers\tipoclaseController::class, 'store'])->name('tipoclase.store');
 Route::get('/tipoclase/index', [App\Http\Controllers\tipoclaseController::class, 'index'])->name('tipoclase.index');
