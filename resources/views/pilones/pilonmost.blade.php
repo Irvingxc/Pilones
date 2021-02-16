@@ -3,6 +3,7 @@
 @section('content')
 <div class="Container">
 <table border="solid" class="table">
+<h4 class="text-center text-muted font-weight-bold">Pilon</h4>
 <thead class="thead-dark">
 			<tr>
 			<th>Codigo</th>
