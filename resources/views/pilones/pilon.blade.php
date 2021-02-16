@@ -32,7 +32,7 @@ value="{{$pilon->descripcion_pilon}}"
 @endisset>
 
 <br>
-<button type='submit'> Guardar</button>
+<button type='submit'>@if(isset($pilon))Editar @else Guardar @endif</button>
 
 </form>
 
