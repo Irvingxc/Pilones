@@ -29,4 +29,9 @@ class HomeController extends Controller
     { 
         return view('Home.inicio');
     }
+
+    public function menu()
+    { 
+        return view('Home.PilonesHome');
+    }
 }
