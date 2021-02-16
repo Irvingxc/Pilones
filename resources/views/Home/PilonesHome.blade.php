@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <h4 class="text-center text-muted font-weight-bold">Menu</h4>
   </div>
   <div class="row">
-  <div class="text-center col-6 pt-5  tintar">
+  <div class="text-center col-md-6 pt-5  tintar">
       <a href="{{route('pilon.index')}}">
         <h4>Pilones</h4>
       </div>
@@ -12,19 +13,20 @@
       <a href="{{route('fincas.index')}}">
          <h4>Fincas</h4>
       </div>
-      <div class="text-center col-6 pt-5   tintar">
+      <div class="text-center col-md-6 pt-5   tintar">
       <a href="{{route('variedad.index')}}">
         <h4>Variedad</h4>
       </div>    
-      <div class="text-center col-6 pt-5 tintar">
+      <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('tipoclase.index')}}">
         <h4>Clases</h4>
       </div>
-      <div class="text-center col-6 pt-5 tintar">
+      <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('ubicacion.index')}}">
         <h4>Ubicación</h4>
       </div>
   </div>
+</div>
 </div>
 
 
