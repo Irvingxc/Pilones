@@ -9,7 +9,7 @@
 <img class="card-img-top tamno" src="{{asset('images/pilon.jpg')}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">Pilones</h5>
-    <a href="" class="btn btn-primary">Entrar</a>
+    <a href="{{route('home.menu')}}" class="btn btn-primary">Entrar</a>
   </div>
 
 </div> 
@@ -17,7 +17,7 @@
 <div class="card offset-md-2">
 <img class="card-img-top tamno" src="{{asset('images/molde.jpg')}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Cajitas</h5>
+    <h5 class="card-title">Moldes</h5>
     <a href="" class="btn btn-primary">Entrar</a>
   </div>
 
