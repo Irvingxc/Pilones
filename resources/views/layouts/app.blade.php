@@ -132,9 +132,14 @@ h4 {
                             @endif
                         @else
 
-                        @if (Route::has('home')) 
+                        @if (Route::has('home.menu')) 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Menu Principal') }}</a>
+                                    <a class="nav-link" href="{{ route('home.menu') }}">{{ __('Menu Pilones') }}</a>
+                                </li>
+                            @endif
+                         @if (Route::has('home.menu')) 
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home.menu') }}">{{ __('Menu Moldes') }}</a>
                                 </li>
                             @endif
                             <li class="nav-item dropdown">
