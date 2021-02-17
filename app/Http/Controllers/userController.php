@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Crypt;
 
 class userController extends Controller
 {
@@ -32,13 +32,29 @@ class userController extends Controller
 
     public function show($verusuario)
     {
-        $verusuario = User::where('id', '=', $verusuario)->first();
-        return view('Auth.register')->with('register',$verusuario);
-    }
+      //  $id= Crypt::decrypt($id);
+        $verusuarios = User::where('id', '=', $verusuario)->first();
+        return view('Auth.register')->with('register',$verusuarios);
+    } 
     public function ver()
     {
         return view('Auth.register');
         
+    }
+
+    public function update(Request $request, $verusuario)
+    {
+        $verusuario =User:: where ('id','=', $verusuario)->first();
+        $this->validate($request, [
+            'codigo_variedad' => 'required',
+            'nombre_variedad'=>'required',
+            'descripcion_variedad'=>'required',
+        ]);
+        $verusuario->name = $request->input('name');
+        $verusuario->email = $request->input('email');
+        $verusuario->password= $request->input('password');
+        $verusuario->save();
+        return redirect('/verusuario/index');
     }
 
 
