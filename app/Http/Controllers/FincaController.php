@@ -43,7 +43,7 @@ class FincaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'codigo_finca' => 'required',
+            'codigo_finca' => 'required|unique:fincas,codigo_finca',
             'nombre_finca' => 'required',
             'descripcion_finca' =>'required',
         ]);

@@ -18,30 +18,38 @@ method="post" action="{{route('fincas.store')}}"
 @csrf
 <label for="">Ingrese el codigo</label>
 <br>
-<input class="col-md-6" type="text" name=codigo_finca
+<input class="col-md-6" type="text" name='codigo_finca' value="{{ old ('codigo_finca') }}"
 @isset($fincas)
 value="{{$fincas->codigo_finca}}"
-@endisset
->
+@endisset>
+@if ($errors->has('codigo_finca'))
+<p style="color:red;">{{$errors->first('codigo_finca')}}</p>
+@endif
 <br>
 
 <label for="">Ingrese el nombre</label>
 <br>
-<input class="col-md-6" type="text" name='nombre_finca'
+<input class="col-md-6" type="text" name='nombre_finca' value="{{ old ('nombre_finca') }}"
 @isset($fincas)
 value="{{$fincas->nombre_finca}}"
 @endisset>
+@if ($errors->has('nombre_finca'))
+<p style="color:red;">{{$errors->first('nombre_finca')}}</p>
+@endif
 <br>
 <label for="">Ingrese descripcion</label
 @isset($fincas)
 value="{{$fincas->nombre_finca}}"
 @endisset>
 <br>
-<input class="col-md-6" type="text" name='descripcion_finca'
+<input class="col-md-6" type="text" name='descripcion_finca' value="{{ old ('descripcion_finca') }}"
 @isset($fincas)
 value="{{$fincas->descripcion_finca}}"
-@endisset
-><br>
+@endisset>
+@if ($errors->has('descripcion_finca'))
+<p style="color:red;">{{$errors->first('descripcion_finca')}}</p>
+@endif
+<br>
 <br>
 <button type='submit'>@if(isset($fincas))Editar @else Guardar @endif</button>
 
