@@ -21,6 +21,7 @@
 			<th>Codigo</th>
 			<th>Descripcion</th>
             <th>Eliminar</th>
+			<th>Reporte</th>
 			
 			</tr>
 		</thead>
@@ -36,6 +37,7 @@
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form>
                     </td>
+					<td><button class="btn btn-primary" href="{{route('calendario')}}"></button></td>
                 </tr>
 		
 
