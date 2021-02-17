@@ -18,37 +18,36 @@ method="post" action="{{route('variedad.store')}}"
 @csrf
 <label for="">Ingrese el codigo</label>
 <br>
-<input class="col-md-6" type="text" name=codigo_variedad value="{{ old ('codigo_variedad') }}"
-@isset($variedad)
-value="{{$variedad->codigo_variedad}}"
-@endisset>
+<input @isset($variedad)
+value="{{$variedad->codigo_variedad}}" readonly
+@endisset class="col-md-6" type="text" name=codigo_variedad value="{{ old ('codigo_variedad') }}"
 @if ($errors->has('codigo_variedad'))
 <p style="color:red;">{{$errors->first('codigo_variedad')}}</p>
-@endif
+@endif>
 <br>
 <label for="">Ingrese el nombre</label>
 <br>
-<input class="col-md-6" type="text" name='nombre_variedad' value="{{ old ('nombre_variedad') }}"
+<input 
 @isset($variedad)
 value="{{$variedad->nombre_variedad}}"
-@endisset>
+@endisset class="col-md-6" type="text" name='nombre_variedad' value="{{ old ('nombre_variedad') }}"
 @if ($errors->has('nombre_variedad'))
 <p style="color:red;">{{$errors->first('nombre_variedad')}}</p>
-@endif
+@endif>
 <br>
 <label for="">Ingrese descripcion</label
 >
 <br>
-<input class="col-md-6" type="text" name='descripcion_variedad' value="{{ old ('descripcion_variedad') }}"
+<input
 @isset($variedad)
 value="{{$variedad->descripcion_variedad}}"
-@endisset>
+@endisset class="col-md-6" type="text" name='descripcion_variedad' value="{{ old ('descripcion_variedad') }}"
 @if ($errors->has('descripcion_variedad'))
 <p style="color:red;">{{$errors->first('descripcion_variedad')}}</p>
-@endif
+@endif>
 <br>
 <br>
-<button type='submit'> Guardar</button>
+<button type='submit'>@if(isset($variedad))Editar @else Guardar @endif</button>
 
 </form>
 

@@ -18,7 +18,7 @@ method="post" action="{{route('pilon.update',['pilones'=>$pilon->codigo_pilon])}
 <br>
 <input class="col-md-12" type="text" name=codigo_pilon
 @isset($pilon)
-value="{{$pilon->codigo_pilon}}"
+value="{{$pilon->codigo_pilon}}" readonly
 @endisset>
 </div>
 

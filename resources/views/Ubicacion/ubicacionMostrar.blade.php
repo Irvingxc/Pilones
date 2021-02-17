@@ -32,7 +32,7 @@
 			<tr>
 				<td><a href="{{route('ubicacion.show', [$pro->codigo_ubicacion])}}">{{$pro->codigo_ubicacion}}</a></td>
 				<td>{{$pro->descripcion_ubicacion}}</td>
-				<td>{{$pro->estado_ubicacion}}</td>
+				<td>{{$pro->estado_ubicacion == 1 ? "Disponible" :  "Ocupado"}}</td>
 				<td></td>
                 <td><form method="post" action="{{route('ubicacion.destroy', [$pro->codigo_ubicacion])}}">
                     {{csrf_field()}}

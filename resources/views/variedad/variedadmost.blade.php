@@ -1,10 +1,10 @@
-	@extends('layouts.app')
-
+@extends('layouts.app')
 @section('content')
-<div class="Container">
+<div class="container">
 <table border="solid" class="table">
 <h4 class="text-center text-muted font-weight-bold">Variedad</h4>
 <div class="row">
+<form action="">
 <label for="" class="offset-md-7">Buscar por:</label>
 <div class="">
 <select id="inputState" class="form-control offset-md-1" name="checkbox_name">
@@ -15,6 +15,7 @@
 	  </div>
 	  <div>
 	  <input type="search" id="form1" class="form-control offset-md-1" />
+	  </form>
 	  </div>
 <table border="solid" class="table">
 <thead class="thead-dark">
