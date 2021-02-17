@@ -32,8 +32,8 @@ class userController extends Controller
 
     public function show($verusuario)
     {
-        $fverusuario = User::where('email', '=', $verusuario)->first();
-        return view('Usuarios.verusuario')->with('verusuario',$verusuario);
+        $verusuario = User::where('id', '=', $verusuario)->first();
+        return view('Auth.register')->with('register',$verusuario);
     }
     public function ver()
     {
