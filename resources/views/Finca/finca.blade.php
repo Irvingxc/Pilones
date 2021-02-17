@@ -43,7 +43,7 @@ value="{{$fincas->descripcion_finca}}"
 @endisset
 ><br>
 <br>
-<button type='submit'> Guardar</button>
+<button type='submit'>@if(isset($fincas))Editar @else Guardar @endif</button>
 
 </form>
 

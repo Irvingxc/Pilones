@@ -13,8 +13,7 @@ return [
     |
     */
 
-    'failed' => 'No existe este correo en nuestro sistema.',
-    'password' => 'La contraseña es incorrecta.',
-    'throttle' => 'Muchos intentos de inicio de sesion. Intentalo de nuevo en :seconds seconds.',
+    'failed' => 'Estas credenciales no coinciden con nuestros registros.',
+    'throttle' => 'Demasiados intentos de acceso. Por favor inténtelo de nuevo en :seconds segundos.',
 
 ];

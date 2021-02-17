@@ -34,7 +34,7 @@ value="{{$tipoclase->descripcion_clase}}"
 @endisset>
 <br>
 <br>
-<button type="submit"> Guardar </button>
+<button type="submit">@if(isset($tipoclase))Editar @else Guardar @endif</button>
 
 </form>
 </div>

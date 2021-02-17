@@ -137,6 +137,17 @@ h1 {
                                 </li>
                             @endif
                         @else
+
+                        @if (Route::has('home.menu')) 
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home.menu') }}">{{ __('Menu Pilones') }}</a>
+                                </li>
+                            @endif
+                         @if (Route::has('home.menu')) 
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home.menu') }}">{{ __('Menu Moldes') }}</a>
+                                </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

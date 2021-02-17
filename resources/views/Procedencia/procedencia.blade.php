@@ -33,7 +33,7 @@ value="{{$procedencia->descripcion}}"
 @endisset>
 <br>
 <br>
-<button type="submit" class="btn btn-primary">Guardar</button> 
+<button type="submit" class="btn btn-primary">@if(isset($procedencia))Editar @else Guardar @endif</button> 
 
 </form>
 

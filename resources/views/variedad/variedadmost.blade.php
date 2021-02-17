@@ -4,6 +4,19 @@
 <div class="Container">
 <table border="solid" class="table">
 <h4 class="text-center text-muted font-weight-bold">Variedad</h4>
+<div class="row">
+<label for="" class="offset-md-7">Buscar por:</label>
+<div class="">
+<select id="inputState" class="form-control offset-md-1" name="checkbox_name">
+        <option selected >Codigo</option>
+        <option>Nombre</option>
+        <option >Descripcion</option>
+      </select>
+	  </div>
+	  <div>
+	  <input type="search" id="form1" class="form-control offset-md-1" />
+	  </div>
+<table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
 			<th>Codigo</th>
