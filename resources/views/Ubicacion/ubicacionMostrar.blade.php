@@ -33,7 +33,7 @@
 				<td><a href="{{route('ubicacion.show', [$pro->codigo_ubicacion])}}">{{$pro->codigo_ubicacion}}</a></td>
 				<td>{{$pro->descripcion_ubicacion}}</td>
 				<td>{{$pro->estado_ubicacion}}</td>
-				<td>{{$pro->codigo_pilon}}</td>
+				<td></td>
                 <td><form method="post" action="{{route('ubicacion.destroy', [$pro->codigo_ubicacion])}}">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}

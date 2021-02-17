@@ -17,8 +17,6 @@ class CreateUbicacionsTable extends Migration
             $table->string('codigo_ubicacion');
             $table->primary('codigo_ubicacion');
             $table->string('descripcion_ubicacion');
-            $table->string('codigo_pilon')->nullable();
-            $table->foreign('codigo_pilon')->references('codigo_pilon')->on('pilons');
             $table->boolean('estado_ubicacion');
             $table->timestamps();
         });
