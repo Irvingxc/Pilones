@@ -8,7 +8,7 @@
 			<tr>
 			<th>Codigo</th>
 			<th>Descripcion</th>
-            <th>Editar</th>
+            <th>Eliminar</th>
 			
 			</tr>
 		</thead>
