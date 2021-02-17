@@ -7,23 +7,23 @@
   <div class="row">
   <div class="text-center col-md-6 pt-5  tintar">
       <a href="{{route('pilon.index')}}">
-        <h4>Pilones</h4>
+        <h1>Pilones</h1>
       </div>
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('fincas.index')}}">
-         <h4>Fincas</h4>
+         <h1>Fincas</h1>
       </div>
       <div class="text-center col-md-6 pt-5   tintar">
       <a href="{{route('variedad.index')}}">
-        <h4>Variedad</h4>
+        <h1>Variedad</h1>
       </div>    
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('tipoclase.index')}}">
-        <h4>Clases</h4>
+        <h1>Clases</h1>
       </div>
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('ubicacion.index')}}">
-        <h4>Ubicación</h4>
+        <h1>Ubicación</h1>
       </div>
   </div>
 </div>
