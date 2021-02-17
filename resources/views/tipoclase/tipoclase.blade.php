@@ -14,24 +14,33 @@
 @csrf
 <label for="">Ingrese el codigo</label>
 <br>
-<input class="col-md-6" type="text" name="codigo_clase"
+<input class="col-md-6" type="text" name="codigo_clase" value="{{ old ('codigo_clase') }}"
 @isset($tipoclase)
 value="{{$tipoclase->codigo_clase}}" readonly
 @endisset>
+@if ($errors->has('codigo_clase'))
+<p style="color:red;">{{$errors->first('codigo_clase')}}</p>
+@endif
 <br>
 <label for="">Ingrese el nombre</label>
 <br>
-<input class="col-md-6" type="text" name="nombre_clase"
+<input class="col-md-6" type="text" name="nombre_clase" value="{{ old ('nombre_clase') }}"
 @isset($tipoclase)
 value="{{$tipoclase->nombre_clase}}"
 @endisset>
+@if ($errors->has('nombre_clase'))
+<p style="color:red;">{{$errors->first('nombre_clase')}}</p>
+@endif
 <br>
 <label for="">Ingrese una descripcion</label>
 <br>
-<input class="col-md-6" type="text" name="descripcion_clase"
+<input class="col-md-6" type="text" name="descripcion_clase" value="{{ old ('descripcion_clase') }}"
 @isset($tipoclase)
 value="{{$tipoclase->descripcion_clase}}"
 @endisset>
+@if ($errors->has('descripcion_clase'))
+<p style="color:red;">{{$errors->first('descripcion_clase')}}</p>
+@endif
 <br>
 <br>
 <button type="submit">@if(isset($tipoclase))Editar @else Guardar @endif</button>
