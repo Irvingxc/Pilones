@@ -22,7 +22,7 @@
 			<tr>
 			<th>Nombre</th>
 			<th>Correo</th>
-            <th>Contrasena</th>
+            <th>Contraseña</th>
 			<th>Eliminar</th>
 			
 
