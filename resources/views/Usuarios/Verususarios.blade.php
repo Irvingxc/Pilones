@@ -32,7 +32,7 @@
 		<tbody>
 			@foreach($Usuarios as $verusuario) 
 			<tr>
-            <td>{{$verusuario->id}}</td>
+            <td><a href="{{route('verusuario.show', [$verusuario->id])}}">{{$verusuario->id}}</td>
             <td>{{$verusuario->name}}</td>
             <td>{{$verusuario->email}}</td>
             <td>{{$verusuario->password}}</td>
