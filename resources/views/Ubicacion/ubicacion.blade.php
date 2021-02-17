@@ -13,23 +13,23 @@ method="post" action="{{route('ubicacion.store')}}" role="form"
 @csrf
 <label for="">Ingrese el codigo</label>
 <br>
-<input class="col-md-6" type="text" name="Codigo_ubicacion" value="{{ old ('Codigo_ubicacion') }}"
-@isset($ubicacion)
+<input
+ @isset($ubicacion)
 value="{{$ubicacion->codigo_ubicacion}}" readonly
-@endisset>
+@endisset class="col-md-6" type="text" name="Codigo_ubicacion" value="{{ old ('Codigo_ubicacion') }}"
 @if ($errors->has('Codigo_ubicacion'))
 <p style="color:red;">{{$errors->first('Codigo_ubicacion')}}</p>
-@endif
+@endif>
 <br>
 <label for="">Ingrese una descripcion</label>
 <br>
-<input class="col-md-6" type="text" name="descripcion_ubicacion" value="{{ old ('descripcion_ubicacion') }}"
-@isset($ubicacion)
+<input
+ @isset($ubicacion)
 value="{{$ubicacion->descripcion_ubicacion}}"
-@endisset>
+@endisset class="col-md-6" type="text" name="descripcion_ubicacion" value="{{ old ('descripcion_ubicacion') }}"
 @if ($errors->has('descripcion_ubicacion'))
 <p style="color:red;">{{$errors->first('descripcion_ubicacion')}}</p>
-@endif
+@endif>
 <br>
 <label for="">Seleccione el estado</label> 
 {{$almacen=null}}
