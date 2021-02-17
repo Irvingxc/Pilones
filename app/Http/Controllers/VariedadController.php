@@ -47,7 +47,7 @@ class VariedadController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'codigo_variedad' => 'required',
+            'codigo_variedad' => 'required|unique:variedads,codigo_variedad',
             'nombre_variedad' => 'required',
             'descripcion_variedad' =>'required',
         ]);
