@@ -109,3 +109,10 @@ Route::post('/tipoclase/update/{tipoclases}', [App\Http\Controllers\tipoclaseCon
 Route::delete('/tipoclase/{codigo_clase}', [App\Http\Controllers\tipoclaseController::class, 'destroy'])->name('tipoclase.destroy');
 
 
+
+/*------------------------------------------------------USUSARIO----------------------------------------------------------*/
+
+Route::get('/verusuario/index', [App\Http\Controllers\userController::class, 'index'])->name('verusuario.index');
+Route::delete('/verusuario/{email}', [App\Http\Controllers\userController::class, 'destroy'])->name('verusuario.destroy');
+
+
