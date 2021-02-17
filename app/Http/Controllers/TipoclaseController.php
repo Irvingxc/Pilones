@@ -41,7 +41,7 @@ class TipoclaseController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'codigo_clase' => 'required',
+            'codigo_clase' => 'required|unique:tipoclases,codigo_clase',
             'nombre_clase' => 'required',
             'descripcion_clase' => 'required',
         ]);
