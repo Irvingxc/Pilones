@@ -41,7 +41,7 @@ class UbicacionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'Codigo_ubicacion' => 'required',
+            'Codigo_ubicacion' => 'required|unique:ubicacions,codigo_ubicacion',
             'descripcion_ubicacion' => 'required',
         ]);
 
