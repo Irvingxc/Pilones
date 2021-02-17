@@ -20,6 +20,7 @@
 <table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
+            <th>Id</th>
 			<th>Nombre</th>
 			<th>Correo</th>
             <th>Contraseña</th>
@@ -31,6 +32,7 @@
 		<tbody>
 			@foreach($Usuarios as $verusuario) 
 			<tr>
+            <td>{{$verusuario->id}}</td>
             <td>{{$verusuario->name}}</td>
             <td>{{$verusuario->email}}</td>
             <td>{{$verusuario->password}}</td>
@@ -47,9 +49,9 @@
 
 			@endforeach
 		</tbody>
-	</table>
+        </table>
 	<div class="btn-whatsapp">
-<a href="{{route('pilon.pilonindex')}}">
+<a href="{{route('verusuario')}}">
 <button class="btn btn-primary">Nuevo</button> 
 </a>
 </div>
