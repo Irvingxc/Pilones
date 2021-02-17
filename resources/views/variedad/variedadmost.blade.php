@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="Container">
+<div class="container">
 <table border="solid" class="table">
 <h4 class="text-center text-muted font-weight-bold">Variedad</h4>
 <div class="row">
