@@ -107,3 +107,5 @@ Route::get('/tipoclase/tipoclase', [App\Http\Controllers\tipoclaseController::cl
 Route::get('/tipoclase/edit/{codigo_clase}', [App\Http\Controllers\tipoclaseController::class, 'show'])->name('tipoclase.show');
 Route::post('/tipoclase/update/{tipoclases}', [App\Http\Controllers\tipoclaseController::class, 'update'])->name('tipoclase.update');
 Route::delete('/tipoclase/{codigo_clase}', [App\Http\Controllers\tipoclaseController::class, 'destroy'])->name('tipoclase.destroy');
+
+
