@@ -35,7 +35,11 @@ class userController extends Controller
         $fverusuario = User::where('email', '=', $verusuario)->first();
         return view('Usuarios.verusuario')->with('verusuario',$verusuario);
     }
-
+    public function ver()
+    {
+        return view('Auth.register');
+        
+    }
 
 
 
