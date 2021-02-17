@@ -25,6 +25,10 @@
       <a href="{{route('ubicacion.index')}}">
         <h1>Ubicación</h1>
       </div>
+      <div class="text-center col-md-6 pt-5 tintar">
+      <a href="{{route('verusuario.index')}}">
+        <h1>Usuarios</h1>
+      </div>
   </div>
 </div>
 </div>
