@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class= "container" id="app"> 
-<div class= "justify-content-center">
 <div class= "card col-md-10">
 <div class="card-header justify-content-center">Ubicacion del pilon</div>
 <div class="card-body justify-content-center">
@@ -18,6 +17,7 @@ method="post" action="{{route('ubicacion.store')}}" role="form"
 value="{{$ubicacion->codigo_ubicacion}}" readonly
 @endisset class="col-md-6" type="text" name="Codigo_ubicacion" value="{{ old ('Codigo_ubicacion') }}"
 @if ($errors->has('Codigo_ubicacion'))
+<br>
 <p style="color:red;">{{$errors->first('Codigo_ubicacion')}}</p>
 @endif>
 <br>
@@ -70,7 +70,6 @@ value="{{$ubicacion->descripcion_ubicacion}}"
 
 </form>
 </div>
-</div> 
 </div>
 </div>
 @endsection
