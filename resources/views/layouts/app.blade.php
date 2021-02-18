@@ -44,7 +44,7 @@ h1 {
     height:280px;
   background: linear-gradient(
     rgba(144, 144, 144, 0.6),
-    rgba(0, 0, 0, .1)), url("https://lh3.googleusercontent.com/proxy/O4qh8xAZSnU7_zDIVjuEbbZxQ_M1wfD8Oe9NObd4TH9BcMyMHoH3wrVdLh8ZUs9oq4C8or0vpfsaRnkswshy2GX4_E7QetymTjjf_6a5ZdRQuODJGMTQN-8p7hOrkpJZUPxg863Ygw")  center / cover;
+    rgba(0, 0, 0, .1)), url("{{asset('images/plasencia.jpg')}}")  center / cover;
   
    
   padding: 2.9em;
