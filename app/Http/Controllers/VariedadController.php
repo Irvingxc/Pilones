@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Variedad;
 use Illuminate\Http\Request;
+use Session;
 
 class VariedadController extends Controller
 {
@@ -119,6 +120,7 @@ class VariedadController extends Controller
         $variedade =Variedad:: where ('codigo_variedad','=', $variedad)->first();
            // $variedad = Variedad::findOrfail($variedad);
             $variedade->delete();
+            Session::flash('message','Cargo eliminado correctamente');
             return redirect('/variedad/index');
         
     }
