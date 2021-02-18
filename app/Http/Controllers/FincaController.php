@@ -94,8 +94,8 @@ class FincaController extends Controller
 
     $finca->codigo_finca = $request->input('codigo_finca');
     $finca->nombre_finca = $request->input('nombre_finca');
-    $finca->descripcion_finca = $request->input('descripcion_pilon');
-    $finca->save();
+    $finca->descripcion_finca = $request->input('descripcion_finca');
+    $finca->save(); 
     return redirect('/fincas/index');
     }
 
