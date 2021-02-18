@@ -48,22 +48,22 @@ value="{{$pilon->descripcion_pilon}}"
 <label for="" class="">Variedad</label>
 </div>
 <div>
-<select id="inputState" class="offset-md-1 form-control" name="Variedad">
-        <option selected >Habano</option>
-        <option>Connericu</option>
-        <option >Otroxjalksdjakdja</option>
+<select id="inputState" class="offset-md-2 form-control" name="Variedad">
+@foreach($variedad as $var)
+        <option selected >{{$var->nombre_variedad}}</option>
+        @endforeach
       </select>
       </div>
 
 
       <div class="margin">
-<label for="" class="offset-md-3">Clase</label>
+<label for="" class="offset-md-11">Clase</label>
 </div>
 <div>
-<select id="inputState" class="form-control offset-md-2" name="Variedad">
-        <option selected >Habano</option>
-        <option>Connericu</option>
-        <option >Otro</option>
+<select id="inputState" class="form-control offset-md-5" name="Variedad">
+@foreach($clase as $clase)
+        <option selected >{{$clase->nombre_clase}}</option>
+        @endforeach
       </select>
       </div>
 </div>
@@ -77,22 +77,22 @@ value="{{$pilon->descripcion_pilon}}"
 <label for="" class="">Finca</label>
 </div>
 <div>
-<select id="inputState" class="offset-md-1 form-control" name="Variedad">
-        <option selected >Habano</option>
-        <option>Connericu</option>
-        <option >Otroxjalksdjakdja</option>
+<select id="inputState" class="offset-md-5 form-control" name="Variedad">
+@foreach($finca as $fin)
+        <option selected >{{$fin->nombre_finca}}</option>
+        @endforeach
       </select>
       </div>
 
 
       <div class="margin">
-<label for="" class="offset-md-3">Ubicacion</label>
+<label for="" class="offset-md-11">Ubicacion</label>
 </div>
 <div>
-<select id="inputState" class="form-control offset-md-2" name="Variedad">
-        <option selected >Habano</option>
-        <option>Connericu</option>
-        <option >Otro</option>
+<select id="inputState" class="form-control offset-md-7" name="Variedad">
+@foreach($ubicacion as $ubi)
+        <option selected >{{$ubi->codigo_ubicacion}}</option>
+        @endforeach
       </select>
       </div>
 </div>

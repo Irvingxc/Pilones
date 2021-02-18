@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pilon;
+use App\Models\Finca;
+use App\Models\Ubicacion;
+use App\Models\tipoclase;
+use App\Models\Variedad;
 use Illuminate\Http\Request;
 
 class PilonController extends Controller
@@ -19,6 +23,10 @@ class PilonController extends Controller
     public function index()
     {
         $pilon = Pilon::all();
+        $ubicacion = Ubicacion::all();
+        $finca = Finca::all();
+        $clase = tipoclase::all();
+        $clase = Variedad::all();
         return view ('pilones.pilonmost',['pilon'=>$pilon]); 
          
     }
@@ -40,7 +48,13 @@ class PilonController extends Controller
      */
     public function pilonindex()
     {
-        return view('pilones.pilon');
+        $pilon = Pilon::all();
+        $ubicacion = Ubicacion::all();
+        $finca = Finca::all();
+        $clase = tipoclase::all();
+        $variedad = Variedad::all();
+        return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
+        'clase'=>$clase, 'variedad'=>$variedad]);
         
     }
 
