@@ -75,7 +75,7 @@ class UbicacionController extends Controller
     public function show($codigo_ubicacion)
     {
         $ubicacion=ubicacion::where('codigo_ubicacion', '=',$codigo_ubicacion)->first();
-        return view('ubicacion.ubicacion')->with('ubicacion', $ubicacion); //
+        return view('ubicacion.ubicacion')->with('ubicacion', $ubicacion);
     }
 
     /**
