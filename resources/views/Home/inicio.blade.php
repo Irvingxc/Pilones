@@ -25,6 +25,9 @@
 
 
 </div>
+@if(@Auth::user()->hasRole('cliente'))
+    <h2>Eres un cliente</h2>
+@endif
 
 
 
