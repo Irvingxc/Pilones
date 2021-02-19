@@ -23,7 +23,7 @@ class UbicacionController extends Controller
             $categoria="codigo_ubicacion";
         }
         $caracteres = $request->get('busqueda');
-        $ubicacion = ubicacion::where("$categoria", 'like', "%$caracteres%")->paginate(5);
+        $ubicacion = ubicacion::where("$categoria", 'like', "%$caracteres%")->paginate(50);
         return view('ubicacion.ubicacionMostrar', compact('ubicacion'));
         //return $caracteres;
     }
@@ -75,7 +75,7 @@ class UbicacionController extends Controller
     public function show($codigo_ubicacion)
     {
         $ubicacion=ubicacion::where('codigo_ubicacion', '=',$codigo_ubicacion)->first();
-        return view('ubicacion.ubicacion')->with('ubicacion', $ubicacion); //
+        return view('ubicacion.ubicacion')->with('ubicacion', $ubicacion);
     }
 
     /**

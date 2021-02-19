@@ -48,6 +48,7 @@
 			@endforeach
 		</tbody>
 	</table>
+	{{ $ubicacion->links() }}
     <div class="btn-whatsapp">
 <a href="{{route('ubicacion')}}">
 <button class="btn btn-primary">Nuevo</button> 
