@@ -16,21 +16,30 @@ class UbicacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         $ubicacion=ubicacion::all();//
         return view('ubicacion.ubicacionMostrar', ['ubicacion'=> $ubicacion]);
 =======
+=======
+>>>>>>> parent of 6d2527a (Revert "Merge branch 'main' of https://github.com/Irvingxc/Pilones into main")
         $categoria = $request->get('filtro');
         if($categoria==null){
             $categoria="codigo_ubicacion";
         }
         $caracteres = $request->get('busqueda');
+<<<<<<< HEAD
         $ubicacion = ubicacion::where("$categoria", 'like', "%$caracteres%")->paginate(50);
         return view('ubicacion.ubicacionMostrar', compact('ubicacion'));
         //return $caracteres;
 >>>>>>> parent of 29f1c8e (Revert "Merge branch 'main' of https://github.com/Irvingxc/Pilones into main")
+=======
+        $ubicacion = ubicacion::where("$categoria", 'like', "%$caracteres%")->paginate(5);
+        return view('ubicacion.ubicacionMostrar', compact('ubicacion'));
+        //return $caracteres;
+>>>>>>> parent of 6d2527a (Revert "Merge branch 'main' of https://github.com/Irvingxc/Pilones into main")
     }
 
     /**
