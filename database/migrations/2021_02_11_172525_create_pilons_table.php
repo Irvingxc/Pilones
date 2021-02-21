@@ -18,7 +18,7 @@ class CreatePilonsTable extends Migration
             $table->primary('codigo_pilon');
             $table->string('descripcion_pilon');
             $table->date('Fecha_datos_pilones');
-            $table->date('fecha_virado_datos_pilones');
+         //   $table->date('fecha_virado_datos_pilones');
             $table->string('codigo_variedad');
             $table->foreign('codigo_variedad')->references('codigo_variedad')->on('variedads');
             $table->string('codigo_clase');

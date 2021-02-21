@@ -28,6 +28,14 @@
         <input type="text" class="col-md-6">
 
       </div>
+      <div class="form-check">
+      <label class="col-md-5" for="flexRadioDefault1">
+    Se viro
+  </label>
+  <input class="form-check-input col-md-6" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+</div>
+
+
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="guardar()">Guardar Cambios</button>

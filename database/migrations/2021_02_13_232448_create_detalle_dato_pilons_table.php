@@ -16,7 +16,8 @@ class CreateDetalleDatoPilonsTable extends Migration
         Schema::create('detalle_dato_pilons', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_detalle');
-            $table->float('temperatura');
+            $table->float('temperatura')->nullable();
+            $table->boolean('virado')->nullable();
             $table->string('codigo_pilon');
             $table->foreign('codigo_pilon')->references('codigo_pilon')->on('pilons');
             //$table->foreigncodigo_clase('codigo_clase')->constrained('clases');
