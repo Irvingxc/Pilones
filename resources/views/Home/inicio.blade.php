@@ -14,8 +14,6 @@
 
 </div> 
 
-@if(@Auth::user()->hasRole('administrador'))
-
 <div class="card offset-md-2">
 <img class="card-img-top tamno" src="{{asset('images/molde.jpg')}}" alt="Card image cap">
   <div class="card-body">
@@ -24,10 +22,12 @@
   </div>
 
 </div>
-@endif
 
 
 </div>
+
+
+
 </div> 
 
 @endsection
