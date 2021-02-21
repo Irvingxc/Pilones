@@ -16,16 +16,10 @@ class UbicacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $categoria = $request->get('filtro');
-        if($categoria==null){
-            $categoria="codigo_ubicacion";
-        }
-        $caracteres = $request->get('busqueda');
-        $ubicacion = ubicacion::where("$categoria", 'like', "%$caracteres%")->paginate(5);
-        return view('ubicacion.ubicacionMostrar', compact('ubicacion'));
-        //return $caracteres;
+        $ubicacion=ubicacion::all();//
+        return view('ubicacion.ubicacionMostrar', ['ubicacion'=> $ubicacion]);
     }
 
     /**
