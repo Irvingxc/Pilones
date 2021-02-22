@@ -5,12 +5,10 @@
 <div class="card-header justify-content-center">Ubicacion del pilon</div>
 <div class="card-body justify-content-center">
 
-@can('ubicacion.update')
 <form @isset($ubicacion) method="post" action="{{route('ubicacion.update', ['ubicaciones'=>$ubicacion->codigo_ubicacion])}}" role="form" 
 @else
 method="post" action="{{route('ubicacion.store')}}" role="form"
  @endisset>
- @endcan
 @csrf
 <label for="">Ingrese el codigo</label>
 <br>
