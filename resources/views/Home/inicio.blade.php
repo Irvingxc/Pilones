@@ -14,7 +14,7 @@
 
 </div> 
 
-@if(@Auth::user()->hasRole('administrador'))
+@if(@Auth::user()->hasRole('cliente'))
 
 <div class="card offset-md-2">
 <img class="card-img-top tamno" src="{{asset('images/molde.jpg')}}" alt="Card image cap">

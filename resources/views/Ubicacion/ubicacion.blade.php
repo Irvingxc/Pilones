@@ -36,7 +36,7 @@ value="{{$ubicacion->descripcion_ubicacion}}"
 <label for="">Seleccione el estado</label> 
 {{$almacen=null}}
 <br>
-<select id="inputState" class="form-control" name="checkbox_name"
+<select id="inputState" class="col-md-6" name="checkbox_name"
 @isset($ubicacion)
 {{$almacen = $ubicacion->estado_ubicacion}}
 @if($almacen==0)

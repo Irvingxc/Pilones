@@ -88,17 +88,17 @@ Route::delete('/variedad/{variedad}',[App\Http\Controllers\variedadController::c
 
 
 Route::group(['middleware' => ['role:cliente']], function () {
-    Route::post('/ubicacion/stored', [App\Http\Controllers\UbicacionController::class, 'store'])->name('ubicacion.store')
-    ->middleware('permission:ubicacion.stored');
+    Route::post('/ubicacion/stored', [App\Http\Controllers\UbicacionController::class, 'store'])->name('ubicacion.store');
+   // ->middleware('permission:ubicacion.stored');
     Route::get('/ubicacion/index', [App\Http\Controllers\UbicacionController::class, 'index'])->name('ubicacion.index');
-    Route::get('/ubicacion/ubicacion', [App\Http\Controllers\UbicacionController::class, 'create'])->name('ubicacion')
-    ->middleware('permission:ubicacion');
-    Route::get('/ubicacion/edit/{codigo_ubicacion}', [App\Http\Controllers\UbicacionController::class, 'show'])->name('ubicacion.show')
-    ->middleware('permission:ubicacion.show');
-    Route::post('/ubicacion/update/{ubicaciones}', [App\Http\Controllers\UbicacionController::class, 'update'])->name('ubicacion.update')
-    ->middleware('permission:ubicacion.update');
-    Route::delete('/ubicacion/{codigo_ubicacion}', [App\Http\Controllers\UbicacionController::class, 'destroy'])->name('ubicacion.destroy')
-    ->middleware('permission:ubicacion.destroy');
+    Route::get('/ubicacion/ubicacion', [App\Http\Controllers\UbicacionController::class, 'create'])->name('ubicacion');
+    //->middleware('permission:ubicacion');
+    Route::get('/ubicacion/edit/{codigo_ubicacion}', [App\Http\Controllers\UbicacionController::class, 'show'])->name('ubicacion.show');
+    //->middleware('permission:ubicacion.show');
+    Route::post('/ubicacion/update/{ubicaciones}', [App\Http\Controllers\UbicacionController::class, 'update'])->name('ubicacion.update');
+    //->middleware('permission:ubicacion.update');
+    Route::delete('/ubicacion/{codigo_ubicacion}', [App\Http\Controllers\UbicacionController::class, 'destroy'])->name('ubicacion.destroy');
+   // ->middleware('permission:ubicacion.destroy');
 });
 
 /*------------------------------UBICACION-------------------------------*/
