@@ -103,7 +103,6 @@ Route::group(['middleware' => ['role:cliente']], function () {
 
 /*------------------------------UBICACION-------------------------------*/
 Route::middleware(['role:cliente'])->group(function () {
-
 });
 
 /*------------------------------CLASES-------------------------------*/
@@ -123,3 +122,12 @@ Route::get('/verusuario/index', [App\Http\Controllers\userController::class, 'in
 Route::delete('/verusuario/{email}', [App\Http\Controllers\userController::class, 'destroy'])->name('verusuario.destroy');
 Route::get('/verusuario', [App\Http\Controllers\userController::class,'ver'])->name('verusuario');
 Route::get('/verusuario/edit/{id}', [App\Http\Controllers\userController::class, 'show'])->name('verusuario.show');
+
+/*------------------------------------------------------Roles----------------------------------------------------------*/
+Route::post('/role/store', [App\Http\Controllers\RoleController::class,'store'])->name('role.store');
+Route::get('/role/index', [App\Http\Controllers\RoleController::class,'index'])->name('role.index');
+Route::get('/role', [App\Http\Controllers\RoleController::class,'create'])->name('role');
+Route::get('/role/edit/{id}', [App\Http\Controllers\RoleController::class,'show'])->name('role.show');
+Route::post('/role/update/{role}', [App\Http\Controllers\RoleController::class,'update'])->name('role.update');
+Route::delete('/role/{role}',[App\Http\Controllers\RoleController::class,'destroy'])->name('role.destroy');
+
