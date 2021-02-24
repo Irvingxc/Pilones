@@ -89,7 +89,8 @@ class FincaController extends Controller
         $finca =finca:: where ('codigo_finca','=', $fincas)->first();
         $this->validate($request, [
             'codigo_finca' => 'required',
-            'descripcion_finca',
+            'nombre_finca' => 'required',
+            'descripcion_finca' =>'required',
         ]);
 
     $finca->codigo_finca = $request->input('codigo_finca');

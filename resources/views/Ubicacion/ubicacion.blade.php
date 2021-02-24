@@ -16,10 +16,10 @@ method="post" action="{{route('ubicacion.store')}}" role="form"
  @isset($ubicacion)
 value="{{$ubicacion->codigo_ubicacion}}" readonly
 @endisset class="col-md-6" type="text" name="Codigo_ubicacion" value="{{ old ('Codigo_ubicacion') }}"
+>
 @if ($errors->has('Codigo_ubicacion'))
-<br>
 <p style="color:red;">{{$errors->first('Codigo_ubicacion')}}</p>
-@endif>
+@endif
 <br>
 <label for="">Ingrese una descripcion</label>
 <br>
@@ -27,15 +27,16 @@ value="{{$ubicacion->codigo_ubicacion}}" readonly
  @isset($ubicacion)
 value="{{$ubicacion->descripcion_ubicacion}}"
 @endisset class="col-md-6" type="text" name="descripcion_ubicacion" value="{{ old ('descripcion_ubicacion') }}"
+>
 @if ($errors->has('descripcion_ubicacion'))
 <p style="color:red;">{{$errors->first('descripcion_ubicacion')}}</p>
-@endif>
+@endif
 <br>
 <label for="">Seleccione el estado</label> 
 {{$almacen=null}}
 <br>
 <select id="inputState" class="col-md-6" name="checkbox_name"
-@isset($ubicacion)
+@isset($ubicacion) readonly
 {{$almacen = $ubicacion->estado_ubicacion}}
 @if($almacen==0)
 {{$almacen="Ocupado"}}
@@ -58,7 +59,6 @@ value="{{$ubicacion->descripcion_ubicacion}}"
 
         @if($almacen==null)
         <option selected >Disponible</option>
-        <option>Ocupado</option>
         @endif
 
 

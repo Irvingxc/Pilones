@@ -21,9 +21,10 @@ method="post" action="{{route('variedad.store')}}"
 <input @isset($variedad)
 value="{{$variedad->codigo_variedad}}" readonly
 @endisset class="col-md-6" type="text" name=codigo_variedad value="{{ old ('codigo_variedad') }}"
+>
 @if ($errors->has('codigo_variedad'))
 <p style="color:red;">{{$errors->first('codigo_variedad')}}</p>
-@endif>
+@endif
 <br>
 <label for="">Ingrese el nombre</label>
 <br>
@@ -31,9 +32,10 @@ value="{{$variedad->codigo_variedad}}" readonly
 @isset($variedad)
 value="{{$variedad->nombre_variedad}}"
 @endisset class="col-md-6" type="text" name='nombre_variedad' value="{{ old ('nombre_variedad') }}"
+>
 @if ($errors->has('nombre_variedad'))
 <p style="color:red;">{{$errors->first('nombre_variedad')}}</p>
-@endif>
+@endif
 <br>
 <label for="">Ingrese descripcion</label
 >
@@ -42,9 +44,10 @@ value="{{$variedad->nombre_variedad}}"
 @isset($variedad)
 value="{{$variedad->descripcion_variedad}}"
 @endisset class="col-md-6" type="text" name='descripcion_variedad' value="{{ old ('descripcion_variedad') }}"
+>
 @if ($errors->has('descripcion_variedad'))
 <p style="color:red;">{{$errors->first('descripcion_variedad')}}</p>
-@endif>
+@endif
 <br>
 <br>
 <button type='submit'>@if(isset($variedad))Editar @else Guardar @endif</button>
