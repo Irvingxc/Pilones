@@ -14,8 +14,9 @@ class CreateUbicacionsTable extends Migration
     public function up()
     {
         Schema::create('ubicacions', function (Blueprint $table) {
+            $table->id();
             $table->string('codigo_ubicacion');
-            $table->primary('codigo_ubicacion');
+            $table->foreignId('procedencias_id')->constrained('procedencias');
             $table->string('descripcion_ubicacion');
             $table->boolean('estado_ubicacion');
             $table->timestamps();
