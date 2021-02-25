@@ -16,10 +16,15 @@ class FincaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-            $Finca = Finca::all();
-     return view ('finca.fincamost',['Finca'=>$Finca]); 
+        $categoria = $request->get('filtro');
+        if($categoria==null){
+            $categoria="codigo_finca";
+        }
+        $caracteres = $request->get('busqueda');
+        $Finca = Finca::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+     return view ('finca.fincamost', compact('Finca')); 
      
     }
 
