@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\role;
-
+//use App\Models\role;
+use Spatie\Permission\Models\Role;
 class RoleController extends Controller
 {
     public function __construct()
@@ -20,10 +20,15 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */ 
-    public function index()
+    public function index(Request $request)
     {
-        $role = role::all(); 
-        return view('Role.rolemost', ['Role'=>$role]);
+        $categoria = $request->get('filtro');
+        if($categoria==null){
+            $categoria="id";
+        }
+        $caracteres = $request->get('busqueda');
+        $role = role::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        return view('Role.rolemost', compact('role'));
     }
 
     /**
@@ -89,6 +94,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $role)
     {
+        
         $role = role::findOrFail($role);
         $this->validate($request, [
             'name' => 'required',

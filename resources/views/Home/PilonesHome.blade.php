@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h4 class="text-center text-muted font-weight-bold">Menu</h4>
+    <h4 class="text-center text-muted font-weight-bold">Menú</h4>
   </div>
   <div class="row">
   <div class="text-center col-md-6 pt-5  tintar">
@@ -28,6 +28,10 @@
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('verusuario.index')}}">
         <h1>Usuarios</h1>
+      </div>
+      <div class="text-center col-md-6 pt-5 tintar">
+      <a href="{{route('role.index')}}">
+        <h1>Roles</h1>
       </div>
   </div>
 </div>
