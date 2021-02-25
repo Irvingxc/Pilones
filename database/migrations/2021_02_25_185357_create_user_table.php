@@ -14,8 +14,7 @@ class CreateUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('sucursal')->constrained('procedencias')->nullable(); 
-            $table->foreignId('roles')->constrained('roles')->nullable(); 
+            $table->foreignId('sucursal')->constrained('procedencias'); 
         });
     }
 

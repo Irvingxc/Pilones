@@ -26,11 +26,20 @@ class userController extends Controller
             'password' => 'required'
         ]);
 
-        $verusuario = new User;
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'sucursal' => $request->procedencia,
+        ]);
+
+       /* $verusuario = new User;
         $verusuario->name = $request->input('name');
         $verusuario->email = $request->input('email');
         $verusuario->password = $request->input('password');
-        $verusuario->save();
+        $verusuario->sucursal = $request->input('procedencia');
+        $nuevo =$verusuario->save();*/
+        $user->assignRole('cliente');
     
         return redirect('/verusuario/index');
         

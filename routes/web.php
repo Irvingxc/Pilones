@@ -85,8 +85,6 @@ Route::post('/variedad/update/{variedade}', [App\Http\Controllers\variedadContro
 
 Route::delete('/variedad/{variedad}',[App\Http\Controllers\variedadController::class,'destroy'])->name('variedad.destroy');
 
-
-
 Route::group(['middleware' => ['role:cliente']], function () {
     Route::post('/ubicacion/stored', [App\Http\Controllers\UbicacionController::class, 'store'])->name('ubicacion.store');
    // ->middleware('permission:ubicacion.stored');

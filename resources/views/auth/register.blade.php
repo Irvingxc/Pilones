@@ -74,9 +74,9 @@
                             <label for="" class="col-md-4">Seleccione la procedencia</label> 
 
                              <div class="col-md-6">
-                                <select id="inputState" class="col-md-6 form-control" name="checkbox_name">
+                                <select id="inputState" class="col-md-6 form-control" name="procedencia">
                                 @foreach($procedencia as $var)
-                                <option selected >{{$var->nombre}}</option>
+                                <option selected value="{{$var->id}}" >{{$var->nombre}}</option>
                                 @endforeach
                                 </select>
 
@@ -89,7 +89,7 @@
                              <div class="col-md-6">
                                 <select id="inputState" class="col-md-6 form-control" name="checkbox_name">
                                 @foreach($role as $var)
-                                <option selected >{{$var->name}}</option>
+                                <option selected>{{$var->name}}</option>
                                 @endforeach
                                 </select>
                             </div>
