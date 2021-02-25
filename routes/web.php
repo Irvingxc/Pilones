@@ -117,12 +117,12 @@ Route::delete('/tipoclase/{codigo_clase}', [App\Http\Controllers\tipoclaseContro
 
 
 /*------------------------------------------------------USUSARIO----------------------------------------------------------*/
-
+Route::post('/verusuario/stored', [App\Http\Controllers\userController::class, 'store'])->name('verusuario.store');
 Route::get('/verusuario/index', [App\Http\Controllers\userController::class, 'index'])->name('verusuario.index');
 Route::delete('/verusuario/{email}', [App\Http\Controllers\userController::class, 'destroy'])->name('verusuario.destroy');
 Route::get('/verusuario', [App\Http\Controllers\userController::class,'ver'])->name('verusuario');
 Route::get('/verusuario/edit/{id}', [App\Http\Controllers\userController::class, 'show'])->name('verusuario.show');
-
+Route::post('/verusuario/update/{users}', [App\Http\Controllers\userController::class, 'update'])->name('verusuario.update');
 /*------------------------------------------------------Roles----------------------------------------------------------*/
 Route::post('/role/store', [App\Http\Controllers\RoleController::class,'store'])->name('role.store');
 Route::get('/role/index', [App\Http\Controllers\RoleController::class,'index'])->name('role.index');
