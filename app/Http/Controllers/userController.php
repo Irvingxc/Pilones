@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\role;
+use App\Models\Procedencia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
 class userController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function create()
     {
 
@@ -44,6 +42,7 @@ class userController extends Controller
      */
     public function index()
     {
+       
         $verusuario = User::all();
         return view ('Usuarios.Verususarios',['Usuarios'=>$verusuario]); 
          
@@ -58,12 +57,19 @@ class userController extends Controller
     public function show($verusuario)
     {
       //  $id= Crypt::decrypt($id);
+      $role = Role::all();
+      $procedencia = Procedencia::all();
         $verusuarios = User::where('id', '=', $verusuario)->first();
-        return view('Auth.register')->with('register',$verusuarios);
+        return view('Auth.register')->with('register',$verusuarios) ('procedencia',$procedencia) ('role',$role);
     } 
+
+
     public function ver()
     {
-        return view('Auth.register');
+        $role = Role::all();
+        $procedencia = Procedencia::all();
+        return view('Auth.register', ['procedencia'=>$procedencia, 'role'=>$role]);
+       // return view('Auth.register')->with('procedencia',$procedencia);
         
     }
 
