@@ -4,16 +4,18 @@
 <table border="solid" class="table">
 <h4 class="text-center text-muted font-weight-bold">Roles</h4>
 <div class="row">
+<form action="">
 <label for="" class="offset-md-7">Buscar por:</label>
 <div class="">
-<select id="inputState" class="form-control offset-md-1" name="checkbox_name">
-        <option selected >Codigo</option>
-        <option>Nombre</option>
-        <option >Descripcion</option>
+<select id="inputState" class="form-control offset-md-1" name="filtro">
+        <option value="id" selected >Codigo</option>
+        <option value="name">Nombre</option>
+        <option value="guard_name" >Guard_Nombre</option>
       </select>
 	  </div>
 	  <div>
-	  <input type="search" id="form1" class="form-control offset-md-1" />
+	  <input type="search" name="busqueda" id="form1" class="form-control offset-md-1" />
+	  </form>
 	  </div>
 <table border="solid" class="table">
 <thead class="thead-dark">
@@ -28,7 +30,7 @@
 		<tbody>
 			
 			<tr>
-			@foreach($Role as $role) 
+			@foreach($role as $role) 
 				<td><a href="{{route('role.show', [$role->id])}}">{{$role->id}}</td>
 				<td>{{$role->name}}</td>
 				<td>{{$role->guard_name}}</td>
