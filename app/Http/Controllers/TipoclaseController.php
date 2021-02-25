@@ -16,10 +16,15 @@ class TipoclaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tipoclase=tipoclase::all();
-        return view('tipoclase.tipoclasemostrar', ['tipoclase'=> $tipoclase]);
+        $categoria = $request->get('filtro');
+        if($categoria==null){
+            $categoria="codigo_clase";
+        }
+        $caracteres = $request->get('busqueda');
+        $tipoclase=tipoclase::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        return view('tipoclase.tipoclasemostrar', compact('tipoclase'));
     }
 
     /**
