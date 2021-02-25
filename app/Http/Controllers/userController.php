@@ -12,8 +12,33 @@ class userController extends Controller
     {
         $this->middleware('auth');
     }
+    public function create()
+    {
+
+    }
+
+
+   
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required'
+        ]);
+
+        $verusuario = new User;
+        $verusuario->name = $request->input('name');
+        $verusuario->email = $request->input('email');
+        $verusuario->password = $request->input('password');
+        $verusuario->save();
+    
+        return redirect('/verusuario/index');
+        
+        }
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource. 
      *
      * @return \Illuminate\Http\Response
      */
@@ -46,9 +71,9 @@ class userController extends Controller
     {
         $verusuario =User:: where ('id','=', $verusuario)->first();
         $this->validate($request, [
-            'codigo_variedad' => 'required',
-            'nombre_variedad'=>'required',
-            'descripcion_variedad'=>'required',
+            'name' => 'required',
+            'email'=>'required',
+            'password'=>'required',
         ]);
         $verusuario->name = $request->input('name');
         $verusuario->email = $request->input('email');
