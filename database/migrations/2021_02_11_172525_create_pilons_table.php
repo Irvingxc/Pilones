@@ -25,8 +25,7 @@ class CreatePilonsTable extends Migration
             $table->foreign('codigo_clase')->references('codigo_clase')->on('tipoclases');
             $table->string('codigo_finca');
             $table->foreign('codigo_finca')->references('codigo_finca')->on('fincas');
-            $table->string('codigo_ubicacion');
-            $table->foreign('codigo_ubicacion')->references('codigo_ubicacion')->on('ubicacions');
+            $table->foreignId('ubicacion')->constrained('ubicacions');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
