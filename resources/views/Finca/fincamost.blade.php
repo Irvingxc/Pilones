@@ -3,7 +3,8 @@
 <div class="container">
 <table border="solid" class="table">
 <h4 class="text-center text-muted font-weight-bold">Fincas</h4>
-<div class="row">
+<div class="row"> 
+<form action=""> 
 <label for="" class="offset-md-7">Buscar por:</label>
 <div class="">
 <select id="inputState" class="form-control offset-md-1" name="filtro">
@@ -15,6 +16,7 @@
 	  <div>
 	  <input type="search" name="busqueda" id="form1" class="form-control offset-md-1" />
 	  </div>
+	  </form>
 <table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
