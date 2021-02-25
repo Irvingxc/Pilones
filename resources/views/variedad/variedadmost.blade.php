@@ -8,13 +8,13 @@
 <label for="" class="offset-md-7">Buscar por:</label>
 <div class="">
 <select id="inputState" class="form-control offset-md-1" name="checkbox_name">
-        <option selected >Codigo</option>
-        <option>Nombre</option>
-        <option >Descripcion</option>
+        <option value="codigo_variedad" selected >Codigo</option>
+        <option value="nombre_variedad">Nombre</option>
+        <option value="descripcion_variedad">Descripcion</option>
       </select>
 	  </div>
 	  <div>
-	  <input type="search" id="form1" class="form-control offset-md-1" />
+	  <input type="search" name="busqueda" id="form1" class="form-control offset-md-1" />
 	  </form>
 	  </div>
 <table border="solid" class="table">
