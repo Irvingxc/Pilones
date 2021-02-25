@@ -6,14 +6,14 @@
 <div class="row">
 <label for="" class="offset-md-7">Buscar por:</label>
 <div class="">
-<select id="inputState" class="form-control offset-md-1" name="checkbox_name">
-        <option selected >Codigo</option>
-        <option>Nombre</option>
-        <option >Descripcion</option>
+<select id="inputState" class="form-control offset-md-1" name="filtro">
+        <option value="codigo_finca" selected >Codigo</option>
+        <option value="nombre_finca">Nombre</option>
+        <option value="descripcion_finca" >Descripcion</option>
       </select>
 	  </div>
 	  <div>
-	  <input type="search" id="form1" class="form-control offset-md-1" />
+	  <input type="search" name="busqueda" id="form1" class="form-control offset-md-1" />
 	  </div>
 <table border="solid" class="table">
 <thead class="thead-dark">
@@ -21,7 +21,7 @@
 			<th>Codigo</th>
 			<th>Nombre</th>
 			<th>Descripcion</th>
-            <th>Eliminar</th>
+            <th class="rojo">Eliminar</th>
 			
 			</tr>
 		</thead>
