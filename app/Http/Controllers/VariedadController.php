@@ -16,10 +16,15 @@ class VariedadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-          $variedad = Variedad::all();
-        return view ('variedad.variedadmost',['variedad'=>$variedad]); 
+        $categoria = $request->get('filtro');
+        if($categoria==null){
+            $categoria="codigo_variedad";
+        }
+        $caracteres = $request->get('busqueda');
+          $variedad = Variedad::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        return view ('variedad.variedadmost',compact('variedad')); 
        
     }
 
