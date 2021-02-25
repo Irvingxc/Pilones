@@ -14,17 +14,11 @@ class CreatePilonsTable extends Migration
     public function up()
     {
         Schema::create('pilons', function (Blueprint $table) {
+            $table->id();
             $table->string('codigo_pilon');
-            $table->primary('codigo_pilon');
             $table->string('descripcion_pilon');
             $table->date('Fecha_datos_pilones');
          //   $table->date('fecha_virado_datos_pilones');
-            $table->string('codigo_variedad');
-            $table->foreign('codigo_variedad')->references('codigo_variedad')->on('variedads');
-            $table->string('codigo_clase');
-            $table->foreign('codigo_clase')->references('codigo_clase')->on('tipoclases');
-            $table->string('codigo_finca');
-            $table->foreign('codigo_finca')->references('codigo_finca')->on('fincas');
             $table->foreignId('ubicacion')->constrained('ubicacions');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();

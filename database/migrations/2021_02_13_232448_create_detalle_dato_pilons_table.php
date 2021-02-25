@@ -18,8 +18,10 @@ class CreateDetalleDatoPilonsTable extends Migration
             $table->date('fecha_detalle');
             $table->float('temperatura')->nullable();
             $table->boolean('virado')->nullable();
+            $table->boolean('mojado')->nullable();
+            $table->boolean('fumigado')->nullable();
             $table->string('codigo_pilon');
-            $table->foreign('codigo_pilon')->references('codigo_pilon')->on('pilons');
+            $table->foreignId('pilon_id')->constrained('pilons');
             //$table->foreigncodigo_clase('codigo_clase')->constrained('clases');
             //$table->foreign('codigo_clase')->references('codigo_clase')->on('clases');
             $table->timestamps();
