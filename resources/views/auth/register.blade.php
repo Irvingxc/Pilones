@@ -70,6 +70,31 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="" class="col-md-4">Seleccione la procedencia</label> 
+
+                             <div class="col-md-6">
+                                <select id="inputState" class="col-md-6 form-control" name="checkbox_name">
+                                @foreach($procedencia as $var)
+                                <option selected >{{$var->nombre}}</option>
+                                @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-md-4">Seleccione un rol</label> 
+
+                             <div class="col-md-6">
+                                <select id="inputState" class="col-md-6 form-control" name="checkbox_name">
+                                @foreach($role as $var)
+                                <option selected >{{$var->name}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
