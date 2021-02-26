@@ -118,7 +118,7 @@ class RoleController extends Controller
     {
         $role =role::where('id','=', $role)->first();
         $role->delete();
-        return redirect('/role/index');//
+        return redirect('/role/index')->with('Eliminar', 'Ok.');//
    
     }
 }
