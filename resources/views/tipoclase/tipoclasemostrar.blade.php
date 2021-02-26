@@ -32,7 +32,7 @@
 				<td><a href="{{route('tipoclase.show', [$pro->codigo_clase])}}">{{$pro->codigo_clase}}</a></td>
                 <td>{{$pro->nombre_clase}}</td>
 				<td>{{$pro->descripcion_clase}}</td>
-                <td><form method="post" action="{{route('tipoclase.destroy', [$pro->codigo_clase])}}">
+                <td><form method="post" action="{{route('tipoclase.destroy', [$pro->codigo_clase])}}" class="formulario-eliminar">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
@@ -52,3 +52,47 @@
 </a>
 </div>
     @endsection
+
+
+
+	@section('js')
+	
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	@if(session('Eliminar')== 'Ok.')
+	<script>
+	 Swal.fire(
+      '¡Eliminado!',
+      'El dato se eliminó con éxito.',
+      'success'
+    )
+	</script>
+
+	@endif
+
+
+	<script>
+	$('.formulario-eliminar').submit(function(e){
+		e.preventDefault();
+
+Swal.fire({
+  title: '¿Está seguro?',
+  text: "Este dato se eliminará definitivamente.",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Sí, eliminar',
+  cancelButtonText: 'Cancelar'
+}).then((result) => {
+  if (result.isConfirmed) {
+ 
+	this.submit();
+  }
+})
+
+	});
+
+	</script>
+	
+@endsection
