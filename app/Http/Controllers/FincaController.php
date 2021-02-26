@@ -115,6 +115,6 @@ class FincaController extends Controller
     {
         $finca =Finca:: where ('codigo_finca','=', $finca)->first();
         $finca->delete();
-        return redirect('/fincas/index');
+        return redirect('/fincas/index')->with('Eliminar', 'Ok.');
     }
 }
