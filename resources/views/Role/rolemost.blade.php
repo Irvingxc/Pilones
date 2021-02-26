@@ -35,11 +35,11 @@
 				<td>{{$role->name}}</td>
 				<td>{{$role->guard_name}}</td>
 
-				<td> <form method="post" action="{{route('role.destroy', [$role->id])}}">
+				<td> <form method="post" action="{{route('role.destroy', [$role->id])}} " class="formulario-eliminar">
                     {{csrf_field()}}
 					{{method_field('DELETE')}}
                    
-                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                    <button type="submit" class="btn btn-outline-danger  ">Eliminar</button>
                 </form>
                     </td>
                 </tr>
@@ -55,4 +55,46 @@
 </div>
 
 </div>
+@endsection
+
+@section('js')
+	
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	@if(session('Eliminar')== 'Ok.')
+	<script>
+	 Swal.fire(
+      '¡Eliminado!',
+      'El dato se eliminó con éxito.',
+      'success'
+    )
+	</script>
+
+	@endif
+
+
+	<script>
+	$('.formulario-eliminar').submit(function(e){
+		e.preventDefault();
+
+Swal.fire({
+  title: '¿Está seguro?',
+  text: "Este dato se eliminará definitivamente.",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Sí, eliminar',
+  cancelButtonText: 'Cancelar'
+}).then((result) => {
+  if (result.isConfirmed) {
+ 
+	this.submit();
+  }
+})
+
+	});
+
+	</script>
+	
 @endsection
