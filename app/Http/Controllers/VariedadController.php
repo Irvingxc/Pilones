@@ -124,7 +124,7 @@ class VariedadController extends Controller
         $variedade =Variedad:: where ('codigo_variedad','=', $variedad)->first();
            // $variedad = Variedad::findOrfail($variedad);
             $variedade->delete();
-            return redirect('/variedad/index');
+            return redirect('/variedad/index')->with('Eliminar', 'Ok.');
         
     }
 }
