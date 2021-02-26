@@ -126,6 +126,6 @@ class UbicacionController extends Controller
     {
         $ubicacion =ubicacion::where('codigo_ubicacion','=', $ubicacion)->first();
          $ubicacion->delete();
-         return redirect('/ubicacion/index');//
+         return redirect('/ubicacion/index')->with('Eliminar', 'Ok.');//
     }
 }
