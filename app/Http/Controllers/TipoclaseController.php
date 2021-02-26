@@ -118,7 +118,7 @@ class TipoclaseController extends Controller
     {
         $tipoclase =tipoclase:: where ('codigo_clase','=', $tipoclase)->first();
          $tipoclase->delete();
-         return redirect('/tipoclase/index'); //
+         return redirect('/tipoclase/index')->with('Eliminar', 'Ok.'); //
     }
 }
  //
