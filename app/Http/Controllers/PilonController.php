@@ -31,6 +31,17 @@ class PilonController extends Controller
          
     }
 
+    public function grafico()
+    {
+        $pilon = Pilon::all();
+        $ubicacion = Ubicacion::all();
+        $finca = Finca::all();
+        $clase = tipoclase::all();
+        $clase = Variedad::all();
+        return view ('Reportes.Grafico',['pilon'=>$pilon]); 
+         
+    }
+
     /**
      * Show the form for creating a new resource.
      *
