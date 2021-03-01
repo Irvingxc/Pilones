@@ -20,6 +20,9 @@
 			<tr>
 			<th>Codigo</th>
 			<th>Descripcion</th>
+			<th>Fecha Inicio</th>
+			<th>Ubicacion del Pilon</th>
+			<th>Sucursal</th>
             <th>Eliminar</th>
 			<th>Reporte</th>
 			
@@ -30,6 +33,9 @@
 			<tr>
 				<td><a href="{{route('pilon.show', [$pilon->codigo_pilon])}}"> {{$pilon->codigo_pilon}}</a></td>
 				<td>{{$pilon->descripcion_pilon}}</td>
+				<td>{{$pilon->Fecha_datos_pilones}}</td>
+				<td>{{$pilon->ubicacion}}</td>
+				<td>{{$pilon->sucursal_id}}</td>
                 <td> <form method="post" action="{{route('pilon.destroy', [$pilon->codigo_pilon])}}">
                     {{csrf_field()}}
 					{{method_field('DELETE')}}
@@ -37,7 +43,7 @@
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form>
                     </td>
-					<td><button class="btn btn-primary" href="{{route('calendario')}}"></button></td>
+					<td><button class="btn btn-primary" href="{{route('calendario')}}">Ver Calendario</button></td>
                 </tr>
 		
 

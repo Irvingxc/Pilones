@@ -20,7 +20,7 @@ class CreatePilonsTable extends Migration
             $table->date('Fecha_datos_pilones');
          //   $table->date('fecha_virado_datos_pilones');
             $table->foreignId('ubicacion')->constrained('ubicacions');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('sucursal_id')->constrained('procedencias');
             $table->timestamps();
         });
     }

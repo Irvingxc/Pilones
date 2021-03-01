@@ -25,7 +25,7 @@ value="{{$pilon->codigo_pilon}}" readonly
 <div class="margin">
 <label for="">Fecha Inicio</label> 
 <br>
-<input class="col-md-12 form-control" type="date" name='descripcion_pilon'
+<input class="col-md-12 form-control" type="date" name='fecha_inicio'
 @isset($pilon)
 value="{{$pilon->descripcion_pilon}}"
 @endisset>
@@ -34,7 +34,7 @@ value="{{$pilon->descripcion_pilon}}"
 <div class="margin">
 <label for="">Fecha de virado</label> 
 <br>
-<input class="col-md-12 form-control" type="date" name='descripcion_pilon'
+<input class="col-md-12 form-control" type="date" name=''
 @isset($pilon)
 value="{{$pilon->descripcion_pilon}}"
 @endisset>
@@ -42,9 +42,9 @@ value="{{$pilon->descripcion_pilon}}"
 
 <div class="margin">
 <label for="" class="">Ubicacion</label>
-<select id="inputState" class="form-control" name="Variedad">
+<select id="inputState" class="form-control" name="ubicacion">
 @foreach($ubicacion as $ubi)
-        <option selected >{{$ubi->codigo_ubicacion}}</option>
+        <option selected value="{{$ubi->id}}">{{$ubi->codigo_ubicacion}}</option>
         @endforeach
       </select>
 </div>
@@ -56,89 +56,30 @@ value="{{$pilon->descripcion_pilon}}"
 <div class="margin">
 <label for="">Descripcion</label>
 <br>
-<textarea name="descripcion" id="" class="form-control" cols="50" rows="2"></textarea>
+<textarea name="descripcion_pilon" id="" class="form-control" cols="50" rows="2"></textarea>
 </div>
-
+<input name="sucursal" value="{{Auth::user()->sucursal}}" type="hidden">
 
 </div>
+<br>
+<button type='submit' class="btn btn-primary">@if(isset($pilon))Editar Pilon @else Guardar Pilon @endif</button>
+<br>
 <br>
 
 <div class="row justify-content-center">
 <h2>Contenido del Pilon</h2>
 </div>
+
+<pilon :rows="{{json_encode($clase)}}" :varie="{{json_encode($variedad)}}"
+:fin="{{json_encode($finca)}}" :true="{{json_encode($true)}}" :mostrar="{{json_encode($mostrar)}}"></pilon>
 <br>
 
-<div class="row justify-content-center">
-<div class="margin">
-<label for="" class="">Variedad</label>
-<select id="inputState" class="form-control" name="Variedad">
-@foreach($variedad as $var)
-        <option selected >{{$var->nombre_variedad}}</option>
-        @endforeach
-      </select>
-</div>
-
-    <div class="margin">
-<label for="" class="">Clase</label>
-
-
-<select id="inputState" class="form-control" name="Variedad">
-@foreach($clase as $clase)
-        <option selected >{{$clase->nombre_clase}}</option>
-        @endforeach
-      </select>
-      </div>
-
-
-      <div class="margin">
-<label for="" class="">Finca</label>
-
-<select id="inputState" class="form-control" name="Variedad">
-@foreach($finca as $fin)
-        <option selected >{{$fin->nombre_finca}}</option>
-        @endforeach
-      </select>
-      </div>
-
-</div>
-
-<br>
-<button type='submit' class="btn btn-primary">@if(isset($pilon))Editar @else Agregar @endif</button>
 
 </form>
 
 <br>
 
-<table border="solid" class="table">
-<thead class="thead-dark">
-			<tr>
-			<th>Variedad</th>
-			<th>Clase</th>
-            <th>Finca</th>
-			<th>Eliminar</th>
-			
-			</tr>
-		</thead>
-		<tbody>
-		
-			<tr>
-				<td><a href=""></a></td>
-				<td></td>
-                <td> <form method="post" action="">
-                    
-                   
-                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
-                </form>
-                    </td>
-					<td><button class="btn btn-primary" href=""></button></td>
-                </tr>
-		
 
-		</tbody>
-	</table>
-
-
-</div>
 </div>
 </div>
 </div>

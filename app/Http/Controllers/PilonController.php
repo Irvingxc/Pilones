@@ -64,8 +64,10 @@ class PilonController extends Controller
         $finca = Finca::all();
         $clase = tipoclase::all();
         $variedad = Variedad::all();
+        $true = 1;
+        $mostrar=0;
         return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
-        'clase'=>$clase, 'variedad'=>$variedad]);
+        'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar]);
         
     }
 
@@ -75,13 +77,39 @@ class PilonController extends Controller
         $this->validate($request, [
             'codigo_pilon' => 'required',
             'descripcion_pilon'=> 'required',
+            'fecha_inicio'=> 'required',
+            'ubicacion'=> 'required',
         ]);
 
-    $pilon = new pilon; 
+    /*$pilon = new pilon; 
     $pilon->codigo_pilon = $request->input('codigo_pilon');
     $pilon->descripcion_pilon = $request->input('descripcion_pilon');
     $pilon->save();
-    return redirect('/pilon/index');
+    $codigo_pilon=o;*/
+
+    $id = pilon::create([
+        'codigo_pilon' => $request->codigo_pilon,
+        'descripcion_pilon' => $request->descripcion_pilon,
+        'ubicacion' => $request->input('ubicacion'),
+        'Fecha_datos_pilones' => $request->input('fecha_inicio'),
+        'sucursal_id' => $request->sucursal,
+    ]);
+
+    if($id==null){
+        $mostrar = 0;
+    }else{
+        $mostrar = $id->id;
+
+    }
+    $pilon = Pilon::all();
+    $ubicacion = Ubicacion::all();
+    $finca = Finca::all();
+    $clase = tipoclase::all();
+    $variedad = Variedad::all();
+    $true = 0;
+    return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
+    'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar]);
+    //return $mostrar;
 
         }
 
