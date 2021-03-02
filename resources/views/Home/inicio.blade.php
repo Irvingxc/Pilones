@@ -22,7 +22,7 @@
     <h5 class="card-title">Moldes</h5>
     <a href="" class="btn btn-primary">Entrar</a>
   </div>
-
+  
 </div>
 @endif
 
