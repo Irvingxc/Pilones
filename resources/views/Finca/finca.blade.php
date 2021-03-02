@@ -46,6 +46,7 @@ value="{{$fincas->descripcion_finca}}"
 <p style="color:red;">{{$errors->first('descripcion_finca')}}</p>
 @endif
 <br>
+<br>
 <button type='submit'>@if(isset($fincas))Editar @else Guardar @endif</button>
 
 </form>
