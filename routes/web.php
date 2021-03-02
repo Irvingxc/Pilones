@@ -19,7 +19,7 @@ Route::get('/', function () {
 /*Route::get('/procedencia', function () { 
     return view('Procedencia.procedencia');
 });*/
-
+Route::get('pdf', 'App\Http\Controllers\ReporteController@generar');
 Auth::routes();
 Route::get('/procedencia', [App\Http\Controllers\ProcedenciaController::class, 'create'])->name('procedencia');
 Route::post('/procedencia/store', [App\Http\Controllers\ProcedenciaController::class, 'store'])->name('procedencia.store');
