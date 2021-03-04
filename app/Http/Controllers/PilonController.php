@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pilon;
+use App\Models\Detalle_Pilon;
 use App\Models\Finca;
 use App\Models\Ubicacion;
 use App\Models\tipoclase;
@@ -71,6 +72,21 @@ class PilonController extends Controller
         
     }
 
+    public function detallesave()
+    {
+        $detalle=Detalle_pilon::where('codigo_pilon','=', $pilones)->first();
+        
+    }
+
+
+
+    public function ver()
+    {
+        $pilon = Pilon::all();
+
+        return $pilon;
+        
+    }
     public function store(Request $request)
     {
         //
@@ -101,14 +117,14 @@ class PilonController extends Controller
         $mostrar = $id->id;
 
     }
-    $pilon = Pilon::all();
+    $pilon =Pilon::findOrFail($mostrar);
     $ubicacion = Ubicacion::all();
     $finca = Finca::all();
     $clase = tipoclase::all();
     $variedad = Variedad::all();
     $true = 0;
     return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
-    'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar]);
+    'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar, 'pilon'=>$pilon]);
     //return $mostrar;
 
         }

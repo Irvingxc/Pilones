@@ -64,6 +64,9 @@ Route::get('/pilon/index', [App\Http\Controllers\PilonController::class,'index']
 
 Route::post('/pilon/store', [App\Http\Controllers\PilonController::class,'store'])->name('pilon.store');
 
+Route::get('/pilon/ver', [App\Http\Controllers\PilonController::class,'verDetalles'])->name('pilon.ver');
+Route::post('/pilon/detalle', [App\Http\Controllers\PilonController::class,'detallesave'])->name('pilon.d');
+
 Route::get('/pilon/edit/{codigo_pilon}', [App\Http\Controllers\PilonController::class,'show'])->name('pilon.show');
 
 Route::post('/pilon/update/{pilones}', [App\Http\Controllers\PilonController::class,'update'])->name('pilon.update');

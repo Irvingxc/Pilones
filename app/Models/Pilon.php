@@ -16,5 +16,5 @@ class Pilon extends Model
         'ubicacion',
         'sucursal_id'
     ];
-    protected $keyType = 'string';
+   // protected $keyType = 'string';
 }

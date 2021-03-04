@@ -62,7 +62,7 @@ value="{{$pilon->descripcion_pilon}}"
 
 </div>
 <br>
-<button type='submit' class="btn btn-primary">@if(isset($pilon))Editar Pilon @else Guardar Pilon @endif</button>
+<button type='submit' class="btn btn-primary" @if($true==0) disabled @endif>@if(isset($pilon))Editar Pilon @else Guardar Pilon @endif</button>
 <br>
 <br>
 

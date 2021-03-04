@@ -1966,7 +1966,8 @@ __webpack_require__.r(__webpack_exports__);
       muestra: [],
       Variedad: [],
       Finca: [],
-      id: []
+      id: [],
+      detalles: []
     };
   },
   methods: {
@@ -1976,6 +1977,33 @@ __webpack_require__.r(__webpack_exports__);
       this.Variedad = this.varie;
       this.datos = this["true"];
       this.id = this.mostrar;
+    },
+    verDetalles: function verDetalles() {
+      var me = this;
+      var url = '/pilon/ver'; //Ruta que hemos creado para que nos devuelva todas las tareas
+
+      axios.get(url).then(function (response) {
+        //creamos un array y guardamos el contenido que nos devuelve el response
+        me.arrayTasks = response.data;
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      });
+    },
+    saveDetalles: function saveDetalles() {
+      var me = this;
+      var url = '/pilon/detalle'; //Ruta que hemos creado para enviar una tarea y guardarla
+
+      axios.post(url, {
+        //estas variables son las que enviaremos para que crear la tarea
+        'codigo_variedad': Variedad.codigo_variedad,
+        'codigo_clase': muestra.codigo_clase,
+        'codigo_finca': Finca.codigo_finca
+      }).then(function (response) {
+        me.verDetalles(); //llamamos al metodo getTask(); para que refresque nuestro array y muestro los nuevos datos
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   mounted: function mounted() {

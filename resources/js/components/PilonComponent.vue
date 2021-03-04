@@ -86,7 +86,9 @@ export default {
             muestra: [],
             Variedad:[],
             Finca:[],
-            id:[]
+            id:[],
+            detalles:[],
+
 
         }
         },
@@ -99,7 +101,34 @@ export default {
                 this.id= this.mostrar;
                 
 
-            }
+            },
+            verDetalles(){
+                   let me =this;
+                let url = '/pilon/ver' //Ruta que hemos creado para que nos devuelva todas las tareas
+                axios.get(url).then(function (response) {
+                    //creamos un array y guardamos el contenido que nos devuelve el response
+                    me.arrayTasks = response.data;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+            },
+                saveDetalles(){
+                let me =this;
+                let url = '/pilon/detalle' //Ruta que hemos creado para enviar una tarea y guardarla
+                axios.post(url,{ //estas variables son las que enviaremos para que crear la tarea
+                    'codigo_variedad':Variedad.codigo_variedad,
+                    'codigo_clase':muestra.codigo_clase,
+                    'codigo_finca':Finca.codigo_finca,
+                }).then(function (response) {
+                    me.verDetalles();//llamamos al metodo getTask(); para que refresque nuestro array y muestro los nuevos datos
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });   
+
+            },
 
         },
         mounted(){
