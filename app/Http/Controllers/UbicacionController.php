@@ -47,8 +47,9 @@ class UbicacionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'Codigo_ubicacion' => 'required|unique:ubicacions,codigo_ubicacion',
+            'Codigo_ubicacion' => 'required|unique:ubicacions',
             'descripcion_ubicacion' => 'required',
+            'procedencia'=>'required'
         ]);
 
     $ubicacion = new Ubicacion;
@@ -60,6 +61,7 @@ class UbicacionController extends Controller
     }
     $ubicacion->codigo_ubicacion = $request->input('Codigo_ubicacion');
     $ubicacion->descripcion_ubicacion = $request->input('descripcion_ubicacion');
+    $ubicacion->procedencias_id = $request->input('procedencia');
     
     $ubicacion->save(); 
 

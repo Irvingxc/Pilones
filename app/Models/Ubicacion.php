@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Ubicacion extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'codigo_ubicacion';
     protected $fillable = [
         'codigo_ubicacion',
         'descripcion_ubicacion',
-        'estado_ubicacion'
+        'estado_ubicacion',
+        'procedencias_id'
     ];
     protected $keyType = 'string';
 }

@@ -2,9 +2,10 @@
 @section('content')
 
 <div id="container" style="width: 100%;height: 80vh">
-	  <canvas id="myChart"></canvas>
+<canvas id="myChart"></canvas>
 	  
 </div>
+@endsection
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
@@ -39,5 +40,5 @@ var chart = new Chart(ctx, {
     }
 });
 </script>
-@endsection
+
 

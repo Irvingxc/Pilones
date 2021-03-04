@@ -10,6 +10,7 @@
 method="post" action="{{route('ubicacion.store')}}" role="form"
  @endisset>
 @csrf
+<input name="procedencia" value="{{Auth::user()->sucursal}}" type="hidden">
 <label for="">Ingrese el codigo</label>
 <br>
 <input
@@ -64,7 +65,13 @@ value="{{$ubicacion->descripcion_ubicacion}}"
 
       </select>
 <br>
-<br>
+
+
+                       
+
+                         
+                        <br>
+                        <br>
 
 <button type="submit"> @if(isset($ubicacion))Editar @else Guardar @endif</button>
 
