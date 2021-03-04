@@ -28,6 +28,7 @@ tr:nth-child(even){
     <th>Descripcion</th>
     <th>Fecha</th>
     <th>Ubicacion</th>
+    <th>Sucursal</th>
     </tr>
     @foreach($Pilones AS $p)
     <tr>
@@ -36,6 +37,7 @@ tr:nth-child(even){
     <td>{{ $p->descripcion_pilon}}</td>
     <td>{{ $p->Fecha_datos_pilones}}</td>
     <td>{{ $p->ubicacion}}</td>
+    <td>{{ $p->sucursal_id}}</td>
     </tr>
     @endforeach
     </table>
