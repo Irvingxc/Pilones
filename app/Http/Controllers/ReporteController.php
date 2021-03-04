@@ -19,7 +19,7 @@ class ReporteController extends Controller{
     public function generar()
     {
         $Pilones = \DB::table('pilons')
-        ->select(['id','codigo_pilon','descripcion_pilon','Fecha_datos_pilones','ubicacion'])
+        ->select(['id','codigo_pilon','descripcion_pilon','Fecha_datos_pilones','ubicacion','sucursal_id'])
         ->get();
         $view = \View::make('Reportes.Reporte', compact('Pilones'))->render();
         $pdf = \App::make('dompdf.wrapper');
