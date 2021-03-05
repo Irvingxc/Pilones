@@ -4,7 +4,7 @@
 <div class="margin">
     
 <label for="" class="">Variedad</label>
-<select v-model="seleccion1" id="inputState" class="form-control">
+<select v-model="seleccion3" id="inputState" class="form-control">
         <option selected v-for="Variedad in Variedad" :key="Variedad.codigo_variedad" v-bind:value="Variedad.codigo_variedad">{{Variedad.nombre_variedad}}</option>
       </select>
 </div>
@@ -21,7 +21,7 @@
       <div class="margin">
 <label for="" class="">Finca</label>
 
-<select v-model="seleccion3" id="inputState" class="form-control">
+<select v-model="seleccion1" id="inputState" class="form-control">
         <option v-for="Finca in Finca" :key="Finca.codigo_finca" selected v-bind:value="Finca.codigo_finca">{{Finca.nombre_finca}}</option>
       </select>
           </div>
@@ -109,7 +109,8 @@ export default {
             },
 
             deletedetalles(){
-                
+                let me = this;
+                let url = '/pilon/delete'
 
             },
             verDetalles(){

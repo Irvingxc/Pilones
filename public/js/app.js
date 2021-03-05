@@ -1984,7 +1984,10 @@ __webpack_require__.r(__webpack_exports__);
       this.datos = this["true"];
       this.id = this.mostrar;
     },
-    deletedetalles: function deletedetalles() {},
+    deletedetalles: function deletedetalles() {
+      var me = this;
+      var url = '/pilon/delete';
+    },
     verDetalles: function verDetalles() {
       var me = this;
       var id = this.mostrar;
@@ -41303,8 +41306,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.seleccion1,
-                  expression: "seleccion1"
+                  value: _vm.seleccion3,
+                  expression: "seleccion3"
                 }
               ],
               staticClass: "form-control",
@@ -41319,7 +41322,7 @@ var render = function() {
                       var val = "_value" in o ? o._value : o.value
                       return val
                     })
-                  _vm.seleccion1 = $event.target.multiple
+                  _vm.seleccion3 = $event.target.multiple
                     ? $$selectedVal
                     : $$selectedVal[0]
                 }
@@ -41397,8 +41400,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.seleccion3,
-                  expression: "seleccion3"
+                  value: _vm.seleccion1,
+                  expression: "seleccion1"
                 }
               ],
               staticClass: "form-control",
@@ -41413,7 +41416,7 @@ var render = function() {
                       var val = "_value" in o ? o._value : o.value
                       return val
                     })
-                  _vm.seleccion3 = $event.target.multiple
+                  _vm.seleccion1 = $event.target.multiple
                     ? $$selectedVal
                     : $$selectedVal[0]
                 }
