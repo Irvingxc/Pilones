@@ -11,6 +11,7 @@ class Detalle_pilon extends Model
     protected $fillable = [
         'codigo_variedad',
         'codigo_clase',
-        'codigo_finca'
+        'codigo_finca',
+        'pilon_id'
     ];
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pilon;
-use App\Models\Detalle_Pilon;
+use App\Models\Detalle_pilon;
 use App\Models\Finca;
 use App\Models\Ubicacion;
 use App\Models\tipoclase;
@@ -72,21 +72,36 @@ class PilonController extends Controller
         
     }
 
-    public function detallesave()
+    //----------------------------------------------
+
+    public function detallesave(Request $request)
     {
-        $detalle=Detalle_pilon::where('codigo_pilon','=', $pilones)->first();
-        
+        $detalle=new Detalle_pilon();
+        $detalle->codigo_clase = $request->codigo_clase;
+        $detalle->codigo_finca = $request->codigo_finca;
+        $detalle->codigo_variedad = $request->codigo_variedad;
+        $detalle->pilon_id = $request->pilon_id;
+        $detalle->save();
     }
 
 
 
-    public function ver()
+    public function verDetalles($id)
     {
-        $pilon = Pilon::all();
+        $detalle=Detalle_pilon::where('pilon_id','=', $id)->get();
 
-        return $pilon;
+        return $detalle;
         
     }
+
+    public function destroyDetalle(Request $request)
+    {
+        $detalle = Detalle_pilon::destroy($request->id);
+        return $detalle;
+        //Esta función obtendra el id de la tarea que hayamos seleccionado y la borrará de nuestra BD
+    }
+
+    //-----------------------------------------------------------
     public function store(Request $request)
     {
         //

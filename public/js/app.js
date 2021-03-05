@@ -1961,13 +1961,19 @@ __webpack_require__.r(__webpack_exports__);
   props: ['fin', 'rows', 'varie', 'true', 'mostrar'],
   data: function data() {
     return {
+      value: "",
+      value2: "",
+      value3: "",
       datos: [],
       //this.true,
       muestra: [],
       Variedad: [],
       Finca: [],
       id: [],
-      detalles: []
+      detalles: [],
+      seleccion1: {},
+      seleccion2: {},
+      seleccion3: {}
     };
   },
   methods: {
@@ -1978,13 +1984,15 @@ __webpack_require__.r(__webpack_exports__);
       this.datos = this["true"];
       this.id = this.mostrar;
     },
+    deletedetalles: function deletedetalles() {},
     verDetalles: function verDetalles() {
       var me = this;
-      var url = '/pilon/ver'; //Ruta que hemos creado para que nos devuelva todas las tareas
+      var id = this.mostrar;
+      var url = '/pilon/ver/' + id; //Ruta que hemos creado para que nos devuelva todas las tareas
 
       axios.get(url).then(function (response) {
         //creamos un array y guardamos el contenido que nos devuelve el response
-        me.arrayTasks = response.data;
+        me.detalles = response.data;
       })["catch"](function (error) {
         // handle error
         console.log(error);
@@ -1996,9 +2004,10 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post(url, {
         //estas variables son las que enviaremos para que crear la tarea
-        'codigo_variedad': Variedad.codigo_variedad,
-        'codigo_clase': muestra.codigo_clase,
-        'codigo_finca': Finca.codigo_finca
+        'codigo_variedad': this.seleccion3,
+        'codigo_clase': this.seleccion2,
+        'codigo_finca': this.seleccion1,
+        'pilon_id': this.mostrar
       }).then(function (response) {
         me.verDetalles(); //llamamos al metodo getTask(); para que refresque nuestro array y muestro los nuevos datos
       })["catch"](function (error) {
@@ -41279,147 +41288,242 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row justify-content-center", attrs: { id: "app" } },
-    [
-      _c("div", { staticClass: "margin" }, [
-        _c("label", { attrs: { for: "" } }, [_vm._v("Variedad")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { id: "inputState", name: "Variedad" }
-          },
-          _vm._l(_vm.Variedad, function(Variedad) {
-            return _c(
-              "option",
-              { key: Variedad.codigo_variedad, attrs: { selected: "" } },
-              [_vm._v(_vm._s(Variedad.nombre_variedad))]
-            )
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "margin" }, [
-        _c("label", { attrs: { for: "" } }, [_vm._v("Clase")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { id: "inputState", name: "Variedad" }
-          },
-          _vm._l(_vm.muestra, function(muestra) {
-            return _c(
-              "option",
-              { key: muestra.codigo_clase, attrs: { selected: "" } },
-              [_vm._v(_vm._s(muestra.nombre_clase))]
-            )
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "margin" }, [
-        _c("label", { attrs: { for: "" } }, [_vm._v("Finca")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { id: "inputState", name: "Variedad" }
-          },
-          _vm._l(_vm.Finca, function(Finca) {
-            return _c(
-              "option",
-              { key: Finca.codigo_finca, attrs: { selected: "" } },
-              [_vm._v(_vm._s(Finca.nombre_finca))]
-            )
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "margin" }, [
-        _c("label", { attrs: { for: "" } }),
-        _vm._v(" "),
-        _vm.datos == 1
-          ? _c("div", [
-              _c(
-                "button",
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "row justify-content-center", attrs: { id: "app" } },
+      [
+        _c("div", { staticClass: "margin" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Variedad")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
                 {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button", disabled: "" }
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.seleccion1,
+                  expression: "seleccion1"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "inputState" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.seleccion1 = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            _vm._l(_vm.Variedad, function(Variedad) {
+              return _c(
+                "option",
+                {
+                  key: Variedad.codigo_variedad,
+                  attrs: { selected: "" },
+                  domProps: { value: Variedad.codigo_variedad }
                 },
-                [_vm._v("Agregar al contenido del Pilon")]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("br")
-            ])
-          : _c("div", [
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                [_vm._v("Agregar al contenido del Pilon")]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("br")
-            ])
-      ]),
+                [_vm._v(_vm._s(Variedad.nombre_variedad))]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "margin" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Clase")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.seleccion2,
+                  expression: "seleccion2"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "inputState" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.seleccion2 = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            _vm._l(_vm.muestra, function(muestra) {
+              return _c(
+                "option",
+                {
+                  key: muestra.codigo_clase,
+                  attrs: { selected: "" },
+                  domProps: { value: muestra.codigo_clase }
+                },
+                [_vm._v(_vm._s(muestra.nombre_clase))]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "margin" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Finca")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.seleccion3,
+                  expression: "seleccion3"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "inputState" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.seleccion3 = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            _vm._l(_vm.Finca, function(Finca) {
+              return _c(
+                "option",
+                {
+                  key: Finca.codigo_finca,
+                  attrs: { selected: "" },
+                  domProps: { value: Finca.codigo_finca }
+                },
+                [_vm._v(_vm._s(Finca.nombre_finca))]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "margin" }, [
+          _c("label", { attrs: { for: "" } }),
+          _vm._v(" "),
+          _vm.datos == 1
+            ? _c("div", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: "" }
+                  },
+                  [_vm._v("Agregar al contenido del Pilon")]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("br")
+              ])
+            : _c("div", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.saveDetalles }
+                  },
+                  [_vm._v("Agregar al contenido del Pilon")]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("br")
+              ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("table", { staticClass: "table", attrs: { border: "solid" } }, [
+      _vm._m(0),
       _vm._v(" "),
-      _vm._m(0)
-    ]
-  )
+      _c(
+        "tbody",
+        _vm._l(_vm.detalles, function(detalles) {
+          return _c("tr", { key: detalles.id }, [
+            _c("td", [_vm._v(_vm._s(detalles.codigo_variedad))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(detalles.codigo_clase))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(detalles.codigo_variedad))]),
+            _vm._v(" "),
+            _vm._m(1, true)
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v("\r\n" + _vm._s(_vm.mostrar) + "\r\n")
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table", attrs: { border: "solid" } }, [
-      _c("thead", { staticClass: "thead-dark" }, [
-        _c("tr", [
-          _c("th", [_vm._v("Variedad")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Clase")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Finca")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Eliminar")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("td", [_c("a", { attrs: { href: "" } })]),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td", [
-            _c("form", { attrs: { method: "post", action: "" } }, [_c("td")])
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-danger",
-              attrs: { type: "submit" }
-            },
-            [_vm._v("Eliminar")]
-          )
-        ])
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", [_vm._v("Variedad")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Clase")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Finca")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Eliminar")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "button",
+        { staticClass: "btn btn-outline-danger", attrs: { type: "submit" } },
+        [_vm._v("Eliminar")]
+      )
     ])
   }
 ]
