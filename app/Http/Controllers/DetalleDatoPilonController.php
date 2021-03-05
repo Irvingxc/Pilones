@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Detalle_dato_pilon;
 use Illuminate\Http\Request;
+use App\Chart;
+use Illuminate\Support\Facades\DB;
 
 class DetalleDatoPilonController extends Controller
 {
@@ -16,6 +18,23 @@ class DetalleDatoPilonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function all(Request $request)
+    {
+       
+       // $temp = Detalle_Dato_Pilon::all();
+        $users = DB::table('Detalle_Dato_Pilons')->select('temperatura', DB::raw('count(*) as total'))
+        ->groupBy('temperatura')
+        ->pluck('total', 'temperatura')->all();
+
+        $chart = new Detalle_Dato_Pilon;
+        $chart->labels = (array_keys($users));
+        $chart->dataset = (array_values($users));
+        return view('Reportes.Grafico', compact('chart')); 
+//return view('charts.index', compact('chart'));
+
+    }
+
     public function index()
     {
         return view('Detalle_Dato_Pilon.Calendario');
@@ -26,6 +45,7 @@ class DetalleDatoPilonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //

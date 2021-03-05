@@ -37,7 +37,7 @@
             <td>{{$verusuario->email}}</td>
             <td>{{$verusuario->password}}</td>
 				
-                <td> <form method="post" action="{{route('verusuario.destroy', [$verusuario->email])}}">
+                <td> <form method="post" action="{{route('verusuario.destroy', [$verusuario->email])}} " class="formulario-eliminar">
                     {{csrf_field()}}
 					{{method_field('DELETE')}}
                    
@@ -56,4 +56,52 @@
 </a>
 </div>
 </div>
+@endsection
+
+
+
+@section('js')
+	
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	@if(session('Eliminar')== 'Ok.')
+	<script>
+	 Swal.fire(
+      '¡Eliminado!',
+      'El dato se eliminó con éxito.',
+      'success'
+    )
+	</script>
+
+	@endif
+
+
+	<script>
+	window.addEventListener('load', function() {
+
+
+	$('.formulario-eliminar').submit(function(e){
+		e.preventDefault();
+
+Swal.fire({
+  title: '¿Está seguro?',
+  text: "Este dato se eliminará definitivamente.",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Sí, eliminar',
+  cancelButtonText: 'Cancelar'
+}).then((result) => {
+  if (result.isConfirmed) {
+ 
+	this.submit();
+  }
+})
+
+	});
+})
+
+	</script>
+	
 @endsection

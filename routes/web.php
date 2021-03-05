@@ -58,7 +58,7 @@ Route::delete('/fincas/{fincas}',[App\Http\Controllers\FincaController::class,'d
 
 
 /*------------------------------PILON -------------------------------*/
-Route::get('/pilon/grafico', [App\Http\Controllers\PilonController::class,'grafico'])->name('pilon.grafico');
+Route::get('/pilon/grafico', [App\Http\Controllers\DetalleDatoPilonController::class,'all'])->name('pilon.grafico');
 Route::get('/pilon', [App\Http\Controllers\PilonController::class,'pilonindex'])->name('pilon.pilonindex');
 
 Route::get('/pilon/index', [App\Http\Controllers\PilonController::class,'index'])->name('pilon.index');
