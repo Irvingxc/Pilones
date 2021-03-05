@@ -25,6 +25,7 @@
 			<th>Sucursal</th>
             <th>Eliminar</th>
 			<th>Reporte</th>
+			<th>Imprimir</th>
 			
 			</tr>
 		</thead>
@@ -44,8 +45,10 @@
                 </form>
                     </td>
 					<td><button class="btn btn-primary" href="{{route('calendario')}}">Ver Calendario</button></td>
+					<td><button class="btn btn-primary" href="{{route('reporte.show')}}">PDF</button></td>
+                
                 </tr>
-		
+				
 
 			@endforeach
 		</tbody>

@@ -19,7 +19,8 @@ Route::get('/', function () {
 /*Route::get('/procedencia', function () { 
     return view('Procedencia.procedencia');
 });*/
-Route::get('pdf', 'App\Http\Controllers\ReporteController@generar');
+Route::get('pilon/pdf',[App\Http\Controllers\ReporteController::class, 'generar'])->name('reporte.show');
+
 Auth::routes();
 Route::get('/procedencia', [App\Http\Controllers\ProcedenciaController::class, 'create'])->name('procedencia');
 Route::post('/procedencia/store', [App\Http\Controllers\ProcedenciaController::class, 'store'])->name('procedencia.store');
