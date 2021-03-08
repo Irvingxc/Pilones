@@ -23,6 +23,26 @@ class DetalleDatoPilonController extends Controller
     {
        
        // $temp = Detalle_Dato_Pilon::all();
+       $temperatu=[];
+       $temp = Detalle_dato_pilon::all();
+        $temperatura = DB::table('Detalle_Dato_Pilons')->select('temperatura', DB::raw('count(*) as total'))
+        ->groupBy('temperatura')
+        ->pluck('temperatura')->all();
+
+        $chart = new Detalle_dato_pilon();
+        $chart->labels = (array_keys($temperatura));
+        $chart->dataset = (array_values($temperatura));
+        //return view('Reportes.Grafico')->with('temperatura',json_encode($temperatura,JSON_NUMERIC_CHECK));
+        return view('Reportes.Grafico', compact('chart')); 
+//return view('charts.index', compact('chart'));
+//return Response::json($results);
+
+    }
+
+    public function alle(Request $request)
+    {
+       
+       // $temp = Detalle_Dato_Pilon::all();
         $users = DB::table('Detalle_Dato_Pilons')->select('temperatura', DB::raw('count(*) as total'))
         ->groupBy('temperatura')
         ->pluck('total', 'temperatura')->all();
@@ -30,7 +50,7 @@ class DetalleDatoPilonController extends Controller
         $chart = new Detalle_Dato_Pilon;
         $chart->labels = (array_keys($users));
         $chart->dataset = (array_values($users));
-        return view('Reportes.Grafico', compact('chart')); 
+        return $chart;//view('Reportes.Grafico', compact('chart')); 
 //return view('charts.index', compact('chart'));
 
     }
