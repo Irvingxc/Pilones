@@ -59,10 +59,8 @@
 			<tr v-for="detalles in detalles" :key="detalles.id">
 				<td>{{detalles.codigo_variedad}}</td>
 				<td>{{detalles.codigo_clase}}</td>
-                <td>{{detalles.codigo_variedad}}</td>
-                    
-
-                   <td><button type="submit" class="btn btn-outline-danger">Eliminar</button></td>
+                <td>{{detalles.codigo_finca}}</td>
+                <td><button v-on:click.prevent="deletedetalles(detalles)" class="btn btn-outline-danger">Eliminar</button></td>
                     
                 </tr>
 		
@@ -108,17 +106,26 @@ export default {
 
             },
 
-            deletedetalles(){
-                let me = this;
-                let url = '/pilon/delete'
+            deletedetalles(data){
+                let me =this;
+                let pilon = data.id
+                if (confirm('¿Seguro que deseas esto?')) {
+                    axios.delete('/pilon/delete/'+pilon
+                    ).then(function (response) {
+                        me.verDetalles();
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    }); 
+                }
 
             },
             verDetalles(){
                    let me =this;
                    let id = this.mostrar
-                let url = '/pilon/ver/'+id; //Ruta que hemos creado para que nos devuelva todas las tareas
+                let url = '/pilon/ver/'+id;
                 axios.get(url).then(function (response) {
-                    //creamos un array y guardamos el contenido que nos devuelve el response
+                   
                     me.detalles = response.data;
                 })
                 .catch(function (error) {

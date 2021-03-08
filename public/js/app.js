@@ -1955,8 +1955,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['fin', 'rows', 'varie', 'true', 'mostrar'],
   data: function data() {
@@ -1984,17 +1982,23 @@ __webpack_require__.r(__webpack_exports__);
       this.datos = this["true"];
       this.id = this.mostrar;
     },
-    deletedetalles: function deletedetalles() {
+    deletedetalles: function deletedetalles(data) {
       var me = this;
-      var url = '/pilon/delete';
+      var pilon = data.id;
+
+      if (confirm('¿Seguro que deseas esto?')) {
+        axios["delete"]('/pilon/delete/' + pilon).then(function (response) {
+          me.verDetalles();
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
     },
     verDetalles: function verDetalles() {
       var me = this;
       var id = this.mostrar;
-      var url = '/pilon/ver/' + id; //Ruta que hemos creado para que nos devuelva todas las tareas
-
+      var url = '/pilon/ver/' + id;
       axios.get(url).then(function (response) {
-        //creamos un array y guardamos el contenido que nos devuelve el response
         me.detalles = response.data;
       })["catch"](function (error) {
         // handle error
@@ -41489,9 +41493,23 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(detalles.codigo_clase))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(detalles.codigo_variedad))]),
+            _c("td", [_vm._v(_vm._s(detalles.codigo_finca))]),
             _vm._v(" "),
-            _vm._m(1, true)
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-danger",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.deletedetalles(detalles)
+                    }
+                  }
+                },
+                [_vm._v("Eliminar")]
+              )
+            ])
           ])
         }),
         0
@@ -41515,18 +41533,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Eliminar")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "button",
-        { staticClass: "btn btn-outline-danger", attrs: { type: "submit" } },
-        [_vm._v("Eliminar")]
-      )
     ])
   }
 ]

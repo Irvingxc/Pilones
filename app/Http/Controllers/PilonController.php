@@ -94,11 +94,16 @@ class PilonController extends Controller
         
     }
 
-    public function destroyDetalle(Request $request)
+    public function destroyDetalle($pilon)
     {
-        $detalle = Detalle_pilon::destroy($request->id);
+        $detalle = Detalle_pilon::findOrFail($pilon);
+        $detalle->delete();
         return $detalle;
-        //Esta función obtendra el id de la tarea que hayamos seleccionado y la borrará de nuestra BD
+
+        /*$pilon =Pilon:: where ('codigo_pilon','=', $pilon)->first();
+         $pilon->delete();
+         return redirect('/pilon/index');*/
+        
     }
 
     //-----------------------------------------------------------
