@@ -25,8 +25,8 @@ class DetalleDatoPilonController extends Controller
        // $temp = Detalle_Dato_Pilon::all();
        $temperatu=[];
        $temp = Detalle_dato_pilon::all();
-        $temperatura = DB::table('Detalle_Dato_Pilons')->select('temperatura', DB::raw('count(*) as total'))
-        ->groupBy('temperatura')
+        $temperatura = DB::table('Detalle_Dato_Pilons')->select('temperatura', 'fecha_detalle')// DB::raw('count(*) as total'))
+  //      ->groupBy('fecha_detalle')
         ->pluck('temperatura')->all();
 
         $chart = new Detalle_dato_pilon();
