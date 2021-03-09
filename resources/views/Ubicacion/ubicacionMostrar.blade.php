@@ -24,6 +24,7 @@
 			<th>Descripcion</th>
 			<th>Estado</th>
 			<th>Pilon</th>
+			<th>Sucursal</th>
             <th class="rojo">Eliminar</th>
 			</tr>
 		</thead>
@@ -34,6 +35,7 @@
 				<td>{{$pro->descripcion_ubicacion}}</td>
 				<td>{{$pro->estado_ubicacion == 1 ? "Disponible" :  "Ocupado"}}</td>
 				<td></td>
+				<td>{{$pro->nombre}}</td>
                 <td><form method="post" action="{{route('ubicacion.destroy', [$pro->codigo_ubicacion])}}" class="formulario-eliminar">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
@@ -48,7 +50,7 @@
 			@endforeach
 		</tbody>
 	</table>
-	{{ $ubicacion->links() }}
+	
     <div class="btn-whatsapp">
 <a href="{{route('ubicacion')}}">
 <button class="btn btn-primary">Nuevo</button> 

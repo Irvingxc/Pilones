@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-<table border="solid" class="table">
 <h4 class="text-center text-muted font-weight-bold">Roles</h4>
 <div class="row">
 <form action="">

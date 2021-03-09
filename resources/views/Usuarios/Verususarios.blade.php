@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="Container">
-<table border="solid" class="table">
 <h4 class="text-center text-muted font-weight-bold">Usuarios</h4>
 <div class="row">
 <label for="" class="offset-md-7">Buscar por:</label>

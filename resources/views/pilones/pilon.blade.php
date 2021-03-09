@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 <div class="card">
-<div class="card-header">Pilon</div>
+<div class="card-header"><a href="{{route('pilon.index')}}">Pilon</a></div>
 <div class="card-body ">
 <form @isset($pilon)
 method="post" action="{{route('pilon.update',['pilones'=>$pilon->codigo_pilon])}}"

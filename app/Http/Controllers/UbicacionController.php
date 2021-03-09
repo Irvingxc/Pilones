@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ubicacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UbicacionController extends Controller
 {
@@ -23,7 +24,14 @@ class UbicacionController extends Controller
             $categoria="codigo_ubicacion";
         }
         $caracteres = $request->get('busqueda');
-        $ubicacion = ubicacion::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        $ubicacion = DB::table('ubicacions')
+        ->join('procedencias', 'procedencias.id','=',
+         'ubicacions.procedencias_id')->select('ubicacions.*', 'procedencias.nombre')->paginate(5);
+         
+         //('ubicacions.codigo_ubicacion', 'ubicacions.descripcion_ubicacion',
+       // 'ubicacions.estado_ubicacion', '');
+
+       // $ubicacion = ubicacion::where("$categoria", 'like', "%$caracteres%")->paginate(50);
         return view('ubicacion.ubicacionMostrar', compact('ubicacion'));
         //return $caracteres;
     }
