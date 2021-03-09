@@ -3,13 +3,16 @@
 @section('content')
 <div class="row">
 <div class="card col">
+<br>
+<a id="completado" href="{{route('pilon.grafico')}}" class="btn btn-primary col-md-2" target="_blank">Ver Grafico</a>
+<br>
 <div id="calendar"></div>
 
 </div>
 
 </div>
 
-<div class="modal fade container" id="agenda_modal" tabindex="-1" role="dialog">
+<div class="modal fade Container" id="agenda_modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -29,10 +32,18 @@
 
       </div>
       <div class="form-check">
-      <label class="col-md-5" for="flexRadioDefault1">
+      <label class="form-check-label col-md-5" for="flexCheckDefault">
+      <input class="form-check-input col-md-10" type="checkbox" value="" id="flexCheckDefault">
     Se viro
   </label>
-  <input class="form-check-input col-md-6" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <label class="form-check-label col-md-5" for="flexCheckDefault">
+      <input class="form-check-input col-md-10" type="checkbox" value="" id="flexCheckDefault">
+    Mojado
+  </label>
+  <label class="form-check-label col-md-5" for="flexCheckDefault">
+      <input class="form-check-input col-md-12" type="checkbox" value="" id="flexCheckDefault">
+    Fumigado
+  </label>
 </div>
 
 
@@ -87,6 +98,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     calendar.render();
 })
+
+function nuevourl(){
+  let dato= 'title';
+  this.h
+  
+}
+$('#completado').on('click', function (){
+let dato = 'title';
+this.href= "/pilon/grafico/"+dato;
+// Código alfa (para evaluar resultado en es.stackoverflow.com)
+//this.href=window.location.href+"?id=5&"+this.href.split("?")[1];alert(this.href);
+// Código beta (para producción deberá funcionar en tu escenario)
+//this.href=window.location.href+"&"+this.href.split("?")[1];
+
+});
 
 function guardar(){
   var fd = new FormData(document.getElementById("formulario_agenda"));

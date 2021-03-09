@@ -20,7 +20,7 @@ class CreateDetalleDatoPilonsTable extends Migration
             $table->boolean('virado')->nullable();
             $table->boolean('mojado')->nullable();
             $table->boolean('fumigado')->nullable();
-            $table->string('codigo_pilon');
+           // $table->string('codigo_pilon');
             $table->foreignId('pilon_id')->constrained('pilons');
             //$table->foreigncodigo_clase('codigo_clase')->constrained('clases');
             //$table->foreign('codigo_clase')->references('codigo_clase')->on('clases');
