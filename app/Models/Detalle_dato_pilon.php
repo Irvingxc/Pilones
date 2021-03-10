@@ -9,7 +9,6 @@ class Detalle_dato_pilon extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
         'fecha_detalle',
         'temperatura',
         'virado',

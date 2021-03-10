@@ -26,17 +26,10 @@ value="{{$pilon->codigo_pilon}}" readonly
 <label for="">Fecha Inicio</label> 
 <br>
 <input class="col-md-12 form-control" type="date" name='fecha_inicio'
-@isset($pilon)
-value="{{$pilon->descripcion_pilon}}"
-@endisset>
-</div>
 
-<div class="margin">
-<label for="">Fecha de virado</label> 
-<br>
-<input class="col-md-12 form-control" type="date" name=''
 @isset($pilon)
-value="{{$pilon->descripcion_pilon}}"
+value="{{$pilon->fecha_datos_pilones}}"
+
 @endisset>
 </div>
 
@@ -56,7 +49,10 @@ value="{{$pilon->descripcion_pilon}}"
 <div class="margin">
 <label for="">Descripcion</label>
 <br>
-<textarea name="descripcion_pilon" id="" class="form-control" cols="50" rows="2"></textarea>
+<textarea name="descripcion_pilon" id="" class="form-control" cols="50" rows="2"
+ >@isset($pilon)
+{{$pilon->descripcion_pilon}}
+@endisset</textarea>
 </div>
 <input name="sucursal" value="{{Auth::user()->sucursal}}" type="hidden">
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detalle_pilon;
+use App\Models\Detalle_dato_pilon;
 use Illuminate\Http\Request;
 
 class DetallePilonController extends Controller
@@ -12,9 +13,11 @@ class DetallePilonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $datos = Detalle_dato_pilon::where('pilon_id', '=', $id)->first();
+        return view('Detalle_Dato_Pilon.Calendario', ['datos'=>$datos, 'id'=>$id]);
+        //return $id;
     }
 
     /**

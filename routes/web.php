@@ -38,7 +38,7 @@ Route::get('/home/menu', [App\Http\Controllers\HomeController::class, 'menu'])->
 
 /*------------------------------Detalle Pilones-------------------------------*/
 
-Route::get('/detalledatopilon/index', [App\Http\Controllers\DetalleDatoPilonController::class, 'index'])->name('calendario');
+Route::get('/detalledatopilon/other/{datos}', [App\Http\Controllers\DetallePilonController::class, 'index'])->name('calendario');
 
 
 /*------------------------------Finca-------------------------------*/
@@ -58,7 +58,7 @@ Route::delete('/fincas/{fincas}',[App\Http\Controllers\FincaController::class,'d
 
 
 /*------------------------------PILON -------------------------------*/
-Route::get('/pilon/grafico/{mes}', [App\Http\Controllers\DetalleDatoPilonController::class,'all'])->name('pilon.grafico');
+Route::get('/pilon/grafico', [App\Http\Controllers\DetalleDatoPilonController::class,'all'])->name('pilon.grafico');
 Route::get('/pilon', [App\Http\Controllers\PilonController::class,'pilonindex'])->name('pilon.pilonindex');
 
 Route::get('/pilon/index', [App\Http\Controllers\PilonController::class,'index'])->name('pilon.index');

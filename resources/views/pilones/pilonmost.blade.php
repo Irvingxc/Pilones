@@ -44,7 +44,7 @@
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form>
                     </td>
-					<td> <a class="btn btn-primary"  href="{{route('calendario')}}" target="_blank">Ver Calendario</button></td>
+					<td> <a class="btn btn-primary"  href="{{route('calendario', [$pilon->id])}}" >Ver Calendario</button></td>
 					<td><a href="{{route('reporte.show')}}" class="btn btn-primary" target="_blank">Reporte</a></td> 
                 
                 </tr>

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ubicacion;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Auth\UserInterface;
 
 class UbicacionController extends Controller
 {
@@ -23,10 +27,13 @@ class UbicacionController extends Controller
         if($categoria==null){
             $categoria="codigo_ubicacion";
         }
+        $suc= Auth::user()->sucursal;
         $caracteres = $request->get('busqueda');
         $ubicacion = DB::table('ubicacions')
         ->join('procedencias', 'procedencias.id','=',
-         'ubicacions.procedencias_id')->select('ubicacions.*', 'procedencias.nombre')->paginate(5);
+         'ubicacions.procedencias_id')->where('procedencias_id', '=', "$suc")->
+         where("$categoria", 'like', "%$caracteres%")
+         ->select('ubicacions.*', 'procedencias.nombre')->paginate(50);
          
          //('ubicacions.codigo_ubicacion', 'ubicacions.descripcion_ubicacion',
        // 'ubicacions.estado_ubicacion', '');

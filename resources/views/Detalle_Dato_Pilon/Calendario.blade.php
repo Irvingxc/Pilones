@@ -4,6 +4,12 @@
 <div class="row">
 <div class="card col">
 <br>
+@isset($datos)
+<label for="">{{$datos->id}}</label>
+@endisset
+@isset($id)
+<label for="">{{$id}}</label>
+@endisset
 <a id="completado" href="{{route('pilon.grafico')}}" class="btn btn-primary col-md-2" target="_blank">Ver Grafico</a>
 <br>
 <div id="calendar"></div>

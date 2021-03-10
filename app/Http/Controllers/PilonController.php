@@ -137,12 +137,14 @@ class PilonController extends Controller
         $mostrar = $id->id;
 
     }
+    //required min=<?php $hoy=date("Y-m-d"); echo $hoy;
+    //value="{{date('Y-m-d', strtotime($pilon->fecha_datos_pilones))}}"
     $pilon =Pilon::findOrFail($mostrar);
     $ubicacion = Ubicacion::all();
     $finca = Finca::all();
     $clase = tipoclase::all();
     $variedad = Variedad::all();
-    $true = 0;
+    $true = 0; 
     return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
     'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar, 'pilon'=>$pilon]);
     //return $mostrar;
