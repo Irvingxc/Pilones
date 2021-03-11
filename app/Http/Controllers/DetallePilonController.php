@@ -13,9 +13,37 @@ class DetallePilonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function mostrar(){
+         $id=22;
+        $datos = Detalle_dato_pilon::where('pilon_id', '=', $id)->get();
+        $nueva_agenda=[];
+
+        foreach($datos as $value){
+            $nueva_agenda[] = [
+                "id"=> $value->id,
+                "start"=> $value->fecha_detalle,
+                "end"=> "",//$value->mojado,
+                "title"=> "Temp: ".$value->temperatura,
+                "extendedProps"=>[
+                    "virado"=> $value->virado,
+                    "mojado"=>$value->mojado,
+                    "fumigado"=> $value->fumigado,
+                    "pilon_id"=> $value->pilon_id
+
+                ]
+                //"title"=> $value->virado,
+                //"borderColor"=> $value->mojado,
+               // "backgroundColor"=> $value->fumigado == null: "";
+
+            ];
+        }
+        return response()->json($nueva_agenda);
+     }
     public function index($id)
     {
-        $datos = Detalle_dato_pilon::where('pilon_id', '=', $id)->first();
+        $datos = Detalle_dato_pilon::where('pilon_id', '=', $id)->get();
+       
         return view('Detalle_Dato_Pilon.Calendario', ['datos'=>$datos, 'id'=>$id]);
         //return $id;
     }
@@ -38,7 +66,16 @@ class DetallePilonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $detalle=new Detalle_dato_pilon();
+        $detalle->fecha_detalle = $request->fecha_detalle;
+        $detalle->temperatura = $request->temperatura;
+        $detalle->virado = $request->virado;
+        $detalle->mojado = $request->mojado;
+        $detalle->fumigado = $request->fumigado;
+        $detalle->codigo_pilon = "asd";
+        $detalle->pilon_id = $request->pilon_id;
+        $detalle->save();
+       // $detalle->save();
     }
 
     /**

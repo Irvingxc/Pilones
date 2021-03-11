@@ -82,6 +82,7 @@ class PilonController extends Controller
         $detalle->codigo_variedad = $request->codigo_variedad;
         $detalle->pilon_id = $request->pilon_id;
         $detalle->save();
+        
     }
 
 
