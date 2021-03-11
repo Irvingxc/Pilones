@@ -23,6 +23,8 @@
 			<th>Nombre</th>
 			<th>Correo</th>
             <th>Contraseña</th>
+            <th>Sucursal</th>
+            <th>Rol</th>
 			<th>Eliminar</th>
 			
 
@@ -35,6 +37,8 @@
             <td>{{$verusuario->name}}</td>
             <td>{{$verusuario->email}}</td>
             <td>{{$verusuario->password}}</td>
+            <td>{{$verusuario->sucursal}}</td>
+            <td>Belen</td>
 				
                 <td> <form method="post" action="{{route('verusuario.destroy', [$verusuario->email])}} " class="formulario-eliminar">
                     {{csrf_field()}}
