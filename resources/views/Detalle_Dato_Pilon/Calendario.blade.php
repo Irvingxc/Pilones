@@ -21,7 +21,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Temperatura Diaria</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -34,6 +34,10 @@
       <label for="" class="col-md-5">Fecha Actual</label>
       <input type="date" class="col-md-6" id="txtFecha" name="fecha">
       </div>
+      @if ($errors->has('fecha_detalle'))
+      <p style="color:red;">{{$errors->first('fecha_detalle')}}</p>
+      @endif
+      <br>      
         <label for="" class="col-md-5">Temperatura del Pilon</label>
         <input type="text" class="col-md-6" id="temperatura">
 
@@ -57,7 +61,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="guardar()">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-secondary" onclick="limpiar()" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
@@ -101,18 +105,44 @@ document.addEventListener('DOMContentLoaded', function() {
         $("#txtFecha").val(m);
         calendar.unselect()
       },
+
+
+
+      eventClick: function(info){
+        let m = moment(info.event.start).format("YYYY-MM-DD")
+        $("#agenda_modal").modal();
+        $("#txtFecha").val(m);
+        $("#temperatura").val(info.event.title);
+        if(info.event.extendedProps.virado==1){
+          
+        $('input:checkbox[name=virado]').prop('checked',true)
+      }else{
+        $('input[type=checkbox]').prop('checked',false)
+      }
+
+      if(info.event.extendedProps.fumigado==1){
+          
+          $('input:checkbox[name=fumigado]').prop('checked',true)
+        }else{
+          $('input:checkbox[name=fumigado]').prop('checked',false)
+        }
+
+        if(info.event.extendedProps.mojado==1){
+          
+          $('input:checkbox[name=mojado]').prop('checked',true)
+        }else{
+          $('input:checkbox[name=mojado]').prop('checked',false)
+        }
+        //console.log(info.event.extendedProps.virado);
+       // console.log(info.event.id);
+      },
       editable: true,
-      events: '/detalledatopilon/listar',
+      events: '/detalledatopilon/listar/'+$("#pilon_id").val(),
 
     });
     calendar.render();
 })
 
-function nuevourl(){
-  let dato= 'title';
-  this.h
-  
-}
 $('#completado').on('click', function (){
 let dato = 'title';
 this.href= "/pilon/grafico/"+dato;
@@ -127,6 +157,7 @@ function limpiar(){
   $("#txtFecha").val("");
   $("#temperatura").val("");
   $('input[type=checkbox]').prop('checked',false);
+  location.reload();
   //$('input:checkbox').removeAttr('checked');
 
 }
@@ -164,7 +195,6 @@ function guardar(){
   //let _token= $('meta[name="csrf-token"]').attr('content');
   //fd.append("_token", _token);
  // fd.append("token", )
-
   $.ajax({
     url: "/detalledatopilon/store",
     method: "post",
@@ -178,13 +208,15 @@ function guardar(){
    // processData:false,
   //  contenType:false
   }).done(function(respuesta){
+    console.log(status);
     if(respuesta!=null){
       alert("Se guardo correctamente");
       limpiar();
     }else{
-      alert("Algo Salio Mal, verifica la veracidad de los datos")
+      alert("Algo Salio Mal, verifica la veracidad de los datos");
     }
   })
+
 }
 
 </script>
