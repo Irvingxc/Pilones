@@ -4,11 +4,9 @@
 <div class="row">
 <div class="card col">
 <br>
-@isset($datos)
-<label for="">{{$datos->id}}</label>
-@endisset
 @isset($id)
-<label for="">{{$id}}</label>
+<label>{{$id}}</label>
+<input type="hidden" id="pilon_id" value="{{$id}}">
 @endisset
 <a id="completado" href="{{route('pilon.grafico')}}" class="btn btn-primary col-md-2" target="_blank">Ver Grafico</a>
 <br>
@@ -27,33 +25,36 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <div> 
+      <form action="" id="formulario_agenda">
+      @csrf
+      <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
       <div class="modal-body">
       <div>
-      <form action="" id="formulario_agenda">
       <label for="" class="col-md-5">Fecha Actual</label>
-      <input type="date" class="col-md-6" id="txtFecha">
+      <input type="date" class="col-md-6" id="txtFecha" name="fecha">
       </div>
         <label for="" class="col-md-5">Temperatura del Pilon</label>
-        <input type="text" class="col-md-6">
+        <input type="text" class="col-md-6" id="temperatura">
 
       </div>
       <div class="form-check">
       <label class="form-check-label col-md-5" for="flexCheckDefault">
-      <input class="form-check-input col-md-10" type="checkbox" value="" id="flexCheckDefault">
+      <input class="form-check-input col-md-10" type="checkbox" name="virado" id="virado">
     Se viro
   </label>
   <label class="form-check-label col-md-5" for="flexCheckDefault">
-      <input class="form-check-input col-md-10" type="checkbox" value="" id="flexCheckDefault">
+      <input class="form-check-input col-md-10" type="checkbox" name="mojado" id="mojado">
     Mojado
   </label>
   <label class="form-check-label col-md-5" for="flexCheckDefault">
-      <input class="form-check-input col-md-12" type="checkbox" value="" id="flexCheckDefault">
+      <input class="form-check-input col-md-12" type="checkbox" name="fumigado" id="fumigado">
     Fumigado
   </label>
 </div>
 
-
       </form>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="guardar()">Guardar Cambios</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -101,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
         calendar.unselect()
       },
       editable: true,
+      events: '/detalledatopilon/listar',
+
     });
     calendar.render();
 })
@@ -119,9 +122,69 @@ this.href= "/pilon/grafico/"+dato;
 //this.href=window.location.href+"&"+this.href.split("?")[1];
 
 });
+function limpiar(){
+  $("#agenda_modal").modal('hide');
+  $("#txtFecha").val("");
+  $("#temperatura").val("");
+  $('input[type=checkbox]').prop('checked',false);
+  //$('input:checkbox').removeAttr('checked');
+
+}
+
 
 function guardar(){
-  var fd = new FormData(document.getElementById("formulario_agenda"));
-};
+  //var fd = new FormData(document.getElementById("formulario_agenda"));
+ // console.log(fd);
+  
+  let fecha_detalle = $("#txtFecha").val();
+  let temperatura = $("#temperatura").val();
+  let virado= $('input:checkbox[name=virado]:checked').val();
+  //$("#virado").val();
+  let mojado= $('input:checkbox[name=mojado]:checked').val();
+  // $("#mojado").val();
+  //let fumigado= $("#fumigado").val();
+  let pilon_id= $("#pilon_id").val();
+  let _token= "{{ csrf_token() }}";
+  let fumigado = $('input:checkbox[name=fumigado]:checked').val();
+  if(fumigado=="on"){
+    fumigado=1;
+  }else{
+    fumigado=0;
+  }
+  if(virado=="on"){
+    virado=1;
+  }else{
+    virado=0;
+  }
+  if(mojado=="on"){
+    mojado=1;
+  }else{
+    mojado=0;
+  }
+  //let _token= $('meta[name="csrf-token"]').attr('content');
+  //fd.append("_token", _token);
+ // fd.append("token", )
+
+  $.ajax({
+    url: "/detalledatopilon/store",
+    method: "post",
+    data: {fecha_detalle: fecha_detalle,
+      temperatura: temperatura,
+      virado: virado,
+      mojado: mojado,
+      fumigado: fumigado,
+      pilon_id: pilon_id,
+      _token: _token},
+   // processData:false,
+  //  contenType:false
+  }).done(function(respuesta){
+    if(respuesta!=null){
+      alert("Se guardo correctamente");
+      limpiar();
+    }else{
+      alert("Algo Salio Mal, verifica la veracidad de los datos")
+    }
+  })
+}
 
 </script>
