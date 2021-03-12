@@ -33,12 +33,12 @@
 		<tbody>
 			@foreach($Usuarios as $verusuario) 
 			<tr>
-            <td><a href="{{route('verusuario.show', [$verusuario->id])}}">{{$verusuario->id}}</td>
+            <td><a href="{{route('verusuario.show', [$verusuario->sd])}}">{{$verusuario->sd}}</td>
             <td>{{$verusuario->name}}</td>
             <td>{{$verusuario->email}}</td>
             <td>{{$verusuario->password}}</td>
-            <td>{{$verusuario->sucursal}}</td>
-            <td>Belen</td>
+            <td>{{$verusuario->nombre}}</td>
+            <td>{{$verusuario->rol}}</td>
 				
                 <td> <form method="post" action="{{route('verusuario.destroy', [$verusuario->email])}} " class="formulario-eliminar">
                     {{csrf_field()}}

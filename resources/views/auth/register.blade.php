@@ -87,9 +87,9 @@
                             <label for="" class="col-md-4">Seleccione un rol</label> 
 
                              <div class="col-md-6">
-                                <select id="inputState" class="col-md-6 form-control" name="checkbox_name">
+                                <select id="inputState" class="col-md-6 form-control" name="roles">
                                 @foreach($role as $var)
-                                <option selected>{{$var->name}}</option>
+                                <option selected value="{{$var->name}}" >{{$var->name}}</option>
                                 @endforeach
                                 </select>
                             </div>
