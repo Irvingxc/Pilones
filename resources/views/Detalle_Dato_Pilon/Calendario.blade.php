@@ -7,7 +7,10 @@
 @isset($id)
 <input type="hidden" id="pilon_id" value="{{$id}}">
 @endisset
+<div class="row">
 <a id="completado" href="{{route('pilon.grafico')}}" class="btn btn-primary col-md-2" target="_blank">Ver Grafico</a>
+<a id="completado" href="{{route('pilon.index')}}" class="btn btn-primary col-md-2">Volver a Pilones</a>
+</div>
 <br>
 <div id="calendar"></div>
 
@@ -210,11 +213,12 @@ function guardar(){
   //  contenType:false
   }).done(function(respuesta){
     console.log(status);
-    if(respuesta!=null){
+    if(respuesta!=null && respuesta.ok){
       alert("Se guardo correctamente");
       limpiar();
     }else{
-      alert("Algo Salio Mal, verifica la veracidad de los datos");
+      alert("Ya se registraron datos en esta fecha para este pilon");
+      limpiar();
     }
   })
 
@@ -234,7 +238,7 @@ function guardar(){
   //  contenType:false
   }).done(function(respuesta){
     console.log(status);
-    if(respuesta!=null){
+    if(respuesta!=null && respuesta.ok){
       alert("Se Actualizo correctamente");
       limpiar();
     }else{

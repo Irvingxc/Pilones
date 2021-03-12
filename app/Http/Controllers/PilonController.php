@@ -9,6 +9,10 @@ use App\Models\Ubicacion;
 use App\Models\tipoclase;
 use App\Models\Variedad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Auth\UserInterface;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PilonController extends Controller
 { 
@@ -23,7 +27,14 @@ class PilonController extends Controller
      */
     public function index()
     {
-        $pilon = Pilon::all();
+       // $pilon = Pilon::all();
+       $suc= Auth::user()->sucursal;
+        $pilon = DB::table('pilons')
+        ->join('procedencias', 'procedencias.id','=',
+         'pilons.sucursal_id')->where('sucursal_id', '=', "$suc")
+         ->join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')
+        // where("$categoria", 'like', "%$caracteres%")
+         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod')->paginate(50);
         $ubicacion = Ubicacion::all();
         $finca = Finca::all();
         $clase = tipoclase::all();
@@ -60,8 +71,9 @@ class PilonController extends Controller
      */
     public function pilonindex()
     {
+        $suc= Auth::user()->sucursal;
         $pilon = Pilon::all();
-        $ubicacion = Ubicacion::all();
+        $ubicacion = Ubicacion::where('procedencias_id', '=', $suc)->get();
         $finca = Finca::all();
         $clase = tipoclase::all();
         $variedad = Variedad::all();
@@ -138,6 +150,13 @@ class PilonController extends Controller
         $mostrar = $id->id;
 
     }
+    $update = Ubicacion::findOrFail($request->input('ubicacion'));
+    $update->estado_ubicacion = 0;
+    $update->save(); 
+
+
+
+
     //required min=<?php $hoy=date("Y-m-d"); echo $hoy;
     //value="{{date('Y-m-d', strtotime($pilon->fecha_datos_pilones))}}"
     $pilon =Pilon::findOrFail($mostrar);

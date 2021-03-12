@@ -35,8 +35,8 @@
 				<td><a href="{{route('pilon.show', [$pilon->codigo_pilon])}}"> {{$pilon->codigo_pilon}}</a></td>
 				<td>{{$pilon->descripcion_pilon}}</td>
 				<td>{{$pilon->Fecha_datos_pilones}}</td>
-				<td>{{$pilon->ubicacion}}</td>
-				<td>{{$pilon->sucursal_id}}</td>
+				<td>{{$pilon->cod}}</td>
+				<td>{{$pilon->nombre}}</td>
                 <td> <form method="post" action="{{route('pilon.destroy', [$pilon->codigo_pilon])}}">
                     {{csrf_field()}}
 					{{method_field('DELETE')}}
