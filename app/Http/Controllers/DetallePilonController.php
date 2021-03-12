@@ -23,8 +23,8 @@ class DetallePilonController extends Controller
             $nueva_agenda[] = [
                 "id"=> $value->id,
                 "start"=> $value->fecha_detalle,
-                "end"=> "",//$value->mojado,
-                "title"=> $value->temperatura,//."°F",
+                "end"=> "°F",//$value->mojado,
+                "title"=> $value->temperatura." °F",//."°F",
                 "extendedProps"=>[
                     "virado"=> $value->virado,
                     "mojado"=>$value->mojado,
@@ -113,9 +113,23 @@ class DetallePilonController extends Controller
      * @param  \App\Models\Detalle_pilon  $detalle_pilon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Detalle_pilon $detalle_pilon)
+    public function update(Request $request, $detalle_pilon)
     {
-        //
+        $this->validate($request, [
+            //'fecha_detalle' => 'required|unique:detalle_dato_pilons,fecha_detalle',
+        ]);
+        $detalle = Detalle_dato_pilon::findOrFail($detalle_pilon);
+        $detalle->fecha_detalle = $request->fecha_detalle;
+        $detalle->temperatura = $request->temperatura;
+        $detalle->virado = $request->virado;
+        $detalle->mojado = $request->mojado;
+        $detalle->fumigado = $request->fumigado;
+
+        $detalle->pilon_id = $request->pilon_id;
+        $detalle->save();
+        return response()->json([
+            'status' => 'Muy bien!'
+        ]);
     }
 
     /**

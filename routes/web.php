@@ -41,7 +41,7 @@ Route::get('/home/menu', [App\Http\Controllers\HomeController::class, 'menu'])->
 Route::get('/detalledatopilon/other/{datos}', [App\Http\Controllers\DetallePilonController::class, 'index'])->name('calendario');
 Route::get('/detalledatopilon/listar/{id}', [App\Http\Controllers\DetallePilonController::class, 'mostrar'])->name('calendario.mostrar');
 Route::post('/detalledatopilon/store', [App\Http\Controllers\DetallePilonController::class, 'store'])->name('calendario.store');
-
+Route::post('/detalledatopilon/update/{id_impor}', [App\Http\Controllers\DetallePilonController::class, 'update'])->name('calendario.update');
 
 /*------------------------------Finca-------------------------------*/
 

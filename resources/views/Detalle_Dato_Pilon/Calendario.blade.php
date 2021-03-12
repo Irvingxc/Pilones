@@ -5,7 +5,6 @@
 <div class="card col">
 <br>
 @isset($id)
-<label>{{$id}}</label>
 <input type="hidden" id="pilon_id" value="{{$id}}">
 @endisset
 <a id="completado" href="{{route('pilon.grafico')}}" class="btn btn-primary col-md-2" target="_blank">Ver Grafico</a>
@@ -28,11 +27,12 @@
       <div> 
       <form action="" id="formulario_agenda">
       @csrf
+      <input type="hidden" name="id" id="id_impor" value="">
       <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
       <div class="modal-body">
       <div>
       <label for="" class="col-md-5">Fecha Actual</label>
-      <input type="date" class="col-md-6" id="txtFecha" name="fecha">
+      <input type="date" class="col-md-6" id="txtFecha" name="fecha"  readonly>
       </div>
       @if ($errors->has('fecha_detalle'))
       <p style="color:red;">{{$errors->first('fecha_detalle')}}</p>
@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $("#agenda_modal").modal();
         $("#txtFecha").val(m);
         $("#temperatura").val(info.event.title);
+        $("#id_impor").val(info.event.id);
         if(info.event.extendedProps.virado==1){
           
         $('input:checkbox[name=virado]').prop('checked',true)
@@ -192,10 +193,10 @@ function guardar(){
   }else{
     mojado=0;
   }
-  //let _token= $('meta[name="csrf-token"]').attr('content');
-  //fd.append("_token", _token);
- // fd.append("token", )
-  $.ajax({
+  let id_impor = $("#id_impor").val();
+
+  if(id_impor==""){
+    $.ajax({
     url: "/detalledatopilon/store",
     method: "post",
     data: {fecha_detalle: fecha_detalle,
@@ -216,6 +217,38 @@ function guardar(){
       alert("Algo Salio Mal, verifica la veracidad de los datos");
     }
   })
+
+
+  }else{
+    $.ajax({
+    url: '/detalledatopilon/update/'+id_impor,
+    method: "post",
+    data: {fecha_detalle: fecha_detalle,
+      temperatura: temperatura,
+      virado: virado,
+      mojado: mojado,
+      fumigado: fumigado,
+      pilon_id: pilon_id,
+      _token: _token},
+   // processData:false,
+  //  contenType:false
+  }).done(function(respuesta){
+    console.log(status);
+    if(respuesta!=null){
+      alert("Se Actualizo correctamente");
+      limpiar();
+    }else{
+      alert("Algo Salio Mal, verifica la veracidad de los datos");
+    }
+  })
+
+
+
+  }
+  //let _token= $('meta[name="csrf-token"]').attr('content');
+  //fd.append("_token", _token);
+ // fd.append("token", )
+ 
 
 }
 
