@@ -7,6 +7,7 @@ use App\Models\role;
 use App\Models\Procedencia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class userController extends Controller
 {
@@ -38,8 +39,16 @@ class userController extends Controller
         $verusuario->email = $request->input('email');
         $verusuario->password = $request->input('password');
         $verusuario->sucursal = $request->input('procedencia');
+
         $nuevo =$verusuario->save();*/
-        $user->assignRole('cliente');
+        $parametro = $request->roles;
+        if( $parametro == 'cliente'){
+            $user->assignRole('cliente');
+        }else{
+            $user->assignRole('admin');
+        }
+
+        
     
         return redirect('/verusuario/index');
         
@@ -52,7 +61,14 @@ class userController extends Controller
     public function index()
     {
        
-        $verusuario = User::all();
+       // $verusuario = User::all();
+        //$rol = User::find(2)->role;
+        $verusuario = DB::table('users')
+        ->join('model_has_roles', 'model_has_roles.model_id','=',
+         'users.id')
+         ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
+         ->join('procedencias', 'procedencias.id', '=', 'users.sucursal')
+         ->select('users.*','users.id as sd', 'model_has_roles.*', 'roles.name as rol', 'procedencias.*')->paginate(50);
         return view ('Usuarios.Verususarios',['Usuarios'=>$verusuario]); 
          
     }
