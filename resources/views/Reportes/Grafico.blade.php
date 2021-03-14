@@ -3,7 +3,7 @@
 
 <div id="container" style="width: 100%;height: 80vh">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<input type="text" value="{{ csrf_token() }}" name="_token">
+<input type="hidden" value="{{ csrf_token() }}" name="_token">
 <canvas id="myChart"></canvas>
 	  
 </div>
