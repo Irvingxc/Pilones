@@ -32,7 +32,7 @@
 		<tbody>
 			@foreach($pilon as $pilon) 
 			<tr>
-				<td><a href="{{route('pilon.show', [$pilon->codigo_pilon])}}"> {{$pilon->codigo_pilon}}</a></td>
+				<td><a href="{{route('pilon.show', [$pilon->id])}}"> {{$pilon->codigo_pilon}}</a></td>
 				<td>{{$pilon->descripcion_pilon}}</td>
 				<td>{{$pilon->Fecha_datos_pilones}}</td>
 				<td>{{$pilon->cod}}</td>

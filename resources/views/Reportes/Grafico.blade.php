@@ -55,7 +55,7 @@ var chart = new Chart(ctx, {
     //var user = <?php $temperatura; ?>;
     // The data for our dataset
     data: {
-        labels: ['1','2','4','5','6','7','8','9','10'],
+        labels: {!! json_encode($chart->labels)!!}, //['1','2','4','5','6','7','8','9','10'],
         datasets: [{
             label: 'Marzo',
             backgroundColor: 'rgb(255,255,255,0.1)',

@@ -1954,7 +1954,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['fin', 'rows', 'varie', 'true', 'mostrar'],
   data: function data() {
@@ -1996,7 +1995,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     verDetalles: function verDetalles() {
       var me = this;
-      var id = this.mostrar;
+      var id = this.id;
       var url = '/pilon/ver/' + id;
       axios.get(url).then(function (response) {
         me.detalles = response.data;
@@ -2024,6 +2023,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getDates();
+  },
+  created: function created() {
+    this.id = this.mostrar;
+    this.verDetalles();
   }
 });
 
@@ -41489,11 +41492,11 @@ var render = function() {
         "tbody",
         _vm._l(_vm.detalles, function(detalles) {
           return _c("tr", { key: detalles.id }, [
-            _c("td", [_vm._v(_vm._s(detalles.codigo_variedad))]),
+            _c("td", [_vm._v(_vm._s(detalles.varied))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(detalles.codigo_clase))]),
+            _c("td", [_vm._v(_vm._s(detalles.class))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(detalles.codigo_finca))]),
+            _c("td", [_vm._v(_vm._s(detalles.fincas))]),
             _vm._v(" "),
             _c("td", [
               _c(
@@ -41514,8 +41517,7 @@ var render = function() {
         }),
         0
       )
-    ]),
-    _vm._v("\r\n" + _vm._s(_vm.mostrar) + "\r\n")
+    ])
   ])
 }
 var staticRenderFns = [

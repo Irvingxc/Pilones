@@ -57,9 +57,9 @@
 		<tbody>
 		
 			<tr v-for="detalles in detalles" :key="detalles.id">
-				<td>{{detalles.codigo_variedad}}</td>
-				<td>{{detalles.codigo_clase}}</td>
-                <td>{{detalles.codigo_finca}}</td>
+				<td>{{detalles.varied}}</td>
+				<td>{{detalles.class}}</td>
+                <td>{{detalles.fincas}}</td>
                 <td><button v-on:click.prevent="deletedetalles(detalles)" class="btn btn-outline-danger">Eliminar</button></td>
                     
                 </tr>
@@ -67,7 +67,6 @@
 
 		</tbody>
 	</table>
-{{mostrar}}
 </div>
 
 
@@ -122,7 +121,7 @@ export default {
             },
             verDetalles(){
                    let me =this;
-                   let id = this.mostrar
+                   let id = this.id
                 let url = '/pilon/ver/'+id;
                 axios.get(url).then(function (response) {
                    
@@ -153,6 +152,11 @@ export default {
         },
         mounted(){
             this.getDates();
+ 
+        },
+        created: function(){
+            this.id= this.mostrar;
+            this.verDetalles();
         }
 
 

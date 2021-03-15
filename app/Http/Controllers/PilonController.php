@@ -101,7 +101,14 @@ class PilonController extends Controller
 
     public function verDetalles($id)
     {
-        $detalle=Detalle_pilon::where('pilon_id','=', $id)->get();
+        //$detalle=Detalle_pilon::where('pilon_id','=', $id)->get();
+        $detalle = DB::table('detalle_pilons')
+        ->join('variedads', 'variedads.codigo_variedad', '=', 'detalle_pilons.codigo_variedad')
+        ->join('tipoclases', 'tipoclases.codigo_clase', '=', 'detalle_pilons.codigo_clase')
+        ->join('fincas', 'fincas.codigo_finca', '=', 'detalle_pilons.codigo_finca')
+        ->where('pilon_id', '=', $id)
+        ->select('detalle_pilons.*', 'variedads.nombre_variedad as varied', 'tipoclases.nombre_clase as class',
+    'fincas.nombre_finca as fincas')->get();
 
         return $detalle;
         
@@ -179,8 +186,18 @@ class PilonController extends Controller
      */
     public function show($codigo_pilon)
     {
-     $pilon = Pilon::where('codigo_pilon', '=', $codigo_pilon)->first();
-     return view('Pilones.pilon')->with('pilon',$pilon);   
+     $pilon = Pilon::where('id', '=', $codigo_pilon)->first();
+     //return view('Pilones.pilon')->with('pilon',$pilon);  
+     
+     $suc= Auth::user()->sucursal;
+        $ubicacion = Ubicacion::where('procedencias_id', '=', $suc)->get();
+        $finca = Finca::all();
+        $clase = tipoclase::all();
+        $variedad = Variedad::all();
+        $true = 1;
+        $mostrar=$codigo_pilon;
+        return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
+        'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar, 'pilon'=>$pilon]);
     }
 
     /**
