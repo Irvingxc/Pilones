@@ -37,7 +37,7 @@
 				<td>{{$pilon->Fecha_datos_pilones}}</td>
 				<td>{{$pilon->cod}}</td>
 				<td>{{$pilon->nombre}}</td>
-                <td> <form method="post" action="{{route('pilon.destroy', [$pilon->codigo_pilon])}}">
+                <td> <form method="post" action="{{route('pilon.destroy', [$pilon->id])}}">
                     {{csrf_field()}}
 					{{method_field('DELETE')}}
                    

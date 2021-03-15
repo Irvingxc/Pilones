@@ -198,7 +198,7 @@ class PilonController extends Controller
         $finca = Finca::all();
         $clase = tipoclase::all();
         $variedad = Variedad::all();
-        $true = 1;
+        $true = 2;
         $mostrar=$codigo_pilon;
         return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
         'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar, 'pilon'=>$pilon]);
@@ -261,7 +261,7 @@ class PilonController extends Controller
      */
     public function destroy( $pilon)
     {
-        $pilon =Pilon:: where ('codigo_pilon','=', $pilon)->first();
+        $pilon =Pilon:: where ('id','=', $pilon)->first();
          $pilon->delete();
          return redirect('/pilon/index');
     }

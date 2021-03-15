@@ -63,13 +63,18 @@ value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
 <div class="margin">
 <label for="" class="">Ubicacion</label>
 <select id="inputState" class="form-control" name="ubicacion" @if($true==0) disabled @endif>
-<option @isset($pilon) selected value="{{$pilon->ubicacion}}" @endisset> @isset($pilon) {{$pilon->ubiselect}} @endisset</option>
+@isset($pilon)
+<option  selected value="{{$pilon->ubicacion}}">{{$pilon->ubiselect}}</option>
+@endisset
 @foreach($ubicacion as $ubi)
-@isset($pilon) {{$pilon->ubiselect}}
+@isset($pilon)
 @if($pilon->ubiselect !=  $ubi->codigo_ubicacion)
 <option value="{{$ubi->id}}">{{$ubi->codigo_ubicacion}}</option>
 @else
 @endif
+@else
+<option value="{{$ubi->id}}">{{$ubi->codigo_ubicacion}}</option>
+
  @endisset
         @endforeach
       </select>
