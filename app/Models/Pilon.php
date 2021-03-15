@@ -14,7 +14,9 @@ class Pilon extends Model
         'descripcion_pilon',
         'Fecha_datos_pilones',
         'ubicacion',
-        'sucursal_id'
+        'sucursal_id',
+        'Fecha_empilonamiento',
+        'peso'
     ];
    // protected $keyType = 'string';
 }

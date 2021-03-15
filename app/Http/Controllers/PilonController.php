@@ -149,6 +149,8 @@ class PilonController extends Controller
         'ubicacion' => $request->input('ubicacion'),
         'Fecha_datos_pilones' => $request->input('fecha_inicio'),
         'sucursal_id' => $request->sucursal,
+        'Fecha_empilonamiento' => $request->input('Fecha_empilonamiento'),
+        'peso' => $request->peso
     ]);
 
     if($id==null){
@@ -186,7 +188,9 @@ class PilonController extends Controller
      */
     public function show($codigo_pilon)
     {
-     $pilon = Pilon::where('id', '=', $codigo_pilon)->first();
+     $pilon = DB::table('pilons')->
+     join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')->where('pilons.id', '=', $codigo_pilon)
+     ->select('pilons.*', 'ubicacions.codigo_ubicacion as ubiselect')->first();
      //return view('Pilones.pilon')->with('pilon',$pilon);  
      
      $suc= Auth::user()->sucursal;
@@ -220,17 +224,33 @@ class PilonController extends Controller
      */
     public function update(Request $request, $pilones)
     {
-        $pilon =pilon:: where ('codigo_pilon','=', $pilones)->first();
+        $pilon =pilon:: where ('id','=', $pilones)->first();
         $this->validate($request, [
             'codigo_pilon' => 'required',
             'descripcion_pilon'=> 'required',
         ]);
 
 
-    $pilon->codigo_pilon = $request->input('codigo_pilon');
-    $pilon->descripcion_pilon = $request->input('descripcion_pilon');
-    $pilon->save();
-    return redirect('/pilon/index');
+        $pilon->codigo_pilon = $request->input('codigo_pilon');
+        $pilon->descripcion_pilon = $request->input('descripcion_pilon');
+        $pilon->ubicacion = $request->input('ubicacion');
+        $pilon->Fecha_datos_pilones = $request->input('fecha_inicio');
+        $pilon->sucursal_id = $request->input('sucursal');
+        $pilon->Fecha_empilonamiento= $request->input('Fecha_empilonamiento');
+        $pilon->peso= $request->input('peso'); 
+        $pilon->save(); 
+        $updateLibre = Ubicacion::findOrFail($request->input('disponible'));
+        $updateLibre->estado_ubicacion = 1;
+        $updateLibre->save();
+        $update = Ubicacion::findOrFail($request->input('ubicacion'));
+        $update->estado_ubicacion = 0;
+        $update->save(); 
+        return $this->show($pilones);
+        //return redirect::route('pilon.show',['pilones'=>$pilones]);
+       // return redirect('/pilon/edit/{'+$pilones+'}');  
+       
+        //required min=<?php $hoy=date("Y-m-d"); echo $hoy;
+        //value="{{date('Y-m-d', strtotime($pilon->fecha_datos_pilones))}}"
     }
 
     /**
