@@ -31,9 +31,11 @@ class UbicacionController extends Controller
         $caracteres = $request->get('busqueda');
         $ubicacion = DB::table('ubicacions')
         ->join('procedencias', 'procedencias.id','=',
-         'ubicacions.procedencias_id')->where('procedencias_id', '=', "$suc")->
+         'ubicacions.procedencias_id')->where('procedencias_id', '=', "$suc")
+         ->join('pilons', 'pilons.ubicacion', '=', 'ubicacions.id')
+         ->
          where("$categoria", 'like', "%$caracteres%")
-         ->select('ubicacions.*', 'procedencias.nombre')->paginate(50);
+         ->select('ubicacions.*', 'procedencias.nombre', 'pilons.codigo_pilon as pilon')->paginate(50);
          
          //('ubicacions.codigo_ubicacion', 'ubicacions.descripcion_ubicacion',
        // 'ubicacions.estado_ubicacion', '');
