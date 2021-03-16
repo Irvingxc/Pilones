@@ -25,16 +25,22 @@ class PilonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
        // $pilon = Pilon::all();
+       $categoria = $request->get('filtro');
+       if($categoria==null){
+           $categoria="codigo_pilon";
+       }
+       $caracteres = $request->get('busqueda');
        $suc= Auth::user()->sucursal;
         $pilon = DB::table('pilons')
         ->join('procedencias', 'procedencias.id','=',
          'pilons.sucursal_id')->where('sucursal_id', '=', "$suc")
          ->join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')
-        // where("$categoria", 'like', "%$caracteres%")
-         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod')->paginate(50);
+         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod')
+         ->
+        where("$categoria", 'like', "%$caracteres%")->paginate(50);
         $ubicacion = Ubicacion::all();
         $finca = Finca::all();
         $clase = tipoclase::all();

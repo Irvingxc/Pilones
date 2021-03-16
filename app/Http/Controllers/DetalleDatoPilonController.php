@@ -35,7 +35,6 @@ class DetalleDatoPilonController extends Controller
         ->orderByRaw('fecha_detalle ASC')// DB::raw('count(*) as total'))
       // ->groupBy('fecha_detalle')
         ->pluck('fecha_detalle')->all();
-
         $chart = new Detalle_dato_pilon();
         $chart->labels = (array_keys($temperatura));
         $chart->dataset = (array_values($temperatura));

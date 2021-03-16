@@ -2,19 +2,20 @@
 
 @section('content')
 <div class="Container">
-<table border="solid" class="table">
 <h4 class="text-center text-muted font-weight-bold">Pilon</h4>
 <div class="row">
+<form action="">
 <label for="" class="offset-md-7">Buscar por:</label>
 <div class="">
-<select id="inputState" class="form-control offset-md-1" name="checkbox_name">
-        <option selected >Codigo</option>
-        <option>Descripcion</option>
+<select id="inputState" class="form-control offset-md-1" name="filtro">
+        <option value="codigo_pilon" selected >Codigo</option>
+        <option value="ubicacions.codigo_ubicacion">Ubicacion</option>
       </select>
 	  </div>
 	  <div>
-	  <input type="search" id="form1" class="form-control offset-md-1" />
+	  <input type="search" id="form1" name="busqueda" class="form-control offset-md-1" />
 	  </div>
+	  </form>
 <table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
