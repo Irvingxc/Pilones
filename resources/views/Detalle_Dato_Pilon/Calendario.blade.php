@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth'
-      },
+      },      
       
       selectable: true,
       selectMirror: true,
@@ -142,6 +142,11 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       editable: true,
       events: '/detalledatopilon/listar/'+$("#pilon_id").val(),
+      eventRender: function (info) {
+        description: info.event.description
+    console.log(info.event.extendedProps);
+    // {description: "Lecture", department: "BioChemistry"}
+  }
 
     });
     calendar.render();

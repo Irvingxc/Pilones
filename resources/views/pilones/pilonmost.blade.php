@@ -1,21 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="Container">
+<div class="container">
 <h4 class="text-center text-muted font-weight-bold">Pilon</h4>
-<div class="row">
 <form action="">
-<label for="" class="offset-md-7">Buscar por:</label>
+<div class="row">
+<label for="" class="">Buscar por:</label>
 <div class="">
-<select id="inputState" class="form-control offset-md-1" name="filtro">
+<select id="inputState" class="form-control" name="filtro">
         <option value="codigo_pilon" selected >Codigo</option>
         <option value="ubicacions.codigo_ubicacion">Ubicacion</option>
       </select>
 	  </div>
 	  <div>
-	  <input type="search" id="form1" name="busqueda" class="form-control offset-md-1" />
+	  <input type="search" id="form1" name="busqueda" class="form-control" />
 	  </div>
 	  </form>
+	  </div>
 <table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
@@ -45,7 +46,7 @@
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form>
                     </td>
-					<td> <a class="btn btn-primary"  href="{{route('calendario', [$pilon->id])}}" >Ver Calendario</button></td>
+					<td> <a class="btn btn-primary"  href="{{route('calendario', [$pilon->id])}}" >Calendario</button></td>
 					<td><a href="{{route('reporte.show')}}" class="btn btn-primary" target="_blank">Reporte</a></td> 
                 
                 </tr>

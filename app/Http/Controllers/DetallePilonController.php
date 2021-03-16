@@ -23,8 +23,9 @@ class DetallePilonController extends Controller
             $nueva_agenda[] = [
                 "id"=> $value->id,
                 "start"=> $value->fecha_detalle,
-                "end"=> "°F",//$value->mojado,
-                "title"=> $value->temperatura." °F",//."°F",
+                "end"=> "",//$value->mojado,
+                "title"=> $value->temperatura." °F",
+                "description"=>"jajaj",//."°F",
                 "extendedProps"=>[
                     "virado"=> $value->virado,
                     "mojado"=>$value->mojado,
