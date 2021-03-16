@@ -1,18 +1,18 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="Container">
+<div class="container">
 <h4 class="text-center text-muted font-weight-bold">Usuarios</h4>
+<form action="">
 <div class="row">
 <label for="" class="offset-md-7">Buscar por:</label>
 <div class="">
-<select id="inputState" class="form-control offset-md-1" name="checkbox_name">
-        <option selected >Codigo</option>
-        <option>Descripcion</option>
+<select id="inputState" class="form-control" name="filtro">
+        <option value="name" selected >Nombre</option>
+        <option value="email">Correo</option>
       </select>
 	  </div>
 	  <div>
-	  <input type="search" id="form1" class="form-control offset-md-1" />
+	  <input type="search" name="busqueda" id="form1" class="form-control " />
 	  </div>
 
 
@@ -25,7 +25,7 @@
             <th>Contraseña</th>
             <th>Sucursal</th>
             <th>Rol</th>
-			<th>Eliminar</th>
+			<th class="rojo">Eliminar</th>
 			
 
 			</tr>
@@ -45,9 +45,10 @@
 					{{method_field('DELETE')}}
                    
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
-                </form>
-                    </td>
-                </tr>
+                </form></td>
+                </td>
+
+             </tr>
 		
 
 			@endforeach
