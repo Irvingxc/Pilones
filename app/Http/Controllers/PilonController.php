@@ -261,7 +261,7 @@ class PilonController extends Controller
      */
     public function destroy( $pilon)
     {
-        $pilon =Pilon:: where ('id','=', $pilon)->first();
+        $pilon =Pilon:: where ('codigo_pilon','=', $pilon)->first();
          $pilon->delete();
          return redirect('/pilon/index');
     }

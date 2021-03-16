@@ -70,7 +70,7 @@ Route::post('/pilon/store', [App\Http\Controllers\PilonController::class,'store'
 
 Route::get('/pilon/ver/{id}', [App\Http\Controllers\PilonController::class,'verDetalles'])->name('pilon.ver');
 Route::post('/pilon/detalle', [App\Http\Controllers\PilonController::class,'detallesave'])->name('pilon.d');
-Route::delete('delete/{pilon}', [App\Http\Controllers\PilonController::class,'destroyDetalle'])->name('pilon.dea');
+Route::delete('/pilon/delete/{pilon}', [App\Http\Controllers\PilonController::class,'destroyDetalle'])->name('pilon.dea');
 /*-------------------------------------------------*/
 
 Route::get('/pilon/edit/{codigo_pilon}', [App\Http\Controllers\PilonController::class,'show'])->name('pilon.show');
