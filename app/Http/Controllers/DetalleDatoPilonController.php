@@ -19,13 +19,14 @@ class DetalleDatoPilonController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function all(Request $request)
+    public function all(Request $request, $ids)
     {
        
        // $temp = Detalle_Dato_Pilon::all();
        $temperatu=[];
        $temp = Detalle_dato_pilon::all();
-        $temperatura = DB::table('Detalle_Dato_Pilons')->select('temperatura', 'fecha_detalle')
+        $temperatura = DB::table('Detalle_Dato_Pilons')->where('pilon_id', '=', $ids)
+        ->select('temperatura', 'fecha_detalle')
         ->orderByRaw('fecha_detalle ASC')// DB::raw('count(*) as total'))
       // ->groupBy('fecha_detalle')
         ->pluck('temperatura', 'fecha_detalle')->all();

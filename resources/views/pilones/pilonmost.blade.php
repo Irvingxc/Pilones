@@ -19,7 +19,7 @@
 <thead class="thead-dark">
 			<tr>
 			<th>Codigo</th>
-			<th>Descripcion</th>
+			<th>Fecha de Empilonamiento</th>
 			<th>Fecha Inicio</th>
 			<th>Ubicacion del Pilon</th>
 			<th>Sucursal</th>
@@ -33,7 +33,7 @@
 			@foreach($pilon as $pilon) 
 			<tr>
 				<td><a href="{{route('pilon.show', [$pilon->id])}}"> {{$pilon->codigo_pilon}}</a></td>
-				<td>{{$pilon->descripcion_pilon}}</td>
+				<td>{{$pilon->Fecha_empilonamiento}}</td>
 				<td>{{$pilon->Fecha_datos_pilones}}</td>
 				<td>{{$pilon->cod}}</td>
 				<td>{{$pilon->nombre}}</td>

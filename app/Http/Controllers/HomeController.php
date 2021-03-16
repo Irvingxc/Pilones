@@ -24,6 +24,10 @@ class HomeController extends Controller
     { 
         return view('Home.inicio');
     }
+    public function indexes()
+    { 
+        return view('Home.inicio');
+    }
 
     public function index_pilones()
     { 
