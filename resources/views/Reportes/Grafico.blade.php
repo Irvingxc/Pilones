@@ -57,7 +57,7 @@ var chart = new Chart(ctx, {
     data: {
         labels: {!! json_encode($chart->labels)!!}, //['1','2','4','5','6','7','8','9','10'],
         datasets: [{
-            label: 'Marzo',
+            label: 'Temperatura',
             backgroundColor: 'rgb(255,255,255,0.1)',
             borderColor: 'rgb(0, 0, 128)',
             data: {!! json_encode($chart->dataset)!!}, 

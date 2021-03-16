@@ -1954,6 +1954,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['fin', 'rows', 'varie', 'true', 'mostrar'],
   data: function data() {
@@ -41447,13 +41449,14 @@ var render = function() {
         _c("div", { staticClass: "margin" }, [
           _c("label", { attrs: { for: "" } }),
           _vm._v(" "),
-          _vm.datos == 1
+          _vm.datos == 0 || _vm.datos == 2
             ? _c("div", [
                 _c(
                   "button",
                   {
                     staticClass: "btn btn-primary",
-                    attrs: { type: "button", disabled: "" }
+                    attrs: { type: "button" },
+                    on: { click: _vm.saveDetalles }
                   },
                   [_vm._v("Agregar al contenido del Pilon")]
                 ),
@@ -41469,8 +41472,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary",
-                    attrs: { type: "button" },
-                    on: { click: _vm.saveDetalles }
+                    attrs: { type: "button", disabled: "" }
                   },
                   [_vm._v("Agregar al contenido del Pilon")]
                 ),

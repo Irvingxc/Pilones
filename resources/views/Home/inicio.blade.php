@@ -16,12 +16,7 @@
 
 @if(@Auth::user()->hasRole('cliente'))
 
-<div class="card offset-md-2">
-<img class="card-img-top tamno" src="{{asset('images/molde.jpg')}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Moldes</h5>
-    <a href="" class="btn btn-primary">Entrar</a>
-  </div>
+
   
 </div>
 @endif

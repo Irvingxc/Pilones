@@ -29,14 +29,16 @@
 
           <div class="margin">
               <label for=""></label>
-<div v-if="datos==1">
-<button  type="button" class="btn btn-primary"   disabled>Agregar al contenido del Pilon</button>
+<div v-if="datos==0 || datos==2">
+    <button  type="button" class="btn btn-primary" @click="saveDetalles">Agregar al contenido del Pilon</button>
+
       <br>
       <br>
 <br>
 </div>
 <div v-else>
-<button  type="button" class="btn btn-primary" @click="saveDetalles">Agregar al contenido del Pilon</button>
+    <button  type="button" class="btn btn-primary"   disabled>Agregar al contenido del Pilon</button>
+
       <br>
       <br>
 <br>
