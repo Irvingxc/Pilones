@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="Container">
+<div class="container">
 <h4 class="text-center text-muted font-weight-bold">Pilon</h4>
 <div class="row">
 <form action="">
