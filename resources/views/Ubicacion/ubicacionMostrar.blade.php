@@ -26,7 +26,6 @@
 			<th>Codigo</th>
 			<th>Descripcion</th>
 			<th>Estado</th>
-			<th>Pilon</th>
 			<th>Sucursal</th>
             <th class="rojo">Eliminar</th>
 			</tr>
@@ -34,10 +33,10 @@
 		<tbody>
 			@foreach($ubicacion as $pro) 
 			<tr>
-				<td><a href="{{route('ubicacion.show', [$pro->id])}}">{{$pro->id}}</a></td>
+				<td><a href="{{route('ubicacion.show', [$pro->id])}}">{{$pro->codigo_ubicacion}}</a></td>
 				<td>{{$pro->descripcion_ubicacion}}</td>
 				<td>{{$pro->estado_ubicacion == 1 ? "Disponible" :  "Ocupado"}}</td>
-				<td></td>
+				
 				<td>{{$pro->nombre}}</td>
                 <td><form method="post" action="{{route('ubicacion.destroy', [$pro->id])}}" class="formulario-eliminar">
                     {{csrf_field()}}

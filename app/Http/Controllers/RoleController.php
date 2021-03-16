@@ -50,8 +50,8 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'guard_name' => 'required',
+            'name' => 'required|max:25',
+            'guard_name' => 'required|max:15',
         ]);
 
     $role = new role;
@@ -97,8 +97,8 @@ class RoleController extends Controller
         
         $role = role::findOrFail($role);
         $this->validate($request, [
-            'name' => 'required',
-            'guard_name' => 'required',
+            'name' => 'required|max:25',
+            'guard_name' => 'required|max:15',
         ]);
 
     $role->name = $request->input('name');

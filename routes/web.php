@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('auth.login');
-});
+});*/
 /*Route::get('/procedencia', function () { 
     return view('Procedencia.procedencia');
 });*/
@@ -33,6 +33,7 @@ Route::post('/procedencia/update/{procedencias}/nose', [App\Http\Controllers\Pro
 /*------------------------------HOME-------------------------------*/
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'indexes'])->name('home');
 Route::get('/home/menu', [App\Http\Controllers\HomeController::class, 'menu'])->name('home.menu'); 
 
 
@@ -60,7 +61,7 @@ Route::delete('/fincas/{fincas}',[App\Http\Controllers\FincaController::class,'d
 
 
 /*------------------------------PILON -------------------------------*/
-Route::get('/pilon/grafico', [App\Http\Controllers\DetalleDatoPilonController::class,'all'])->name('pilon.grafico');
+Route::get('/pilon/grafico/{id?}', [App\Http\Controllers\DetalleDatoPilonController::class,'all'])->name('pilon.grafico');
 Route::get('/pilon', [App\Http\Controllers\PilonController::class,'pilonindex'])->name('pilon.pilonindex');
 
 Route::get('/pilon/index', [App\Http\Controllers\PilonController::class,'index'])->name('pilon.index');
@@ -70,7 +71,7 @@ Route::post('/pilon/store', [App\Http\Controllers\PilonController::class,'store'
 
 Route::get('/pilon/ver/{id}', [App\Http\Controllers\PilonController::class,'verDetalles'])->name('pilon.ver');
 Route::post('/pilon/detalle', [App\Http\Controllers\PilonController::class,'detallesave'])->name('pilon.d');
-Route::delete('delete/{pilon}', [App\Http\Controllers\PilonController::class,'destroyDetalle'])->name('pilon.dea');
+Route::delete('/pilon/delete/{pilon}', [App\Http\Controllers\PilonController::class,'destroyDetalle'])->name('pilon.dea');
 /*-------------------------------------------------*/
 
 Route::get('/pilon/edit/{codigo_pilon}', [App\Http\Controllers\PilonController::class,'show'])->name('pilon.show');

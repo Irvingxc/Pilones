@@ -4,12 +4,12 @@
 <div class="row">
 <div class="card col">
 <br>
+<div class="card-title"> <a id="completado" href="{{route('pilon.index')}}">Pilones</a></div>
+<div class="row">
 @isset($id)
 <input type="hidden" id="pilon_id" value="{{$id}}">
+<a id="completado" href="{{route('pilon.grafico', [$id])}}" class="btn btn-primary col-md-2" target="_blank">Ver Grafico</a>
 @endisset
-<div class="row">
-<a id="completado" href="{{route('pilon.grafico')}}" class="btn btn-primary col-md-2" target="_blank">Ver Grafico</a>
-<a id="completado" href="{{route('pilon.index')}}" class="btn btn-primary col-md-2">Volver a Pilones</a>
 </div>
 <br>
 <div id="calendar"></div>

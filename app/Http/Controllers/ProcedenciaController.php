@@ -41,8 +41,8 @@ class ProcedenciaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nombre' => 'required',
-            'descripcion' => 'required',
+            'nombre' => 'required|max:25',
+            'descripcion' => 'required|max:255',
         ]);
 
     $procedencia = new Procedencia;
@@ -87,8 +87,8 @@ class ProcedenciaController extends Controller
     {
         $procedencia = Procedencia::findOrFail($procedencias);
         $this->validate($request, [
-            'nombre' => 'required',
-            'descripcion' => 'required',
+            'nombre' => 'required|max:25',
+            'descripcion' => 'required|max:255',
         ]);
 
     $procedencia->nombre = $request->input('nombre');

@@ -2,24 +2,25 @@
 
 @section('content')
 <div class="Container">
-<table border="solid" class="table">
 <h4 class="text-center text-muted font-weight-bold">Pilon</h4>
 <div class="row">
+<form action="">
 <label for="" class="offset-md-7">Buscar por:</label>
 <div class="">
-<select id="inputState" class="form-control offset-md-1" name="checkbox_name">
-        <option selected >Codigo</option>
-        <option>Descripcion</option>
+<select id="inputState" class="form-control offset-md-1" name="filtro">
+        <option value="codigo_pilon" selected >Codigo</option>
+        <option value="ubicacions.codigo_ubicacion">Ubicacion</option>
       </select>
 	  </div>
 	  <div>
-	  <input type="search" id="form1" class="form-control offset-md-1" />
+	  <input type="search" id="form1" name="busqueda" class="form-control offset-md-1" />
 	  </div>
+	  </form>
 <table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
 			<th>Codigo</th>
-			<th>Descripcion</th>
+			<th>Fecha de Empilonamiento</th>
 			<th>Fecha Inicio</th>
 			<th>Ubicacion del Pilon</th>
 			<th>Sucursal</th>
@@ -33,7 +34,7 @@
 			@foreach($pilon as $pilon) 
 			<tr>
 				<td><a href="{{route('pilon.show', [$pilon->id])}}"> {{$pilon->codigo_pilon}}</a></td>
-				<td>{{$pilon->descripcion_pilon}}</td>
+				<td>{{$pilon->Fecha_empilonamiento}}</td>
 				<td>{{$pilon->Fecha_datos_pilones}}</td>
 				<td>{{$pilon->cod}}</td>
 				<td>{{$pilon->nombre}}</td>

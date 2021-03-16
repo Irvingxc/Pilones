@@ -31,8 +31,9 @@ class UbicacionController extends Controller
         $caracteres = $request->get('busqueda');
         $ubicacion = DB::table('ubicacions')
         ->join('procedencias', 'procedencias.id','=',
-         'ubicacions.procedencias_id')->where('procedencias_id', '=', "$suc")->
-         where("$categoria", 'like', "%$caracteres%")
+         'ubicacions.procedencias_id')->where('procedencias_id', '=', "$suc")
+         //->join('pilons', 'pilons.ubicacion', '=', 'ubicacions.id')
+         ->where("$categoria", 'like', "%$caracteres%")
          ->select('ubicacions.*', 'procedencias.nombre')->paginate(50);
          
          //('ubicacions.codigo_ubicacion', 'ubicacions.descripcion_ubicacion',
@@ -62,9 +63,9 @@ class UbicacionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'Codigo_ubicacion' => 'required|unique:ubicacions',
-            'descripcion_ubicacion' => 'required',
-            'procedencia'=>'required'
+            'Codigo_ubicacion' => 'required|unique:ubicacions|max:10',
+            'descripcion_ubicacion' => 'required|max:25',
+            'procedencia'=>'required|max:255',
         ]);
 
     $ubicacion = new Ubicacion;
@@ -117,9 +118,9 @@ class UbicacionController extends Controller
     {
         $ubicacion= ubicacion::where('codigo_ubicacion', '=', $ubicaciones)->first();
         $this->validate($request, [
-            'Codigo_ubicacion' => 'required',
-            'descripcion_ubicacion' => 'required',
-            'checkbox_name' => 'required', 
+            'Codigo_ubicacion' => 'required|max:10',
+            'descripcion_ubicacion' => 'required|max:25',
+            'checkbox_name' => 'required|max:255',
         ]);
         if ($request->input('checkbox_name')=="Disponible"){
         $ubicacion->estado_ubicacion = 1; 
