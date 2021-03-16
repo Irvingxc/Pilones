@@ -34,12 +34,12 @@
 		<tbody>
 			@foreach($ubicacion as $pro) 
 			<tr>
-				<td><a href="{{route('ubicacion.show', [$pro->codigo_ubicacion])}}">{{$pro->codigo_ubicacion}}</a></td>
+				<td><a href="{{route('ubicacion.show', [$pro->id])}}">{{$pro->id}}</a></td>
 				<td>{{$pro->descripcion_ubicacion}}</td>
 				<td>{{$pro->estado_ubicacion == 1 ? "Disponible" :  "Ocupado"}}</td>
 				<td></td>
 				<td>{{$pro->nombre}}</td>
-                <td><form method="post" action="{{route('ubicacion.destroy', [$pro->codigo_ubicacion])}}" class="formulario-eliminar">
+                <td><form method="post" action="{{route('ubicacion.destroy', [$pro->id])}}" class="formulario-eliminar">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>

@@ -89,9 +89,9 @@ class UbicacionController extends Controller
      * @param  \App\Models\Ubicacion  $ubicacion
      * @return \Illuminate\Http\Response
      */
-    public function show($codigo_ubicacion)
+    public function show($id)
     {
-        $ubicacion=ubicacion::where('codigo_ubicacion', '=',$codigo_ubicacion)->first();
+        $ubicacion=ubicacion::where('id', '=',$id)->first();
         return view('ubicacion.ubicacion')->with('ubicacion', $ubicacion);
     }
 
@@ -141,7 +141,7 @@ class UbicacionController extends Controller
      */
     public function destroy($ubicacion)
     {
-        $ubicacion =ubicacion::where('codigo_ubicacion','=', $ubicacion)->first();
+        $ubicacion =ubicacion::where('id','=', $ubicacion)->first();
          $ubicacion->delete();
          return redirect('/ubicacion/index')->with('Eliminar', 'Ok.');//
     }
