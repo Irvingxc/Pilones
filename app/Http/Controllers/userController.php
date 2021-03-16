@@ -22,9 +22,9 @@ class userController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|unique:users,email',
-            'password' => 'required'
+            'name' => 'required|max:25',
+            'email' => 'required|unique:users,email|max:30',
+            'password' => 'required|max:25',
         ]);
 
         $user = User::create([
@@ -102,9 +102,9 @@ class userController extends Controller
     {
         $verusuario =User:: where ('id','=', $verusuario)->first();
         $this->validate($request, [
-            'name' => 'required',
-            'email'=>'required',
-            'password'=>'required',
+            'name' => 'required|max:25',
+            'email'=>'required|max:30',
+            'password'=>'required|max:25',
         ]);
         $verusuario->name = $request->input('name');
         $verusuario->email = $request->input('email');

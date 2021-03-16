@@ -48,9 +48,9 @@ class FincaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'codigo_finca' => 'required|unique:fincas,codigo_finca',
-            'nombre_finca' => 'required',
-            'descripcion_finca' =>'required',
+            'codigo_finca' => 'required|unique:fincas,codigo_finca|max:10',
+            'nombre_finca' => 'required|max:25',
+            'descripcion_finca' =>'required|max:255',
         ]);
 
     $Finca = new Finca;
@@ -93,9 +93,9 @@ class FincaController extends Controller
     {
         $finca =finca:: where ('codigo_finca','=', $fincas)->first();
         $this->validate($request, [
-            'codigo_finca' => 'required',
-            'nombre_finca' => 'required',
-            'descripcion_finca' =>'required',
+            'codigo_finca' => 'required|max:10',
+            'nombre_finca' => 'required|max:25',
+            'descripcion_finca' =>'required|max:255',
         ]);
 
     $finca->codigo_finca = $request->input('codigo_finca');

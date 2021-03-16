@@ -46,9 +46,9 @@ class TipoclaseController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'codigo_clase' => 'required|unique:tipoclases,codigo_clase',
-            'nombre_clase' => 'required',
-            'descripcion_clase' => 'required',
+            'codigo_clase' => 'required|unique:tipoclases,codigo_clase|max:10',
+            'nombre_clase' => 'required|max:25',
+            'descripcion_clase' => 'required|max:255',
         ]);
 
     $tipoclase = new tipoclase;
@@ -94,9 +94,9 @@ class TipoclaseController extends Controller
     {
         $tipoclase= tipoclase::where('codigo_clase', '=', $tipoclases)->first();
         $this->validate($request, [
-            'codigo_clase' => 'required',
-            'nombre_clase' => 'required',
-            'descripcion_clase' => 'required',
+            'codigo_clase' => 'required|max:10',
+            'nombre_clase' => 'required|max:25',
+            'descripcion_clase' => 'required|max:255',
         ]);
     $tipoclase->codigo_clase = $request->input('codigo_clase');
     $tipoclase->nombre_clase = $request->input('nombre_clase');

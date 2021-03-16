@@ -52,9 +52,9 @@ class VariedadController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'codigo_variedad' => 'required|unique:variedads,codigo_variedad',
-            'nombre_variedad' => 'required',
-            'descripcion_variedad' =>'required',
+            'codigo_variedad' => 'required|unique:variedads,codigo_variedad|max:10',
+            'nombre_variedad' => 'required|max:25',
+            'descripcion_variedad' =>'required|max:255',
         ]);
 
     $variedad = new variedad;
@@ -102,9 +102,9 @@ class VariedadController extends Controller
     {
         $variedad =Variedad:: where ('codigo_variedad','=', $variedade)->first();
         $this->validate($request, [
-            'codigo_variedad' => 'required',
-            'nombre_variedad'=>'required',
-            'descripcion_variedad'=>'required',
+            'codigo_variedad' => 'required|max:10',
+            'nombre_variedad'=>'required|max:25',
+            'descripcion_variedad'=>'required|max:255',
         ]);
         $variedad->codigo_variedad = $request->input('codigo_variedad');
         $variedad->nombre_variedad = $request->input('nombre_variedad');
