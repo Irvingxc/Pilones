@@ -93,9 +93,10 @@ class userController extends Controller
       $role = Role::all();
       $procedencia = Procedencia::all();
         $verusuarios = User::where('id', '=', $verusuario)->first();
-        return view('Auth.register')->with('register',$verusuarios) ('procedencia',$procedencia) ('role',$role);
+        return view('Auth.register', ['register'=>$verusuarios, 'procedencia'=>$procedencia, 'role'=>$role]);
+        //return view('Auth.register')->with('register',$verusuarios) ('procedencia',$procedencia) ('role',$role);
     } 
-
+ 
 
     public function ver()
     {
