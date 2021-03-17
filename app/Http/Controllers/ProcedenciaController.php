@@ -16,10 +16,15 @@ class ProcedenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $procedencia = Procedencia::all(); 
-        return view('Procedencia.mostrar', ['procedencia'=>$procedencia]);
+        $categoria = $request->get('filtro');
+        if($categoria==null){
+            $categoria="nombre";
+        }
+        $caracteres = $request->get('busqueda');
+        $procedencia = procedencia::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        return view('Procedencia.mostrar', compact('procedencia'));
     }
 
     /**
