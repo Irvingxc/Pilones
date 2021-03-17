@@ -141,12 +141,7 @@ h1 {
 
                         @if (Route::has('home.menu')) 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('home.menu') }}">{{ __('Menu Pilones') }}</a>
-                                </li>
-                            @endif
-                         @if (Route::has('home.menu')) 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('home.menu') }}">{{ __('Menu Moldes') }}</a>
+                                    <a class="nav-link" href="{{ route('home.menu') }}">{{ __('Menu Principal') }}</a>
                                 </li>
                             @endif
                             <li class="nav-item dropdown">
