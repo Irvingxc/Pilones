@@ -5,6 +5,9 @@
 <div class="card col">
 <br>
 <div class="card-title"> <a id="completado" href="{{route('pilon.index')}}">Pilones</a></div>
+@isset($pilon)
+<p>Esta viendo el pilon con Codigo: {{$pilon->codigo_pilon}}</p>
+@endisset
 <div class="row">
 @isset($id)
 <input type="hidden" id="pilon_id" value="{{$id}}">
@@ -115,7 +118,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let m = moment(info.event.start).format("YYYY-MM-DD")
         $("#agenda_modal").modal();
         $("#txtFecha").val(m);
-        $("#temperatura").val(info.event.title);
+        let edit = info.event.title.split(" ")
+        //info.event.title.replace(/_|#|a-z|°F|-|a|@|<>/g, "")
+        $("#temperatura").val(edit[0]);
         $("#id_impor").val(info.event.id);
         if(info.event.extendedProps.virado==1){
           
@@ -142,25 +147,22 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       editable: true,
       events: '/detalledatopilon/listar/'+$("#pilon_id").val(),
-      eventRender: function (info) {
-        description: info.event.description
-    console.log(info.event.extendedProps);
-    // {description: "Lecture", department: "BioChemistry"}
-  }
+
+
+      /*eventRender: function(info) {
+                    var tooltip = new Tooltip(info.el, {
+                        title: info.event.title.append("<br/>") +info.event.description,
+                        content: 'asdadasdqweqweqweqweqwasssd',
+                        placement: 'top',
+                        trigger: 'hover',
+                        container: 'body'
+                    });
+                  }*/
 
     });
     calendar.render();
 })
 
-$('#completado').on('click', function (){
-let dato = 'title';
-this.href= "/pilon/grafico/"+dato;
-// Código alfa (para evaluar resultado en es.stackoverflow.com)
-//this.href=window.location.href+"?id=5&"+this.href.split("?")[1];alert(this.href);
-// Código beta (para producción deberá funcionar en tu escenario)
-//this.href=window.location.href+"&"+this.href.split("?")[1];
-
-});
 function limpiar(){
   $("#agenda_modal").modal('hide');
   $("#txtFecha").val("");

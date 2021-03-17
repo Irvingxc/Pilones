@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Detalle_pilon;
 use App\Models\Detalle_dato_pilon;
+use App\Models\Pilon;
 use Illuminate\Http\Request;
 
 class DetallePilonController extends Controller
@@ -20,12 +21,15 @@ class DetallePilonController extends Controller
         $nueva_agenda=[];
 
         foreach($datos as $value){
+            
             $nueva_agenda[] = [
                 "id"=> $value->id,
                 "start"=> $value->fecha_detalle,
-                "end"=> "",//$value->mojado,
-                "title"=> $value->temperatura." °F",
-                "description"=>"jajaj",//."°F",
+                $vir= $value->virado==1 ? "virado":"",
+                $moj= $value->mojado==1 ? "mojado":"",
+                $fum= $value->fumigado==1 ? "fumigado":"", //$value->mojado,
+                "title"=> $value->temperatura." °F"."\n". $vir."\n".$moj."\n". $fum,
+                //."°F",
                 "extendedProps"=>[
                     "virado"=> $value->virado,
                     "mojado"=>$value->mojado,
@@ -44,8 +48,9 @@ class DetallePilonController extends Controller
     public function index($id)
     {
         $datos = Detalle_dato_pilon::where('pilon_id', '=', $id)->get();
+        $pilon = Pilon::where('id', '=', $id)->first();
        
-        return view('Detalle_Dato_Pilon.Calendario', ['datos'=>$datos, 'id'=>$id]);
+        return view('Detalle_Dato_Pilon.Calendario', ['datos'=>$datos, 'id'=>$id, 'pilon'=>$pilon]);
         //return $id;
     }
 
