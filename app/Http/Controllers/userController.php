@@ -8,6 +8,7 @@ use App\Models\Procedencia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
@@ -58,16 +59,23 @@ class userController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $categoria = $request->get('filtro');
+        if($categoria==null){
+            $categoria="users.name";
+        }
        
        // $verusuario = User::all();
         //$rol = User::find(2)->role;
+        $suc= Auth::user()->sucursal;
+        $caracteres = $request->get('busqueda');
         $verusuario = DB::table('users')
         ->join('model_has_roles', 'model_has_roles.model_id','=',
          'users.id')
          ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
          ->join('procedencias', 'procedencias.id', '=', 'users.sucursal')
+         ->where("$categoria", 'like', "%$caracteres%")
          ->select('users.*','users.id as sd', 'model_has_roles.*', 'roles.name as rol', 'procedencias.*')->paginate(50);
         return view ('Usuarios.Verususarios',['Usuarios'=>$verusuario]); 
          
