@@ -2,9 +2,9 @@
 @section('content')
 <div class="container">
 <h4 class="text-center text-muted font-weight-bold">Variedad</h4>
-<div class="row">
 <form action="">
-<label for="" class="offset-md-7">Buscar por:</label>
+<div class="row">
+<label for="" class="">Buscar por:</label>
 <div class="">
 <select id="inputState" class="form-control offset-md-1" name="checkbox_name">
         <option value="codigo_variedad" selected >Codigo</option>
