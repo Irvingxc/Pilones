@@ -7,8 +7,8 @@
 <label for="" class="offset-md-7">Buscar por:</label>
 <div class="">
 <select id="inputState" class="form-control" name="filtro">
-        <option value="name" selected >Nombre</option>
-        <option value="email">Correo</option>
+        <option value="users.name" selected >Nombre</option>
+        <option value="users.email">Correo</option>
       </select>
 	  </div>
 	  <div>
