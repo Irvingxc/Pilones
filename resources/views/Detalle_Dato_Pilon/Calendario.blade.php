@@ -6,7 +6,7 @@
 <br>
 <div class="card-title"> <a id="completado" href="{{route('pilon.index')}}">Pilones</a></div>
 @isset($pilon)
-<p>Esta viendo el pilon con Codigo: {{$pilon->codigo_pilon}}</p>
+<p>Pilon con Codigo: {{$pilon->codigo_pilon}}</p>
 @endisset
 <div class="row">
 @isset($id)

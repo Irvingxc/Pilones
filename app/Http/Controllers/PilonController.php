@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Auth\UserInterface;
 use App\Models\User;
+use DateTime;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class PilonController extends Controller
@@ -34,18 +36,21 @@ class PilonController extends Controller
        }
        $caracteres = $request->get('busqueda');
        $suc= Auth::user()->sucursal;
+       $now=Carbon::now();
+       $now = $now->format('d-m-Y');
         $pilon = DB::table('pilons')
         ->join('procedencias', 'procedencias.id','=',
          'pilons.sucursal_id')->where('sucursal_id', '=', "$suc")
          ->join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')
-         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod')
-         ->
-        where("$categoria", 'like', "%$caracteres%")->paginate(50);
+       // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
+         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
+         ->where("$categoria", 'like', "%$caracteres%")->paginate(50);
         $ubicacion = Ubicacion::all();
         $finca = Finca::all();
         $clase = tipoclase::all();
         $clase = Variedad::all();
         return view ('pilones.pilonmost',['pilon'=>$pilon]); 
+       // return $now;
          
     }
 

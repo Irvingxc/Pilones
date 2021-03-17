@@ -108,6 +108,7 @@ h1 {
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+            
                 <a class="navbar-brand" href="{{ url('/home') }}">
                 <img src="{{asset('images/logo.png')}}" alt="" style="width: 2rem">
                     {{ config('app.name', 'Laravel') }}
@@ -166,8 +167,10 @@ h1 {
                 </div>
             </div>
         </nav>
+        
 
         <main class="py-4">
+        
             @yield('content')
         </main>
     </div>
