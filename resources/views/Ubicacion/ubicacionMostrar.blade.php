@@ -7,7 +7,7 @@
 <label for="" class="">Buscar por:</label>
 
 <div class="">
-<select id="inputState" class="form-control " name="filtro">
+<select id="inputState" class="form-control offset-md-1" name="filtro">
         <option value="codigo_ubicacion" selected >Codigo</option>
         <option value="descripcion_ubicacion">Descripcion</option>
         <option value="estado_ubicacion">Estado</option>
@@ -16,7 +16,7 @@
 
 
 	  <div>
-	  <input type="search" name="busqueda" id="form1" class="form-control " />
+	  <input type="search" name="busqueda" id="form1" class="form-control offset-md-1" />
 	  </form>
 	  </div>
 	  </div>
