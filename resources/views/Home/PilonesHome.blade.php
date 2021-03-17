@@ -6,6 +6,10 @@
   </div>
   <div class="row">
   <div class="text-center col-md-6 pt-5  tintar">
+      <a href="{{route('pilon.gerentes')}}">
+        <h1>Pilones Reportes</h1>
+      </div>
+  <div class="text-center col-md-6 pt-5  tintar">
       <a href="{{route('pilon.index')}}">
         <h1>Pilones</h1>
       </div>

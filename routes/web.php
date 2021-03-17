@@ -65,6 +65,7 @@ Route::get('/pilon/grafico/{id?}', [App\Http\Controllers\DetalleDatoPilonControl
 Route::get('/pilon', [App\Http\Controllers\PilonController::class,'pilonindex'])->name('pilon.pilonindex');
 
 Route::get('/pilon/index', [App\Http\Controllers\PilonController::class,'index'])->name('pilon.index');
+Route::get('/pilon/all', [App\Http\Controllers\PilonController::class,'indexGerentes'])->name('pilon.gerentes');
 
 Route::post('/pilon/store', [App\Http\Controllers\PilonController::class,'store'])->name('pilon.store');
 /*--------------------------------------------------*/

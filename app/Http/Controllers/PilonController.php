@@ -22,6 +22,34 @@ class PilonController extends Controller
     {
         $this->middleware('auth');
     }
+
+
+    public function indexGerentes(Request $request)
+    {
+       // $pilon = Pilon::all();
+       $categoria = $request->get('filtro');
+       if($categoria==null){
+           $categoria="codigo_pilon";
+       }
+       $caracteres = $request->get('busqueda');
+       $suc= Auth::user()->sucursal;
+       $now=Carbon::now();
+       $now = $now->format('d-m-Y');
+        $pilon = DB::table('pilons')
+        ->join('procedencias', 'procedencias.id','=',
+         'pilons.sucursal_id')
+         ->join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')
+       // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
+         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
+         ->where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        $ubicacion = Ubicacion::all();
+        $finca = Finca::all();
+        $clase = tipoclase::all();
+        $clase = Variedad::all();
+        return view ('pilones.PilonAll',['pilon'=>$pilon]); 
+       // return $now;
+         
+    }
     /**
      * Display a listing of the resource.
      *
