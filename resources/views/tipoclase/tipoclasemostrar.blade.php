@@ -2,9 +2,9 @@
 @extends('layouts.app')
 @section('content')
 <h4 class="text-center text-muted font-weight-bold">Clases</h4>
-<div class="row">
 <form action="">
-<label for="" class="offset-md-7">Buscar por:</label>
+<div class="row">
+<label for="" class="">Buscar por:</label>
 <div class="">
 <select id="inputState" class="form-control offset-md-1" name="filtro">
         <option value="codigo_clase" selected >Codigo</option>
