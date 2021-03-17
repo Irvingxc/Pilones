@@ -1,18 +1,18 @@
 @extends('layouts.app')
 @section('content')
-<div class="Container">
+<div class="container">
 <h4 class="text-center text-muted font-weight-bold">Usuarios</h4>
 <form action="">
 <div class="row">
 <label for="" class="">Buscar por:</label>
 <div class="">
-<select id="inputState" class="form-control" name="filtro">
+<select id="inputState" class="form-control offset-md-1" name="filtro">
         <option value="users.name" selected >Nombre</option>
         <option value="users.email">Correo</option>
       </select>
 	  </div>
 	  <div>
-	  <input type="search" name="busqueda" id="form1" class="form-control " />
+	  <input type="search" name="busqueda" id="form1" class="form-control offset-md-1" />
 	  </div>
     </form>
     </div>
