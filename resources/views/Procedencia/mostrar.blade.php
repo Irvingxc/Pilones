@@ -8,12 +8,12 @@
 <label for="" class="">Buscar por:</label>
 
 <div class="">
-<select id="inputState" class="form-control " name="filtro">
+<select id="inputState" class="form-control offset-md-1" name="filtro">
         <option value="nombre" selected >Nombre</option>
       </select>
 	  </div>
 	  <div>
-	  <input type="search" name="busqueda" id="form1" class="form-control " />
+	  <input type="search" name="busqueda" id="form1" class="form-control offset-md-1" />
 	  </form>
 	  </div>
 	  </div>
