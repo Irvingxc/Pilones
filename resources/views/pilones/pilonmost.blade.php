@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
 <div class="container">
 <h4 class="text-center text-muted font-weight-bold">Pilon</h4>
 <form action="">
@@ -27,7 +28,9 @@
 			<th>Días Totales Desde Empilonamiento</th>
 			<th>Ubicación del Pilon</th>
 			<th>Sucursal</th>
+			@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero'))
             <th>Eliminar</th>
+			@endif
 			<th>Reporte</th>
 			
 			</tr>
@@ -42,6 +45,7 @@
 				<td>{{$pilon->empilonamiento}} Días</td>
 				<td>{{$pilon->cod}}</td>
 				<td>{{$pilon->nombre}}</td>
+				@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero'))
                 <td> <form method="post" action="{{route('pilon.destroy', [$pilon->id])}}">
                     {{csrf_field()}}
 					{{method_field('DELETE')}}
@@ -49,6 +53,7 @@
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form>
                     </td>
+					@endif
 					<td> <a class="btn btn-primary"  href="{{route('calendario', [$pilon->id])}}" >Calendario</button></td>
                 
                 </tr>
@@ -63,4 +68,5 @@
 </a>
 </div>
 </div>
+@endif
 @endsection

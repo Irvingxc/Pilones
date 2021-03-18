@@ -11,7 +11,7 @@
         <h1>Pilones Reportes</h1>
       </div>
       @endif
-      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero')||@Auth::user()->hasRole('Sub-Admin'))
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
   <div class="text-center col-md-6 pt-5  tintar">
       <a href="{{route('pilon.index')}}">
         <h1>Pilones</h1>
@@ -36,7 +36,7 @@
         <h1>Clases</h1>
       </div>
       @endif
-      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero'))
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('ubicacion.index')}}">
         <h1>Ubicación</h1>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
 <div class="container">
 <div class="card">
 <div class="card-header"><a href="{{route('pilon.index')}}">Pilon</a></div>
@@ -123,4 +124,5 @@ value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
 </div>
 </div>
 </div>
+@endif
 @endsection
