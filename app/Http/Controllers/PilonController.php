@@ -7,6 +7,7 @@ use App\Models\Detalle_pilon;
 use App\Models\Finca;
 use App\Models\Ubicacion;
 use App\Models\tipoclase;
+use App\Models\Procedencia;
 use App\Models\Variedad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,31 +24,39 @@ class PilonController extends Controller
         $this->middleware('auth');
     }
 
-
     public function indexGerentes(Request $request)
     {
        // $pilon = Pilon::all();
        $categoria = $request->get('filtro');
+       $region = $request->get('filtro1');
        if($categoria==null){
            $categoria="codigo_pilon";
        }
+       if($region==null){
+        $region="San Marcos";
+    }
+       $procedencias = DB::table('procedencias')->select('nombre')
+       ->OrderByRaw('nombre desc')->get();
+
        $caracteres = $request->get('busqueda');
        $suc= Auth::user()->sucursal;
        $now=Carbon::now();
        $now = $now->format('d-m-Y');
+       
         $pilon = DB::table('pilons')
         ->join('procedencias', 'procedencias.id','=',
          'pilons.sucursal_id')
          ->join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')
        // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
          ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
-         ->where("$categoria", 'like', "%$caracteres%")->paginate(50);
+         ->where('procedencias.nombre','=', "$region")->where("$categoria", 'like', "%$caracteres%")
+         ->paginate(50);
         $ubicacion = Ubicacion::all();
         $finca = Finca::all();
         $clase = tipoclase::all();
         $clase = Variedad::all();
-        return view ('pilones.PilonAll',['pilon'=>$pilon]); 
-       // return $now;
+        return view ('pilones.PilonAll',['pilon'=>$pilon, 'procedencias'=>$procedencias]); 
+        //return $parametro;
          
     }
     /**

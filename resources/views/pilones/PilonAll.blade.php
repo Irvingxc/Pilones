@@ -10,7 +10,13 @@
 <select id="inputState" class="form-control" name="filtro">
         <option value="codigo_pilon" selected >Codigo</option>
         <option value="ubicacions.codigo_ubicacion">Ubicacion</option>
-        <option value="procedencias.nombre">Procedencias</option>
+      </select>
+	  </div>
+	  <div>
+	  <select id="inputState" class="form-control" name="filtro1">
+	  @foreach($procedencias as $pro)
+        <option value="{{$pro->nombre}}" selected >{{$pro->nombre}}</option>
+		@endforeach
       </select>
 	  </div>
 	  <div>

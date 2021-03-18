@@ -51,13 +51,14 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:25',
-            'guard_name' => 'required|max:15',
+           // 'guard_name' => 'required|max:15',
         ]);
 
-    $role = new role;
+    /*$role = new role;
     $role->name = $request->input('name');
     $role->guard_name = $request->input('guard_name');
-    $role->save(); 
+    $role->save(); */
+    $role = Role::create(['name' => $request->input('name')]);
 
     return redirect('/role/index'); 
     }
@@ -70,7 +71,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = role::findOrFail($id);
+        $role = Role::findOrFail($id);
         return view('role.role')->with('role', $role);
     }
 
@@ -95,16 +96,14 @@ class RoleController extends Controller
     public function update(Request $request, $role)
     {
         
-        $role = role::findOrFail($role);
+        $role = Role::findOrFail($role);
         $this->validate($request, [
             'name' => 'required|max:25',
-            'guard_name' => 'required|max:15',
+           // 'guard_name' => 'required|max:15',
         ]);
-
-    $role->name = $request->input('name');
-    $role->guard_name = $request->input('guard_name');
-    $role->save(); 
-
+        $role->name = $request->input('name');
+        $role->save();
+       // $role = Role::update(['name' => $request->input('name')]);
     return redirect('/role/index');
     }
 

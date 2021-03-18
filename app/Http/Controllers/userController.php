@@ -46,7 +46,7 @@ class userController extends Controller
         if( $parametro == 'cliente'){
             $user->assignRole('cliente');
         }else{
-            $user->assignRole('admin');
+            $user->assignRole('admin'); 
         }
 
         
