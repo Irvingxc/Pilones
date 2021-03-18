@@ -14,6 +14,7 @@
 	  </div>
 	  <div>
 	  <input type="search" name="busqueda" id="form1" class="form-control offset-md-1" />
+	  </div>
 	  </form>
 	  </div>
 <table border="solid" class="table">
