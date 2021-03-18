@@ -43,12 +43,17 @@ class userController extends Controller
 
         $nuevo =$verusuario->save();*/
         $parametro = $request->roles;
-        if( $parametro == 'cliente'){
-            $user->assignRole('cliente');
-        }else{
-            $user->assignRole('admin'); 
+        if( $parametro == 'Analista'){
+            $user->assignRole('Analista');
+        }else if($parametro == 'Admin'){
+            $user->assignRole('Admin'); 
+        }else if($parametro == 'Sub-Admin'){
+            $user->assignRole('Sub-Admin'); 
+        }else if($parametro == 'Pilonero'){
+            $user->assignRole('Pilonero'); 
+        }else if($parametro == 'Sub-Pilonero'){
+            $user->assignRole('Sub-Pilonero'); 
         }
-
         
     
         return redirect('/verusuario/index');
@@ -92,7 +97,12 @@ class userController extends Controller
       //  $id= Crypt::decrypt($id);
       $role = Role::all();
       $procedencia = Procedencia::all();
-        $verusuarios = User::where('id', '=', $verusuario)->first();
+        $verusuarios = DB::table('users')
+        ->join('procedencias', 'procedencias.id', '=', 'users.sucursal')
+        ->join('model_has_roles', 'model_has_roles.model_id','=', 'users.id')
+        ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
+        ->where('users.id', '=', $verusuario)->select('users.*', 'procedencias.id as procedencia_id', 'procedencias.nombre as procedencia', 'roles.name as rol')
+        ->first();
         return view('Auth.register', ['register'=>$verusuarios, 'procedencia'=>$procedencia, 'role'=>$role]);
         //return view('Auth.register')->with('register',$verusuarios) ('procedencia',$procedencia) ('role',$role);
     } 

@@ -5,41 +5,61 @@
     <h4 class="text-center text-muted font-weight-bold">Menú</h4>
   </div>
   <div class="row">
-  <div class="text-center col-md-6 pt-5  tintar">
+  @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
+  <div class="text-center col-md-6 pt-5  tintar"> 
       <a href="{{route('pilon.gerentes')}}">
         <h1>Pilones Reportes</h1>
       </div>
+      @endif
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero')||@Auth::user()->hasRole('Sub-Admin'))
   <div class="text-center col-md-6 pt-5  tintar">
       <a href="{{route('pilon.index')}}">
         <h1>Pilones</h1>
       </div>
+      @endif
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
+
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('fincas.index')}}">
          <h1>Fincas</h1>
       </div>
+      @endif
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
       <div class="text-center col-md-6 pt-5   tintar">
       <a href="{{route('variedad.index')}}">
         <h1>Variedad</h1>
-      </div>    
+      </div>
+      @endif  
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('tipoclase.index')}}">
         <h1>Clases</h1>
       </div>
+      @endif
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('ubicacion.index')}}">
         <h1>Ubicación</h1>
-      </div><div class="text-center col-md-6 pt-5 tintar">
+      </div>
+      @endif
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
+      <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('procedencia.index')}}">
         <h1>Sucursales</h1>
       </div>
+      @endif
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('verusuario.index')}}">
         <h1>Usuarios</h1>
       </div>
+      @endif
+      @if(@Auth::user()->hasRole('Admin'))
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('role.index')}}">
         <h1>Roles</h1>
       </div>
+      @endif
       
       
       

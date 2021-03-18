@@ -24,6 +24,7 @@
 	  </div>
 	  </form>
 	  </div>
+	  @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
 <table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
@@ -64,5 +65,6 @@
 			@endforeach
 		</tbody>
 	</table>
+	@endif
 </div>
 @endsection

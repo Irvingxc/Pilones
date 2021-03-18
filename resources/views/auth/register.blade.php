@@ -75,9 +75,18 @@
 
                              <div class="col-md-6">
                                 <select id="inputState" class="col-md-6 form-control" name="procedencia">
+                                @isset($register)
+                                <option selected value="{{$register->procedencia_id}}" >{{$register->procedencia}}</option>
                                 @foreach($procedencia as $var)
-                                <option selected value="{{$var->id}}" >{{$var->nombre}}</option>
+                                @if($register->procedencia_id != $var->id)
+                                <option value="{{$var->id}}" >{{$var->nombre}}</option>
+                                @endif
                                 @endforeach
+                                @else
+                                @foreach($procedencia as $var)
+                                <option value="{{$var->id}}" >{{$var->nombre}}</option>
+                                @endforeach
+                                @endisset
                                 </select>
 
                             </div>
@@ -88,9 +97,18 @@
 
                              <div class="col-md-6">
                                 <select id="inputState" class="col-md-6 form-control" name="roles">
+                                @isset($register)
+                                <option selected value="{{$register->rol}}" >{{$register->rol}}</option>
                                 @foreach($role as $var)
-                                <option selected value="{{$var->name}}" >{{$var->name}}</option>
+                                @if($register->rol != $var->name)
+                                <option value="{{$var->name}}" >{{$var->name}}</option>
+                                @endif
                                 @endforeach
+                                @else
+                                @foreach($procedencia as $var)
+                                <option value="{{$var->name}}" >{{$var->name}}</option>
+                                @endforeach
+                                @endisset
                                 </select>
                             </div>
                         </div>

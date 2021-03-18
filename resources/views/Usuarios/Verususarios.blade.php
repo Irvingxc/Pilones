@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="Container">
 <h4 class="text-center text-muted font-weight-bold">Usuarios</h4>
 <form action="">
 <div class="row">

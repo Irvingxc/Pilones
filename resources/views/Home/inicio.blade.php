@@ -17,8 +17,7 @@
 @if(@Auth::user()->hasRole('cliente'))
 
 
-  
-</div>
+
 @endif
 
 

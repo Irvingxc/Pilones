@@ -78,6 +78,11 @@ value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
  @endisset
         @endforeach
       </select>
+      <p style="color:red;">
+      @if(Session::has('message'))
+   {!! Session::get('message') !!}
+   @endif 
+   </p>
 </div>
 </div>
 <br>
@@ -95,6 +100,7 @@ value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
 <input name="sucursal" value="{{Auth::user()->sucursal}}" type="hidden">
 
 </div>
+
 <br>
 <button type='submit' class="btn btn-primary" @if($true==0) disabled @endif>@if(isset($pilon))Editar Pilon @else Guardar Pilon @endif</button>
 <br>

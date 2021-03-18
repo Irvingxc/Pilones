@@ -174,6 +174,19 @@ class PilonController extends Controller
         
     }
 
+
+    public function ValidarUbicacion($ubi)
+    {
+        $ubicacion = Pilon::where('ubicacion', '=', $ubi)->first();
+        return $ubicacion==null?true:false;
+
+        /*$pilon =Pilon:: where ('codigo_pilon','=', $pilon)->first();
+         $pilon->delete();
+         return redirect('/pilon/index');*/
+        
+    }
+
+
     //-----------------------------------------------------------
     public function store(Request $request)
     {
@@ -190,40 +203,48 @@ class PilonController extends Controller
     $pilon->descripcion_pilon = $request->input('descripcion_pilon');
     $pilon->save();
     $codigo_pilon=o;*/
+    if($this->ValidarUbicacion($request->input('ubicacion'))){
+        $id = pilon::create([
+            'codigo_pilon' => $request->codigo_pilon,
+            'descripcion_pilon' => $request->descripcion_pilon,
+            'ubicacion' => $request->input('ubicacion'),
+            'Fecha_datos_pilones' => $request->input('fecha_inicio'),
+            'sucursal_id' => $request->sucursal,
+            'Fecha_empilonamiento' => $request->input('Fecha_empilonamiento'),
+            'peso' => $request->peso
+        ]);
+    
+        if($id==null){
+            $mostrar = 0;
+        }else{
+            $mostrar = $id->id;
+    
+        }
+        $update = Ubicacion::findOrFail($request->input('ubicacion'));
+        $update->estado_ubicacion = 0;
+        $update->save(); 
+    
+    
+    
+    
+        //required min=<?php $hoy=date("Y-m-d"); echo $hoy;
+        //value="{{date('Y-m-d', strtotime($pilon->fecha_datos_pilones))}}"
+        $pilon =Pilon::findOrFail($mostrar);
+        $ubicacion = Ubicacion::all();
+        $finca = Finca::all();
+        $clase = tipoclase::all();
+        $variedad = Variedad::all();
+        $true = 0; 
+        return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
+        'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar, 'pilon'=>$pilon]);
 
-    $id = pilon::create([
-        'codigo_pilon' => $request->codigo_pilon,
-        'descripcion_pilon' => $request->descripcion_pilon,
-        'ubicacion' => $request->input('ubicacion'),
-        'Fecha_datos_pilones' => $request->input('fecha_inicio'),
-        'sucursal_id' => $request->sucursal,
-        'Fecha_empilonamiento' => $request->input('Fecha_empilonamiento'),
-        'peso' => $request->peso
-    ]);
-
-    if($id==null){
-        $mostrar = 0;
     }else{
-        $mostrar = $id->id;
+        \Session::flash('message', 'Esta Ubicacion ya esta en uso');
+        return $this->pilonindex();
 
     }
-    $update = Ubicacion::findOrFail($request->input('ubicacion'));
-    $update->estado_ubicacion = 0;
-    $update->save(); 
 
-
-
-
-    //required min=<?php $hoy=date("Y-m-d"); echo $hoy;
-    //value="{{date('Y-m-d', strtotime($pilon->fecha_datos_pilones))}}"
-    $pilon =Pilon::findOrFail($mostrar);
-    $ubicacion = Ubicacion::all();
-    $finca = Finca::all();
-    $clase = tipoclase::all();
-    $variedad = Variedad::all();
-    $true = 0; 
-    return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
-    'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar, 'pilon'=>$pilon]);
+   
     //return $mostrar;
 
         }
