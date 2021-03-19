@@ -33,9 +33,9 @@
 			<th>Fecha de Empilonamiento</th>
 			<th>Días Totales Desde Que Inició</th>
 			<th>Días Totales Desde Empilonamiento</th>
+			<th>Peso del Pilon</th>
 			<th>Ubicación del Pilon</th>
 			<th>Sucursal</th>
-            <th>Eliminar</th>
 			<th>Reporte</th>
 			
 			</tr>
@@ -48,15 +48,9 @@
 				<td>{{$pilon->Fecha_empilonamiento}}</td>
 				<td>{{$pilon->rer}} Días</td>
 				<td>{{$pilon->empilonamiento}} Días</td>
+				<td>{{$pilon->peso}}</td>
 				<td>{{$pilon->cod}}</td>
 				<td>{{$pilon->nombre}}</td>
-                <td> <form method="post" action="{{route('pilon.destroy', [$pilon->id])}}">
-                    {{csrf_field()}}
-					{{method_field('DELETE')}}
-                   
-                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
-                </form>
-                    </td>
 					<td> <a class="btn btn-primary"  href="{{route('calendario', [$pilon->id])}}" >Calendario</button></td>
                 
                 </tr>

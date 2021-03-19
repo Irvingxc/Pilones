@@ -97,7 +97,6 @@ Route::post('/variedad/update/{variedade}', [App\Http\Controllers\variedadContro
 
 Route::delete('/variedad/{variedad}',[App\Http\Controllers\variedadController::class,'destroy'])->name('variedad.destroy');
 
-Route::group(['middleware' => ['role:cliente']], function () {
     Route::post('/ubicacion/stored', [App\Http\Controllers\UbicacionController::class, 'store'])->name('ubicacion.store');
    // ->middleware('permission:ubicacion.stored');
     Route::get('/ubicacion/index', [App\Http\Controllers\UbicacionController::class, 'index'])->name('ubicacion.index');
@@ -109,7 +108,6 @@ Route::group(['middleware' => ['role:cliente']], function () {
     //->middleware('permission:ubicacion.update');
     Route::delete('/ubicacion/{codigo_ubicacion}', [App\Http\Controllers\UbicacionController::class, 'destroy'])->name('ubicacion.destroy');
    // ->middleware('permission:ubicacion.destroy');
-});
 
 /*------------------------------UBICACION-------------------------------*/
 Route::middleware(['role:cliente'])->group(function () {

@@ -63,14 +63,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="" class="col-md-4">Seleccione la procedencia</label> 
 
                              <div class="col-md-6">
@@ -96,6 +88,10 @@
                             <label for="" class="col-md-4">Seleccione un rol</label> 
 
                              <div class="col-md-6">
+                             @isset($register)
+                             <input type="hidden" value="{{$register->rol}}" name="roles2">
+                             @endisset
+
                                 <select id="inputState" class="col-md-6 form-control" name="roles">
                                 @isset($register)
                                 <option selected value="{{$register->rol}}" >{{$register->rol}}</option>
@@ -105,7 +101,7 @@
                                 @endif
                                 @endforeach
                                 @else
-                                @foreach($procedencia as $var)
+                                @foreach($role as $var)
                                 <option value="{{$var->name}}" >{{$var->name}}</option>
                                 @endforeach
                                 @endisset

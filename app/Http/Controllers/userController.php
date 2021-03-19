@@ -123,12 +123,21 @@ class userController extends Controller
         $this->validate($request, [
             'name' => 'required|max:25',
             'email'=>'required|max:30',
-            'password'=>'required|max:25',
+            'password'=>'required|max:100',
         ]);
         $verusuario->name = $request->input('name');
         $verusuario->email = $request->input('email');
         $verusuario->password= $request->input('password');
+        $verusuario->sucursal= $request->input('procedencia');
         $verusuario->save();
+       // DB::table('model_has_roles')->where('model_id','=', $verusuario)->delete();
+
+        $parametro = $request->roles;
+        $parametro2 = $request->roles2;
+        $verusuario->removeRole($parametro2);
+            $verusuario->assignRole($parametro);
+        
+
         return redirect('/verusuario/index');
     }
 

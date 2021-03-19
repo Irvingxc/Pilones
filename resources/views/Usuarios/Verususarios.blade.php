@@ -27,7 +27,9 @@
             <th>Contraseña</th>
             <th>Sucursal</th>
             <th>Rol</th>
+      @if(@Auth::user()->hasRole('Admin'))
 			<th class="rojo">Eliminar</th>
+      @endif
 			
 
 			</tr>
