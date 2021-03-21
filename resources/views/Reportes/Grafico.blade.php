@@ -4,6 +4,9 @@
 <div id="container" style="width: 100%;height: 80vh">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <input type="hidden" value="{{ csrf_token() }}" name="_token">
+@isset($virado)
+<LAbel style="color:blue;">Viradas: {{$virado->ot}}</LAbel>
+@endisset
 <canvas id="myChart"></canvas>
 	  
 </div>

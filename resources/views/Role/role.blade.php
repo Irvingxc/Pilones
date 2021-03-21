@@ -25,15 +25,7 @@ value="{{$role->name}}"
 @if ($errors->has('name'))
 <p style="color:red;">{{$errors->first('name')}}</p>
 @endif>
-<br>
-<label for="">Ingrese Guard Nombre</label>
-<br>
-<input @isset($role)
-value="{{$role->id}}" 
-@endisset class="col-md-6" type="text" name='guard_name' value="{{ old ('guard_name') }}"
-@if ($errors->has('guard_name'))
-<p style="color:red;">{{$errors->first('guard_name')}}</p>
-@endif>
+
 <br>
 <br>
 <button type='submit'>@if(isset($role))Editar @else Guardar @endif</button>

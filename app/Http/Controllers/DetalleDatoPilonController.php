@@ -24,6 +24,8 @@ class DetalleDatoPilonController extends Controller
        
        // $temp = Detalle_Dato_Pilon::all();
        $temperatu=[];
+       $virado= DB::table('detalle_dato_pilons')->selectRaw(DB::raw('SUM(virado) as ot'))
+       ->where('pilon_id', '=', $ids)->first();
        $temp = Detalle_dato_pilon::all();
         $temperatura = DB::table('Detalle_Dato_Pilons')->where('pilon_id', '=', $ids)
         ->select('temperatura', 'fecha_detalle')
@@ -39,7 +41,7 @@ class DetalleDatoPilonController extends Controller
         $chart->labels = (array_keys($temperatura));
         $chart->dataset = (array_values($temperatura));
         //return view('Reportes.Grafico')->with('temperatura',json_encode($temperatura,JSON_NUMERIC_CHECK));
-        return view('Reportes.Grafico', compact('chart')); 
+        return view('Reportes.Grafico', compact('chart', 'virado')); 
 //return view('charts.index', compact('chart'));
 //return Response::json($results);
 

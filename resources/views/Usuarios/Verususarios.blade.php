@@ -43,6 +43,7 @@
             <td>{{$verusuario->password}}</td>
             <td>{{$verusuario->nombre}}</td>
             <td>{{$verusuario->rol}}</td>
+            @if(@Auth::user()->hasRole('Admin'))
 				
                 <td> <form method="post" action="{{route('verusuario.destroy', [$verusuario->email])}} " class="formulario-eliminar">
                     {{csrf_field()}}
@@ -51,6 +52,7 @@
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form></td>
                 </td>
+                @endif
 
              </tr>
 		

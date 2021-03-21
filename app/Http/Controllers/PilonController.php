@@ -81,7 +81,7 @@ class PilonController extends Controller
          ->join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')
        // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
          ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
-         ->where("$categoria", 'like', "%$caracteres%")->paginate(50);
+         ->where("$categoria", 'like', "%$caracteres%")->OrderByRaw('Fecha_datos_pilones DESC')->paginate(50);
         $ubicacion = Ubicacion::all();
         $finca = Finca::all();
         $clase = tipoclase::all();
@@ -229,7 +229,10 @@ class PilonController extends Controller
     
         //required min=<?php $hoy=date("Y-m-d"); echo $hoy;
         //value="{{date('Y-m-d', strtotime($pilon->fecha_datos_pilones))}}"
-        $pilon =Pilon::findOrFail($mostrar);
+       // $pilon =Pilon::findOrFail($mostrar);
+        $pilon = DB::table('pilons')->
+     join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')->where('pilons.id', '=', $mostrar)
+     ->select('pilons.*', 'ubicacions.codigo_ubicacion as ubiselect')->first();
         $ubicacion = Ubicacion::all();
         $finca = Finca::all();
         $clase = tipoclase::all();
@@ -330,8 +333,9 @@ class PilonController extends Controller
      */
     public function destroy( $pilon)
     {
-        $pilon =Pilon:: where ('codigo_pilon','=', $pilon)->first();
-         $pilon->delete();
+        //$pilon =Pilon:: where ('codigo_pilon','=', $pilon)->first();
+        $borrar= Pilon::findOrFail($pilon);
+         $borrar->delete();
          return redirect('/pilon/index');
     }
 }
