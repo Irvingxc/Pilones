@@ -21,7 +21,7 @@ method="post" action="{{route('procedencia.store')}}" role="form"
 <input class="col-md-6" type="text" name="nombre"
 @isset($procedencia)
 value="{{$procedencia->nombre}}"
-@endisset
+@endisset class="col-md-6" type="text" name="nombre" value="{{ old ('nombre') }}"
 >
 @if ($errors->has('nombre'))
 <p style="color:red;">{{$errors->first('nombre')}}</p>
@@ -33,7 +33,7 @@ value="{{$procedencia->nombre}}"
 <input class="col-md-6 " type="text" name="descripcion"
 @isset($procedencia)
 value="{{$procedencia->descripcion}}"
-@endisset>
+@endisset class="col-md-6" type="text" name="descripcion" value="{{ old ('descripcion') }}">
 <br>
 @if ($errors->has('descripcion'))
 <p style="color:red;">{{$errors->first('descripcion')}}</p>
