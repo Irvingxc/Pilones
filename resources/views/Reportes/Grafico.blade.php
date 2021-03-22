@@ -5,7 +5,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <input type="hidden" value="{{ csrf_token() }}" name="_token">
 @isset($virado)
-<LAbel style="color:blue;">Viradas: {{$virado->ot}}</LAbel>
+<LAbel style="color:blue; text-align:right;">Virado: {{$virado->ot}} </LAbel>
 @endisset
 <canvas id="myChart"></canvas>
 	  
