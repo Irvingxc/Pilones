@@ -43,8 +43,8 @@ h1 {
 .tintar {
     height:280px;
   background: linear-gradient(
-    rgba(144, 144, 144, 0.6),
-    rgba(0, 0, 0, .1)), url("{{asset('images/plasencia.jpg')}}")  center / cover;
+    rgba(144, 144, 144, 1),
+    rgba(0, 0, 0, .0)), url("{{asset('images/cosecha.jpg')}}")  center / cover;
   
    
   padding: 2.9em;
