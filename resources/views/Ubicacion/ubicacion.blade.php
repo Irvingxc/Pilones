@@ -73,7 +73,7 @@ value="{{$ubicacion->descripcion_ubicacion}}"
                         <br>
                         <br>
 
-<button type="submit"> @if(isset($ubicacion))Editar @else Guardar @endif</button>
+<button type="submit" class="btn btn-primary"> @if(isset($ubicacion))Editar @else Guardar @endif</button>
 
 </form>
 </div>
