@@ -27,6 +27,7 @@ Route::post('/procedencia/store', [App\Http\Controllers\ProcedenciaController::c
 Route::get('/procedencia/index', [App\Http\Controllers\ProcedenciaController::class, 'index'])->name('procedencia.index');
 Route::get('/procedencia/edit/{id}', [App\Http\Controllers\ProcedenciaController::class, 'show'])->name('procedencia.show');
 Route::post('/procedencia/update/{procedencias}/nose', [App\Http\Controllers\ProcedenciaController::class, 'update'])->name('procedencia.update');
+Route::delete('/procedencia/{id}',[App\Http\Controllers\ProcedenciaController::class,'destroy'])->name('procedencias.destroy');
 
 
 

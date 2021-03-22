@@ -109,8 +109,18 @@ class ProcedenciaController extends Controller
      * @param  \App\Models\Procedencia  $procedencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Procedencia $procedencia)
+    public function destroy($procedencia)
     {
-        //
+        try {
+            //$variedade =Variedad:: where ('codigo_variedad','=', $variedad)->first();
+             $procedencias = Procedencia::findOrfail($procedencia);
+             $procedencias->delete();
+             return redirect('/procedencia/index')->with('Eliminar', 'Ok.');
+        } 
+            catch (\Throwable $th) {
+                return redirect('/procedencia/index')->with('Eliminar', 'No.');
+            }
+
+        
     }
-}
+    }

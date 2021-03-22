@@ -33,7 +33,16 @@
 			
 				<td><a href="{{route('procedencia.show', [$pro->id])}}"> {{$pro->nombre}} </a></td>
 				<td>{{$pro->descripcion}}</td>
-                <td><a class="btn btn-outline-danger" href="">Eliminar</a></td>
+                <td>
+				
+				<form method="post" action="{{route('procedencias.destroy', [$pro->id])}}" class="formulario-eliminar">
+                    {{csrf_field()}}
+					{{method_field('DELETE')}}
+                   
+                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                </form>
+
+				</td>
 					
 			</tr> 
 			
@@ -50,4 +59,59 @@
 
 
 </div>
+@endsection
+
+
+@section('js')
+	
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	@if(session('Eliminar')== 'Ok.')
+	<script>
+	 Swal.fire(
+      '¡Eliminado!',
+      'El dato se eliminó con éxito.',
+      'success'
+    )
+	</script>
+	@endif
+
+	@if(session('Eliminar')== 'No.')
+	<script>
+	 Swal.fire(
+      '¡Fallo',
+      'No se puede eliminar este dato, seguramente este dato esta siendo utilizado en otro sitio.',
+      'warning'
+    )
+	</script>
+	@endif
+
+
+	<script>
+	window.addEventListener('load', function() {
+
+	$('.formulario-eliminar').submit(function(e){
+		e.preventDefault();
+
+Swal.fire({
+  title: '¿Está seguro?',
+  text: "Este dato se eliminará definitivamente.",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Sí, eliminar',
+  cancelButtonText: 'Cancelar'
+}).then((result) => {
+  if (result.isConfirmed) {
+ 
+	this.submit();
+  }
+})
+
+	});
+
+})
+	</script>
+	
 @endsection
