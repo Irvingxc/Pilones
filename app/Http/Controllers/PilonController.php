@@ -42,7 +42,25 @@ class PilonController extends Controller
        $suc= Auth::user()->sucursal;
        $now=Carbon::now();
        $now = $now->format('d-m-Y');
-       
+
+       if($categoria=="contenido"){
+        $nuevo= explode('*', $caracteres);
+        $first = $nuevo[0];
+        $second = $nuevo[1];
+        $three = $nuevo[2];
+        $pilon = DB::table('pilons')
+        ->join('procedencias', 'procedencias.id','=',
+         'pilons.sucursal_id')
+         ->join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')
+         ->join('detalle_pilons', 'detalle_pilons.pilon_id', '=', 'pilons.id')
+         ->join('tipoclases', 'tipoclases.codigo_clase', '=', 'detalle_pilons.codigo_clase')
+         ->join('variedads', 'variedads.codigo_variedad', '=', 'detalle_pilons.codigo_variedad')
+         ->join('fincas', 'fincas.codigo_finca', '=', 'detalle_pilons.codigo_finca')
+       // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
+         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
+         ->where('procedencias.nombre','=', "$region")->where('variedads.nombre_variedad', 'like', "%$first%")->where('tipoclases.nombre_clase', 'like', "%$second%")->where('fincas.nombre_finca', 'like', "%$three%")
+         ->paginate(50);
+    }else{
         $pilon = DB::table('pilons')
         ->join('procedencias', 'procedencias.id','=',
          'pilons.sucursal_id')
@@ -51,6 +69,7 @@ class PilonController extends Controller
          ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
          ->where('procedencias.nombre','=', "$region")->where("$categoria", 'like', "%$caracteres%")
          ->paginate(50);
+        }
         $ubicacion = Ubicacion::all();
         $finca = Finca::all();
         $clase = tipoclase::all();

@@ -11,6 +11,8 @@
 <select id="inputState" class="form-control" name="filtro">
         <option value="codigo_pilon" selected >Codigo</option>
         <option value="ubicacions.codigo_ubicacion">Ubicacion</option>
+		<option value="contenido">Contenido del Pilon</option>
+
       </select>
 	  </div>
 	  <div>
