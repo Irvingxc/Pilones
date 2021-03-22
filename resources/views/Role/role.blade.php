@@ -22,13 +22,13 @@ method="post" action="{{route('role.store')}}"
 <input @isset($role)
 value="{{$role->name}}"
 @endisset class="col-md-6" type="text" name='name' value="{{ old ('name') }}"
+>
 @if ($errors->has('name'))
 <p style="color:red;">{{$errors->first('name')}}</p>
-@endif>
-
+@endif
 <br>
 <br>
-<button type='submit'>@if(isset($role))Editar @else Guardar @endif</button>
+<button type='submit' class="btn btn-primary">@if(isset($role))Editar @else Guardar @endif</button>
 
 </form>
 
