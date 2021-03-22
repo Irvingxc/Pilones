@@ -154,8 +154,10 @@ class DetallePilonController extends Controller
      * @param  \App\Models\Detalle_pilon  $detalle_pilon
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Detalle_pilon $detalle_pilon)
+    public function destroy($detalle_pilon)
     {
-        //
+        $detalles = Detalle_dato_pilon::findOrFail($detalle_pilon);
+        $detalles->delete();
+        return response()->json(["ok"=>true]);
     }
 }

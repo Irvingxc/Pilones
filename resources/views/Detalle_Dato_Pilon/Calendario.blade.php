@@ -67,6 +67,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="guardar()">Guardar Cambios</button>
+        <button type="button" class="btn btn-danger" onclick="eliminar()">Eliminar</button>
         <button type="button" class="btn btn-secondary" onclick="limpiar()" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
@@ -90,6 +91,13 @@
  
 
 <script>
+document.addEventListener("keydown", function (event) {
+  if (event.keyCode === 27) {
+    location.reload();
+      //window.location.href='https://pildorasdotnet.blogspot.com';
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
@@ -172,7 +180,37 @@ function limpiar(){
   //$('input:checkbox').removeAttr('checked');
 
 }
+function eliminar(){
+ 
+  let id_impor = $("#id_impor").val();
+  let _token= "{{ csrf_token() }}";
 
+  if(id_impor!=""){
+    $.ajax({
+    url: '/detalledatopilon/delete/'+id_impor,
+    method: "DELETE",
+    data: {
+      _token: _token},
+   // processData:false,
+  //  contenType:false
+  }).done(function(respuesta){
+    console.log(status);
+    if(respuesta!=null && respuesta.ok){
+      alert("Se elimino correctamente");
+      limpiar();
+    }else{
+      alert("Algo salio mal, si el problema persiste consulte con el Administrador del sistema");
+      limpiar();
+    }
+  })
+
+
+  }else{
+    alert("No puedes borrar algo que no has creado")
+
+  }
+
+}
 
 function guardar(){
   //var fd = new FormData(document.getElementById("formulario_agenda"));
