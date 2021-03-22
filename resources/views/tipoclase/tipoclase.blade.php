@@ -43,7 +43,7 @@ value="{{$tipoclase->descripcion_clase}}"
 @endif
 <br>
 <br>
-<button type="submit">@if(isset($tipoclase))Editar @else Guardar @endif</button>
+<button type="submit" class="btn btn-primary">@if(isset($tipoclase))Editar @else Guardar @endif</button>
 
 </form>
 </div>
