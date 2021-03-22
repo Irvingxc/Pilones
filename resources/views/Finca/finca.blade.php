@@ -47,7 +47,7 @@ value="{{$fincas->descripcion_finca}}"
 @endif
 <br>
 <br>
-<button type='submit'>@if(isset($fincas))Editar @else Guardar @endif</button>
+<button type='submit' class="btn btn-primary">@if(isset($fincas))Editar @else Guardar @endif</button>
 
 </form>
 
