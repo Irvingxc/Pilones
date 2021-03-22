@@ -121,10 +121,16 @@ class VariedadController extends Controller
      */
     public function destroy($variedad)
     {
-        $variedade =Variedad:: where ('codigo_variedad','=', $variedad)->first();
-           // $variedad = Variedad::findOrfail($variedad);
-            $variedade->delete();
-            return redirect('/variedad/index')->with('Eliminar', 'Ok.');
+        try {
+            $variedade =Variedad:: where ('codigo_variedad','=', $variedad)->first();
+            // $variedad = Variedad::findOrfail($variedad);
+             $variedade->delete();
+             return redirect('/variedad/index')->with('Eliminar', 'Ok.');
+        } 
+            catch (\Throwable $th) {
+                return redirect('/variedad/index')->with('Eliminar', 'No.');
+            }
+
         
     }
 }
