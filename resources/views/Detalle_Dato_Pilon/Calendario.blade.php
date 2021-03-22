@@ -194,7 +194,7 @@ function eliminar(){
    // processData:false,
   //  contenType:false
   }).done(function(respuesta){
-    console.log(status);
+    //console.log(status);
     if(respuesta!=null && respuesta.ok){
       alert("Se elimino correctamente");
       limpiar();
