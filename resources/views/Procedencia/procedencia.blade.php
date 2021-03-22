@@ -23,6 +23,9 @@ method="post" action="{{route('procedencia.store')}}" role="form"
 value="{{$procedencia->nombre}}"
 @endisset
 >
+@if ($errors->has('nombre'))
+<p style="color:red;">{{$errors->first('nombre')}}</p>
+@endif
 <br>
 
 <label for="">Ingrese una descripcion</label>
@@ -32,6 +35,9 @@ value="{{$procedencia->nombre}}"
 value="{{$procedencia->descripcion}}"
 @endisset>
 <br>
+@if ($errors->has('descripcion'))
+<p style="color:red;">{{$errors->first('descripcion')}}</p>
+@endif
 <br>
 <button type="submit" class="btn btn-primary">@if(isset($procedencia))Editar @else Guardar @endif</button> 
 
