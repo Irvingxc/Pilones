@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
 <div class="container">
 <h4 class="text-center text-muted font-weight-bold">Pilon</h4>
 <form action="">
@@ -61,4 +62,5 @@
 	</table>
 	@endif
 </div>
+@endif
 @endsection

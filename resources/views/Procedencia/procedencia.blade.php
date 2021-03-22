@@ -39,7 +39,9 @@ value="{{$procedencia->descripcion}}"
 <p style="color:red;">{{$errors->first('descripcion')}}</p>
 @endif
 <br>
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
 <button type="submit" class="btn btn-primary">@if(isset($procedencia))Editar @else Guardar @endif</button> 
+@endif
 
 </form>
 

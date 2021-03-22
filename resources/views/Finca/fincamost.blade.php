@@ -18,6 +18,7 @@
 	  </div>
 	  </form>
 	  </div>
+	  @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
 <table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
@@ -35,7 +36,7 @@
 				<td><a href="{{route('fincas.show', [$fincas->codigo_finca])}}">{{$fincas->codigo_finca}}</td>
 				<td>{{$fincas->nombre_finca}}</td>
 				<td>{{$fincas->descripcion_finca}}</td>
-
+				@if(@Auth::user()->hasRole('Admin'))
 				<td> <form method="post" action="{{route('fincas.destroy', [$fincas->codigo_finca])}}" class="formulario-eliminar">
                     {{csrf_field()}}
 					{{method_field('DELETE')}}
@@ -43,6 +44,7 @@
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form>
                     </td>
+					@endif
                 </tr>
 			
 	
@@ -50,6 +52,7 @@
 			@endforeach
 		</tbody>
 	</table>
+	@endif
 
 	<div class="btn-whatsapp">
 <a href="{{route('fincas')}}">

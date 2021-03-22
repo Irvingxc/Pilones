@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
 
 <div id="container" style="width: 100%;height: 80vh">
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -10,6 +11,7 @@
 <canvas id="myChart"></canvas>
 	  
 </div>
+@endif
 @endsection
 @section('js')
 

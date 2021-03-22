@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
 <div class="container">
 <h4 class="text-center text-muted font-weight-bold">Variedad</h4>
 <form action="">
@@ -34,6 +35,7 @@
 				<td><a href="{{route('variedad.show', [$variedad->codigo_variedad])}}">{{$variedad->codigo_variedad}}</td>
 				<td>{{$variedad->nombre_variedad}}</td>
 				<td>{{$variedad->descripcion_variedad}}</td>
+				@if(@Auth::user()->hasRole('Admin'))
               
 			    <td> <form method="post" action="{{route('variedad.destroy', [$variedad->codigo_variedad])}} " class="formulario-eliminar">
                     {{csrf_field()}}
@@ -42,6 +44,7 @@
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form>
                     </td>
+					@endif
                 </tr>
 
 			@endforeach
@@ -53,6 +56,7 @@
 </a>
 </div>
 </div>
+@endif
 @endsection
 
 

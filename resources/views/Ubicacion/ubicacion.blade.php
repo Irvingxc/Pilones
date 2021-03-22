@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero'))
 <div class= "container" id="app"> 
 <div class= "card col-md-10">
 <div class="card-header justify-content-center">Ubicacion del pilon</div>
@@ -79,6 +80,7 @@ value="{{$ubicacion->descripcion_ubicacion}}"
 </div>
 </div>
 </div>
+@endif
 @endsection
 
 

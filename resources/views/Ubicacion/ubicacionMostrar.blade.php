@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero'))
 <div class= "container">
 <h1 class="text-center text-muted font-weight-bold">Ubicación</h1> 
 <form action="">
@@ -38,12 +39,13 @@
 				<td>{{$pro->estado_ubicacion == 1 ? "Disponible" :  "Ocupado"}}</td>
 				
 				<td>{{$pro->nombre}}</td>
+				@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero'))
                 <td><form method="post" action="{{route('ubicacion.destroy', [$pro->id])}}" class="formulario-eliminar">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form></td>
-				</td>
+				@endif
 					
 			</tr>
 
@@ -58,6 +60,7 @@
 <button class="btn btn-primary">Nuevo</button> 
 </a>
 </div>
+@endif
     @endsection
 
 	@section('js')

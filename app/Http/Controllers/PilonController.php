@@ -33,7 +33,7 @@ class PilonController extends Controller
            $categoria="codigo_pilon";
        }
        if($region==null){
-        $region="San Marcos";
+        $region="Gualiqueme";
     }
        $procedencias = DB::table('procedencias')->select('nombre')
        ->OrderByRaw('nombre desc')->get();

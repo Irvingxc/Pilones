@@ -32,12 +32,14 @@
 				<td><a href="{{route('tipoclase.show', [$pro->codigo_clase])}}">{{$pro->codigo_clase}}</a></td>
                 <td>{{$pro->nombre_clase}}</td>
 				<td>{{$pro->descripcion_clase}}</td>
+				@if(@Auth::user()->hasRole('Admin'))
                 <td><form method="post" action="{{route('tipoclase.destroy', [$pro->codigo_clase])}}" class="formulario-eliminar">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form></td> 
 				</td>
+				@endif
 					
 			</tr>
 

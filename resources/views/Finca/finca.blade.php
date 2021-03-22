@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
 <div class="container">
 <div class="justify-content-center">
 <div class="card col-md-10">
@@ -47,7 +48,9 @@ value="{{$fincas->descripcion_finca}}"
 @endif
 <br>
 <br>
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Sub-Admin'))
 <button type='submit' class="btn btn-primary">@if(isset($fincas))Editar @else Guardar @endif</button>
+@endif
 
 </form>
 
@@ -56,4 +59,5 @@ value="{{$fincas->descripcion_finca}}"
 </div>
 </div>
 </div>
+@endif
 @endsection

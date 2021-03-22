@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
 <div class="container">
 <h1 class="text-center text-muted font-weight-bold">Sucursal</h1> 
 <form action="">
@@ -59,6 +60,7 @@
 
 
 </div>
+@endif
 @endsection
 
 

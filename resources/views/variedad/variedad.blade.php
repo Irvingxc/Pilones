@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
 <div class="container">
 <div class="justify-content-center">
 <div class="card col-md-10">
@@ -59,4 +60,5 @@ value="{{$variedad->descripcion_variedad}}"
 </div>
 </div>
 </div>
+@endif
 @endsection
