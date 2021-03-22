@@ -50,7 +50,7 @@ value="{{$variedad->descripcion_variedad}}"
 @endif
 <br>
 <br>
-<button type='submit'>@if(isset($variedad))Editar @else Guardar @endif</button>
+<button type='submit' class="btn btn-primary">@if(isset($variedad))Editar @else Guardar @endif</button>
 
 </form>
 
