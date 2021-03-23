@@ -116,10 +116,15 @@ class TipoclaseController extends Controller
      */
     public function destroy($tipoclase)
     {
+        try {
         $tipoclase =tipoclase:: where ('codigo_clase','=', $tipoclase)->first();
          $tipoclase->delete();
          return redirect('/tipoclase/index')->with('Eliminar', 'Ok.'); //
-    }
+        }
+         catch (\Throwable $th) {
+            return redirect('/tipoclase/index')->with('Eliminar', 'No.');
+              }
+        }
 }
  //
 

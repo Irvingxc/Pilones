@@ -71,7 +71,15 @@
 	</script>
 
 	@endif
-
+	@if(session('Eliminar')== 'No.')
+	<script>
+	 Swal.fire(
+      '¡Fallo',
+      'No se puede eliminar este dato, seguramente este dato esta siendo utilizado en otro sitio.',
+      'warning'
+    )
+	</script>
+	@endif
 
 	<script>
 	$('.formulario-eliminar').submit(function(e){
