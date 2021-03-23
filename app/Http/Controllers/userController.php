@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -135,7 +136,11 @@ class userController extends Controller
         ]);
         $verusuario->name = $request->input('name');
         $verusuario->email = $request->input('email');
-        $verusuario->password= $request->input('password');
+        if (strlen($request->input('password'))>25) {
+            # code...
+        }else{
+            $verusuario->password= $request->input('password');
+        }
         $verusuario->sucursal= $request->input('procedencia');
         $verusuario->save();
        // DB::table('model_has_roles')->where('model_id','=', $verusuario)->delete();
