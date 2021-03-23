@@ -113,8 +113,15 @@ class FincaController extends Controller
      */
     public function destroy( $finca)
     {
+
+        try {
         $finca =Finca:: where ('codigo_finca','=', $finca)->first();
         $finca->delete();
         return redirect('/fincas/index')->with('Eliminar', 'Ok.');
+      
+} 
+catch (\Throwable $th) {
+    return redirect('/fincas/index')->with('Eliminar', 'No.');
+      }
     }
-}
+  }
