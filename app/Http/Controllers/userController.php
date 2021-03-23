@@ -74,7 +74,7 @@ class userController extends Controller
        
        // $verusuario = User::all();
         //$rol = User::find(2)->role;
-        $suc= Auth::user()->sucursal;
+       // $suc= Auth::user()->sucursal;
         $caracteres = $request->get('busqueda');
         $verusuario = DB::table('users')
         ->join('model_has_roles', 'model_has_roles.model_id','=',
