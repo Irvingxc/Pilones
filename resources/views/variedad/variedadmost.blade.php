@@ -10,7 +10,7 @@
 <select id="inputState" class="form-control offset-md-1" name="checkbox_name">
         <option value="codigo_variedad" selected >Codigo</option>
         <option value="nombre_variedad">Nombre</option>
-        <option value="descripcion_variedad">Observasción</option>
+        <option value="descripcion_variedad">Observación</option>
       </select>
 	  </div>
 	  <div>
