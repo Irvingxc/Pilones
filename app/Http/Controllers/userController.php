@@ -25,7 +25,7 @@ class userController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:25',
-            'email' => 'required|unique:users,email|max:30',
+            'email' => 'required|unique:users,email|max:100',
             'password' => 'required|max:25',
         ]);
 
@@ -131,7 +131,7 @@ class userController extends Controller
         $verusuario =User:: where ('id','=', $verusuario)->first();
         $this->validate($request, [
             'name' => 'required|max:25',
-            'email'=>'required|max:30',
+            'email'=>'required|max:100',
             'password'=>'required|max:100',
         ]);
         $verusuario->name = $request->input('name');
