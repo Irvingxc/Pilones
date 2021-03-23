@@ -10,7 +10,7 @@
 <div class="">
 <select id="inputState" class="form-control offset-md-1" name="filtro">
         <option value="codigo_ubicacion" selected >Codigo</option>
-        <option value="descripcion_ubicacion">Observasción</option>
+        <option value="descripcion_ubicacion">Observación</option>
         <option value="estado_ubicacion">Estado</option>
       </select>
 	  </div>
