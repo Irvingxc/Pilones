@@ -82,6 +82,8 @@
 	@endif
 
 	<script>
+	window.addEventListener('load', function() {
+
 	$('.formulario-eliminar').submit(function(e){
 		e.preventDefault();
 
@@ -102,6 +104,8 @@ Swal.fire({
 })
 
 	});
+
+})
 
 	</script>
 	
