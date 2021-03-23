@@ -33,7 +33,7 @@ value="{{$tipoclase->nombre_clase}}"
 <p style="color:red;">{{$errors->first('nombre_clase')}}</p>
 @endif
 <br>
-<label for="">Ingrese una descripcion</label>
+<label for="">Ingrese observación</label>
 <br>
 <input @isset($tipoclase)
 value="{{$tipoclase->descripcion_clase}}"

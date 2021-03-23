@@ -62,7 +62,7 @@ value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
 
 
 <div class="margin">
-<label for="" class="">Ubicacion</label>
+<label for="" class="">Ubicación</label>
 <select id="inputState" class="form-control" name="ubicacion" @if($true==0) disabled @endif>
 @isset($pilon)
 <option  selected value="{{$pilon->ubicacion}}">{{$pilon->ubiselect}}</option>
@@ -91,7 +91,7 @@ value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
 <div class="row justify-content-center">
 
 <div class="margin">
-<label for="">Descripcion</label>
+<label for="">observación</label>
 <br>
 <textarea name="descripcion_pilon" id="" class="form-control" cols="50" rows="2" @if($true==0) disabled @endif
  >@isset($pilon)

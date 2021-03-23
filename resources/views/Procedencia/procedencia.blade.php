@@ -28,7 +28,7 @@ value="{{$procedencia->nombre}}"
 @endif
 <br>
 
-<label for="">Ingrese una descripcion</label>
+<label for="">Ingrese observación</label>
 <br>
 <input class="col-md-6 " type="text" name="descripcion"
 @isset($procedencia)

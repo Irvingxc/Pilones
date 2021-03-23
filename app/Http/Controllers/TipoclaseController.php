@@ -126,5 +126,3 @@ class TipoclaseController extends Controller
               }
         }
 }
- //
-

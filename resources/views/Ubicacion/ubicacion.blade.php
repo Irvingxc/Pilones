@@ -23,7 +23,7 @@ value="{{$ubicacion->codigo_ubicacion}}" readonly
 <p style="color:red;">{{$errors->first('Codigo_ubicacion')}}</p>
 @endif
 <br>
-<label for="">Ingrese una descripcion</label>
+<label for="">Ingrese observación</label>
 <br>
 <input
  @isset($ubicacion)

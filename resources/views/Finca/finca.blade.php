@@ -37,7 +37,7 @@ value="{{$fincas->nombre_finca}}"
 <p style="color:red;">{{$errors->first('nombre_finca')}}</p>
 @endif
 <br>
-<label for="">Ingrese descripcion</label>
+<label for="">Ingrese observación</label>
 <br>
 <input @isset($fincas)
 value="{{$fincas->descripcion_finca}}" 

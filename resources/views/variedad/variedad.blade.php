@@ -38,7 +38,7 @@ value="{{$variedad->nombre_variedad}}"
 <p style="color:red;">{{$errors->first('nombre_variedad')}}</p>
 @endif
 <br>
-<label for="">Ingrese descripcion</label
+<label for="">Ingrese observación</label
 >
 <br>
 <input

@@ -10,7 +10,7 @@
 <div class="">
 <select id="inputState" class="form-control offset-md-1" name="filtro">
         <option value="codigo_ubicacion" selected >Codigo</option>
-        <option value="descripcion_ubicacion">Descripcion</option>
+        <option value="descripcion_ubicacion">Observasción</option>
         <option value="estado_ubicacion">Estado</option>
       </select>
 	  </div>
@@ -25,7 +25,7 @@
 <thead class="thead-dark">
 			<tr>
 			<th>Codigo</th>
-			<th>Descripcion</th>
+			<th>Observación</th>
 			<th>Estado</th>
 			<th>Sucursal</th>
             <th class="rojo">Eliminar</th>
@@ -78,6 +78,15 @@
 
 	@endif
 
+	@if(session('Eliminar')== 'No.')
+	<script>
+	 Swal.fire(
+      '¡Fallo!',
+      'No se puede eliminar este dato, seguramente este dato esta siendo utilizado en otro sitio.',
+      'warning'
+    )
+	</script>
+	@endif
 
 	<script>
 	window.addEventListener('load', function() {

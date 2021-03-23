@@ -87,11 +87,19 @@ class userController extends Controller
     }
     public function destroy( $verusuario)
     {
+        {
+
+            try {
         $verusuario =User:: where ('email','=', $verusuario)->first();
         $verusuario->delete();
-        return redirect('/verusuario/index');
+        return redirect('/verusuario/index')->with('Eliminar', 'Ok.');
     }
-
+ 
+    catch (\Throwable $th) {
+    return redirect('/verusuario/index')->with('Eliminar', 'No.');
+      }
+    }
+  }
     public function show($verusuario)
     {
       //  $id= Crypt::decrypt($id);

@@ -142,8 +142,13 @@ class UbicacionController extends Controller
      */
     public function destroy($ubicacion)
     {
+        try {
         $ubicacion =ubicacion::where('id','=', $ubicacion)->first();
          $ubicacion->delete();
          return redirect('/ubicacion/index')->with('Eliminar', 'Ok.');//
+    }
+    catch (\Throwable $th) {
+        return redirect('/ubicacion/index')->with('Eliminar', 'No.');
+          }
     }
 }

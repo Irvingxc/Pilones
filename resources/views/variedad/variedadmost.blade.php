@@ -10,7 +10,7 @@
 <select id="inputState" class="form-control offset-md-1" name="checkbox_name">
         <option value="codigo_variedad" selected >Codigo</option>
         <option value="nombre_variedad">Nombre</option>
-        <option value="descripcion_variedad">Descripcion</option>
+        <option value="descripcion_variedad">Observasción</option>
       </select>
 	  </div>
 	  <div>
@@ -23,7 +23,7 @@
 			<tr>
 			<th>Codigo</th>
 			<th>Nombre</th>
-			<th>Descripcion</th>
+			<th>Observación</th>
             <th>Eliminar</th>
 			
 			</tr>
@@ -77,7 +77,7 @@
 	@if(session('Eliminar')== 'No.')
 	<script>
 	 Swal.fire(
-      '¡Fallo',
+      '¡Fallo!',
       'No se puede eliminar este dato, seguramente este dato esta siendo utilizado en otro sitio.',
       'warning'
     )
