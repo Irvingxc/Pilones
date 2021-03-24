@@ -50,6 +50,12 @@
       @endif
       @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
       <div class="text-center col-md-6 pt-5 tintar">
+      <a href="{{route('Textura.index')}}">
+        <h1>Texturas</h1>
+      </div>
+      @endif
+      @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
+      <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('verusuario.index')}}">
         <h1>Usuarios</h1>
       </div>
