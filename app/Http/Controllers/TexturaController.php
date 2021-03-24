@@ -92,18 +92,18 @@ class TexturaController extends Controller
      */
     public function update(Request $request, $Textura)
     {
-        $Textura= Textura::where('codigo_textura', '=', $Textura)->first();
+        $Textur= Textura::where('codigo_textura', '=', $Textura)->first();
         $this->validate($request, [
             'codigo_textura' => 'required|max:10',
             'nombre_textura' => 'required|max:25',
             'descripcion_textura' => 'required|max:255',
         ]);
-    $Textura->codigo_textura = $request->input('codigo_textura');
-    $Textura->nombre_textura = $request->input('nombre_textura');
-    $Textura->descripcion_textura = $request->input('descripcion_textura');
-    $Textura->save();
+    //$Textura->codigo_textura = $request->input('codigo_textura');
+    $Textur->nombre_textura = $request->input('nombre_textura');
+    $Textur->descripcion_textura = $request->input('descripcion_textura');
+    $Textur->save();
 
-    return redirect('/tipoclase/index');  //
+    return redirect('/Textura/index');  //
     }
 
     /**

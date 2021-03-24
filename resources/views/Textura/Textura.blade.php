@@ -8,7 +8,7 @@
 <div class="card-body justify-content-center">
 
 
-<form @isset($tipoclase) method="post" action="{{route('Textura.update', ['Textura'=>$Textura->codigo_textura])}}" 
+<form @isset($Textura) method="post" action="{{route('Textura.update', ['Textura'=>$Textura->codigo_textura])}}" 
  @else
  method="post" action="{{route('Textura.store')}}" role="form"
  @endisset>
@@ -35,7 +35,7 @@ value="{{$Textura->nombre_textura}}"
 <br>
 <label for="">Ingrese observación</label>
 <br>
-<input @isset($tipoclase)
+<input @isset($Textura)
 value="{{$Textura->descripcion_textura}}"
 @endisset class="col-md-6" type="text" name="descripcion_textura" value="{{ old ('descripcion_textura') }}"
 >
