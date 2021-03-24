@@ -46,7 +46,7 @@ class TexturaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'codigo_textura' => 'required|unique:Textura,codigo_textura|max:10',
+            'codigo_textura' => 'required|unique:textura,codigo_textura|max:10',
             'nombre_textura' => 'required|max:25',
             'descripcion_textura' => 'required|max:255',
         ]);
