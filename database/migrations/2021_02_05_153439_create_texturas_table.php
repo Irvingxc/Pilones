@@ -17,7 +17,7 @@ class CreateTexturasTable extends Migration
             $table->string('codigo_textura');
             $table->primary('codigo_textura');
             $table->string('nombre_textura');
-            $table->primary('descripcion_textura');
+            $table->string('descripcion_textura');
             $table->timestamps();
         });
     }
