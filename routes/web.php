@@ -124,7 +124,13 @@ Route::get('/tipoclase/edit/{codigo_clase}', [App\Http\Controllers\tipoclaseCont
 Route::post('/tipoclase/update/{tipoclases}', [App\Http\Controllers\tipoclaseController::class, 'update'])->name('tipoclase.update');
 Route::delete('/tipoclase/{codigo_clase}', [App\Http\Controllers\tipoclaseController::class, 'destroy'])->name('tipoclase.destroy');
 
-
+/*------------------------------TEXTURA-------------------------------*/
+Route::post('/Textura/stored', [App\Http\Controllers\TexturaController::class, 'store'])->name('Textura.store');
+Route::get('/Textura/index', [App\Http\Controllers\TexturaController::class, 'index'])->name('Textura.index');
+Route::get('/Textura/Textura', [App\Http\Controllers\TexturaController::class, 'create'])->name('Textura');
+Route::get('/Textura/edit/{codigo_textura}', [App\Http\Controllers\TexturaController::class, 'show'])->name('Textura.show');
+Route::post('/Textura/update/{Textura}', [App\Http\Controllers\TexturaController::class, 'update'])->name('Textura.update');
+Route::delete('/Textura/{codigo_textura}', [App\Http\Controllers\TexturaController::class, 'destroy'])->name('Textura.destroy');
 
 /*------------------------------------------------------USUSARIO----------------------------------------------------------*/
 Route::post('/verusuario/stored', [App\Http\Controllers\userController::class, 'store'])->name('verusuario.store');
