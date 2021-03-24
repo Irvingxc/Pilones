@@ -9,7 +9,6 @@
 <select id="inputState" class="form-control offset-md-1" name="filtro">
         <option value="codigo_textura" selected >Codigo</option>
         <option value="nombre_textura">Nombre</option>
-        <option value="descripcion_textura">Observación</option>
       </select>
 	  </div>
 	  <div>
