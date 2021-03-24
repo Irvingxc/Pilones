@@ -1956,8 +1956,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['fin', 'rows', 'varie', 'true', 'mostrar'],
+  props: ['fin', 'rows', 'varie', 'true', 'mostrar', 'textura'],
   data: function data() {
     return {
       value: "",
@@ -1969,10 +1980,12 @@ __webpack_require__.r(__webpack_exports__);
       Variedad: [],
       Finca: [],
       id: [],
+      texturas: [],
       detalles: [],
       seleccion1: {},
       seleccion2: {},
-      seleccion3: {}
+      seleccion3: {},
+      seleccion4: {}
     };
   },
   methods: {
@@ -1982,6 +1995,7 @@ __webpack_require__.r(__webpack_exports__);
       this.Variedad = this.varie;
       this.datos = this["true"];
       this.id = this.mostrar;
+      this.texturas = this.textura;
     },
     deletedetalles: function deletedetalles(data) {
       var me = this;
@@ -2015,6 +2029,7 @@ __webpack_require__.r(__webpack_exports__);
         'codigo_variedad': this.seleccion3,
         'codigo_clase': this.seleccion2,
         'codigo_finca': this.seleccion1,
+        'codigo_textura': this.seleccion4,
         'pilon_id': this.mostrar
       }).then(function (response) {
         me.verDetalles(); //llamamos al metodo getTask(); para que refresque nuestro array y muestro los nuevos datos
@@ -41400,6 +41415,53 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "margin" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Textura")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.seleccion4,
+                  expression: "seleccion4"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "inputState" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.seleccion4 = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            _vm._l(_vm.texturas, function(texturas) {
+              return _c(
+                "option",
+                {
+                  key: texturas.codigo_textura,
+                  attrs: { selected: "" },
+                  domProps: { value: texturas.codigo_textura }
+                },
+                [_vm._v(_vm._s(texturas.nombre_textura))]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "margin" }, [
           _c("label", { attrs: { for: "" } }, [_vm._v("Finca")]),
           _vm._v(" "),
           _c(
@@ -41498,6 +41560,8 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(detalles.class))]),
             _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(detalles.text))]),
+            _vm._v(" "),
             _c("td", [_vm._v(_vm._s(detalles.fincas))]),
             _vm._v(" "),
             _c("td", [
@@ -41532,6 +41596,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Variedad")]),
         _vm._v(" "),
         _c("th", [_vm._v("Clase")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Textura")]),
         _vm._v(" "),
         _c("th", [_vm._v("Finca")]),
         _vm._v(" "),

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Pilon;
 use App\Models\Detalle_pilon;
+use App\Models\Detalle_dato_pilon;
 use App\Models\Finca;
+use App\Models\Textura;
 use App\Models\Ubicacion;
 use App\Models\tipoclase;
 use App\Models\Procedencia;
@@ -164,9 +166,10 @@ class PilonController extends Controller
         $finca = Finca::all();
         $clase = tipoclase::all();
         $variedad = Variedad::all();
+        $textura = Textura::all();
         $true = 1;
         $mostrar=0;
-        return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
+        return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca, 'textura'=>$textura,
         'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar]);
         
     }
@@ -179,6 +182,7 @@ class PilonController extends Controller
         $detalle->codigo_clase = $request->codigo_clase;
         $detalle->codigo_finca = $request->codigo_finca;
         $detalle->codigo_variedad = $request->codigo_variedad;
+        $detalle->codigo_textura = $request->codigo_textura;
         $detalle->pilon_id = $request->pilon_id;
         $detalle->save();
         
@@ -192,9 +196,10 @@ class PilonController extends Controller
         $detalle = DB::table('detalle_pilons')
         ->join('variedads', 'variedads.codigo_variedad', '=', 'detalle_pilons.codigo_variedad')
         ->join('tipoclases', 'tipoclases.codigo_clase', '=', 'detalle_pilons.codigo_clase')
+        ->join('texturas', 'texturas.codigo_textura', '=', 'detalle_pilons.codigo_textura')
         ->join('fincas', 'fincas.codigo_finca', '=', 'detalle_pilons.codigo_finca')
         ->where('pilon_id', '=', $id)
-        ->select('detalle_pilons.*', 'variedads.nombre_variedad as varied', 'tipoclases.nombre_clase as class',
+        ->select('detalle_pilons.*', 'variedads.nombre_variedad as varied', 'tipoclases.nombre_clase as class', 'texturas.nombre_textura as text',
     'fincas.nombre_finca as fincas')->get();
 
         return $detalle;
@@ -233,7 +238,7 @@ class PilonController extends Controller
         $this->validate($request, [
             'codigo_pilon' => 'required',
             'descripcion_pilon'=> 'required',
-            'fecha_inicio'=> 'required',
+            'Fecha_empilonamiento'=> 'required',
             'ubicacion'=> 'required',
         ]);
 
@@ -276,8 +281,9 @@ class PilonController extends Controller
         $finca = Finca::all();
         $clase = tipoclase::all();
         $variedad = Variedad::all();
+        $textura = Textura::all();
         $true = 0; 
-        return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
+        return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,'textura'=>$textura,
         'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar, 'pilon'=>$pilon]);
 
     }else{
@@ -309,9 +315,10 @@ class PilonController extends Controller
         $finca = Finca::all();
         $clase = tipoclase::all();
         $variedad = Variedad::all();
+        $textura = Textura::all();
         $true = 2;
         $mostrar=$codigo_pilon;
-        return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca,
+        return view('pilones.pilon', ['ubicacion'=>$ubicacion, 'finca'=>$finca, 'textura'=>$textura,
         'clase'=>$clase, 'variedad'=>$variedad, 'true'=>$true, 'mostrar'=>$mostrar, 'pilon'=>$pilon]);
     }
 
@@ -372,14 +379,31 @@ class PilonController extends Controller
      */
     public function destroy( $pilon)
     {
-        try {
+        $dato= Pilon::where('id', '=', $pilon)->select('ubicacion')->first();//->join('pilons', 'ubicacions.id', '=', 'pilons.ubicacion')
+        // ->where('pilons.id', '=', "$pilon")->select('ubicacions.codigo_ubicacion')->first();
+           // $update = Ubicacion::findOrFail($request->input('ubicacion'));
+         /*  $update= Ubicacion::where('codigo_ubicacion','=',$dato)->first();
+         $update->estado_ubicacion = 1;
+         $update->save(); */
             $borrar= Pilon::findOrFail($pilon);
-            $borrar->delete();
+            $detalle1 = Detalle_pilon::where('pilon_id', '=', "$pilon")->get();
+            foreach ($detalle1 as $value) {
+                $detall = Detalle_pilon::where('pilon_id', '=', "$pilon")->first();
+                $detall->delete();
+            }
+            $detalle2 = Detalle_dato_pilon::where('pilon_id', '=', "$pilon")->get();
+            foreach ($detalle2 as $value) {
+                $detalle = Detalle_dato_pilon::where('pilon_id', '=', "$pilon")->first();
+                $detalle->delete();
+            }
+            //$detalle2->delete();
+           $borrar->delete();
+         
             return redirect('/pilon/index')->with('Eliminar', 'Ok.');
-        } catch (\Throwable $th) {
+        /*} catch (\Throwable $th) {
             return redirect('/pilon/index')->with('Eliminar', 'No.');
             //throw $th;
-        }
+        }*/
         //$pilon =Pilon:: where ('codigo_pilon','=', $pilon)->first();
        
     }
