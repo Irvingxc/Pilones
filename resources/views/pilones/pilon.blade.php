@@ -112,7 +112,7 @@ value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
 </div>
 
 <pilon :rows="{{json_encode($clase)}}" :varie="{{json_encode($variedad)}}"
-:fin="{{json_encode($finca)}}" :true="{{json_encode($true)}}" :mostrar="{{json_encode($mostrar)}}"></pilon>
+:fin="{{json_encode($finca)}}" :true="{{json_encode($true)}}" :mostrar="{{json_encode($mostrar)}}" :textura="{{json_encode($textura)}}"></pilon>
 <br>
 
 

@@ -19,6 +19,8 @@ class CreateDetallePilonsTable extends Migration
             $table->foreign('codigo_variedad')->references('codigo_variedad')->on('variedads');
             $table->string('codigo_clase');
             $table->foreign('codigo_clase')->references('codigo_clase')->on('tipoclases');
+            $table->string('codigo_textura');
+            $table->foreign('codigo_textura')->references('codigo_textura')->on('texturas');
             $table->string('codigo_finca');
             $table->foreign('codigo_finca')->references('codigo_finca')->on('fincas');
             $table->foreignId('pilon_id')->constrained('pilons');

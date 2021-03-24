@@ -105,8 +105,8 @@
 		e.preventDefault();
 
 Swal.fire({
-  title: '¿Está seguro?',
-  text: "Este dato se eliminará definitivamente.",
+  title: '¿Está seguro que desea Elminar este Pilon?',
+  text: "Se borrara todos los registros de temperaturas y de cantenidos del pilon",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
