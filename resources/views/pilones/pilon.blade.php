@@ -28,15 +28,6 @@ value="{{$pilon->codigo_pilon}}" readonly
 value="{{$pilon->ubicacion}}" readonly
 @endisset>
 
-<div class="margin">
-<label for="">Peso Pilon</label>
-<br>
-<input class="col-md-10 form-control" type="text" name=peso
-@isset($pilon)
-value="{{$pilon->peso}}" @if($true==0) disabled @endif
-@endisset>
-</div>
-
 
 <div class="margin">
 <label for="">Fecha Inicio</label> 

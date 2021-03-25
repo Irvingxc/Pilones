@@ -184,6 +184,7 @@ class PilonController extends Controller
         $detalle->codigo_variedad = $request->codigo_variedad;
         $detalle->codigo_textura = $request->codigo_textura;
         $detalle->pilon_id = $request->pilon_id;
+        $detalle->peso = $request->peso;
         $detalle->save();
         
     }
@@ -254,8 +255,7 @@ class PilonController extends Controller
             'ubicacion' => $request->input('ubicacion'),
             'Fecha_datos_pilones' => $request->input('fecha_inicio'),
             'sucursal_id' => $request->sucursal,
-            'Fecha_empilonamiento' => $request->input('Fecha_empilonamiento'),
-            'peso' => $request->peso
+            'Fecha_empilonamiento' => $request->input('Fecha_empilonamiento')
         ]);
     
         if($id==null){
@@ -347,15 +347,13 @@ class PilonController extends Controller
             'codigo_pilon' => 'required',
             'descripcion_pilon'=> 'required',
         ]);
-
-
-        $pilon->codigo_pilon = $request->input('codigo_pilon');
+        if ($request->input('ubicacion')==$request->input('disponible')) {
+            $pilon->codigo_pilon = $request->input('codigo_pilon');
         $pilon->descripcion_pilon = $request->input('descripcion_pilon');
         $pilon->ubicacion = $request->input('ubicacion');
         $pilon->Fecha_datos_pilones = $request->input('fecha_inicio');
         $pilon->sucursal_id = $request->input('sucursal');
         $pilon->Fecha_empilonamiento= $request->input('Fecha_empilonamiento');
-        $pilon->peso= $request->input('peso'); 
         $pilon->save(); 
         $updateLibre = Ubicacion::findOrFail($request->input('disponible'));
         $updateLibre->estado_ubicacion = 1;
@@ -364,6 +362,28 @@ class PilonController extends Controller
         $update->estado_ubicacion = 0;
         $update->save(); 
         return $this->show($pilones);
+        }else{
+        if($this->ValidarUbicacion($request->input('ubicacion'))){
+        $pilon->codigo_pilon = $request->input('codigo_pilon');
+        $pilon->descripcion_pilon = $request->input('descripcion_pilon');
+        $pilon->ubicacion = $request->input('ubicacion');
+        $pilon->Fecha_datos_pilones = $request->input('fecha_inicio');
+        $pilon->sucursal_id = $request->input('sucursal');
+        $pilon->Fecha_empilonamiento= $request->input('Fecha_empilonamiento');
+        $pilon->save(); 
+        $updateLibre = Ubicacion::findOrFail($request->input('disponible'));
+        $updateLibre->estado_ubicacion = 1;
+        $updateLibre->save();
+        $update = Ubicacion::findOrFail($request->input('ubicacion'));
+        $update->estado_ubicacion = 0;
+        $update->save(); 
+        return $this->show($pilones);
+        }else{
+            \Session::flash('message', 'Esta Ubicacion ya esta en uso');
+        return $this->show($pilones);
+
+        }
+    }
         //return redirect::route('pilon.show',['pilones'=>$pilones]);
        // return redirect('/pilon/edit/{'+$pilones+'}');  
        

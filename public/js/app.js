@@ -1967,6 +1967,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['fin', 'rows', 'varie', 'true', 'mostrar', 'textura'],
   data: function data() {
@@ -1985,7 +1996,8 @@ __webpack_require__.r(__webpack_exports__);
       seleccion1: {},
       seleccion2: {},
       seleccion3: {},
-      seleccion4: {}
+      seleccion4: {},
+      peso: 0
     };
   },
   methods: {
@@ -2030,7 +2042,8 @@ __webpack_require__.r(__webpack_exports__);
         'codigo_clase': this.seleccion2,
         'codigo_finca': this.seleccion1,
         'codigo_textura': this.seleccion4,
-        'pilon_id': this.mostrar
+        'pilon_id': this.mostrar,
+        'peso': this.peso
       }).then(function (response) {
         me.verDetalles(); //llamamos al metodo getTask(); para que refresque nuestro array y muestro los nuevos datos
       })["catch"](function (error) {
@@ -41321,53 +41334,6 @@ var render = function() {
       { staticClass: "row justify-content-center", attrs: { id: "app" } },
       [
         _c("div", { staticClass: "margin" }, [
-          _c("label", { attrs: { for: "" } }, [_vm._v("Variedad")]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.seleccion3,
-                  expression: "seleccion3"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { id: "inputState" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.seleccion3 = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
-              }
-            },
-            _vm._l(_vm.Variedad, function(Variedad) {
-              return _c(
-                "option",
-                {
-                  key: Variedad.codigo_variedad,
-                  attrs: { selected: "" },
-                  domProps: { value: Variedad.codigo_variedad }
-                },
-                [_vm._v(_vm._s(Variedad.nombre_variedad))]
-              )
-            }),
-            0
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "margin" }, [
           _c("label", { attrs: { for: "" } }, [_vm._v("Clase")]),
           _vm._v(" "),
           _c(
@@ -41462,6 +41428,53 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "margin" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Variedad")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.seleccion3,
+                  expression: "seleccion3"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "inputState" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.seleccion3 = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            _vm._l(_vm.Variedad, function(Variedad) {
+              return _c(
+                "option",
+                {
+                  key: Variedad.codigo_variedad,
+                  attrs: { selected: "" },
+                  domProps: { value: Variedad.codigo_variedad }
+                },
+                [_vm._v(_vm._s(Variedad.nombre_variedad))]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "margin" }, [
           _c("label", { attrs: { for: "" } }, [_vm._v("Finca")]),
           _vm._v(" "),
           _c(
@@ -41506,6 +41519,16 @@ var render = function() {
             }),
             0
           )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "margin" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Peso")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "number" },
+            domProps: { value: _vm.peso }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "margin" }, [
@@ -41556,13 +41579,15 @@ var render = function() {
         "tbody",
         _vm._l(_vm.detalles, function(detalles) {
           return _c("tr", { key: detalles.id }, [
-            _c("td", [_vm._v(_vm._s(detalles.varied))]),
-            _vm._v(" "),
             _c("td", [_vm._v(_vm._s(detalles.class))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(detalles.text))]),
             _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(detalles.varied))]),
+            _vm._v(" "),
             _c("td", [_vm._v(_vm._s(detalles.fincas))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(detalles.pes))]),
             _vm._v(" "),
             _c("td", [
               _c(
@@ -41593,13 +41618,15 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-dark" }, [
       _c("tr", [
-        _c("th", [_vm._v("Variedad")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Clase")]),
         _vm._v(" "),
         _c("th", [_vm._v("Textura")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Variedad")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Finca")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Peso")]),
         _vm._v(" "),
         _c("th", [_vm._v("Eliminar")])
       ])

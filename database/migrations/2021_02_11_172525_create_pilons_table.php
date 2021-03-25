@@ -18,7 +18,6 @@ class CreatePilonsTable extends Migration
             $table->string('codigo_pilon');
             $table->string('descripcion_pilon');
             $table->date('Fecha_datos_pilones')->nullable();
-            $table->float('peso');
             $table->date('Fecha_empilonamiento');
          //   $table->date('fecha_virado_datos_pilones');
             $table->foreignId('ubicacion')->constrained('ubicacions');

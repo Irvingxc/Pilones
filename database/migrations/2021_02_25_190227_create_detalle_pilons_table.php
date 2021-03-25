@@ -24,6 +24,7 @@ class CreateDetallePilonsTable extends Migration
             $table->string('codigo_finca');
             $table->foreign('codigo_finca')->references('codigo_finca')->on('fincas');
             $table->foreignId('pilon_id')->constrained('pilons');
+            $table->float('peso');
             $table->timestamps();
         });
     }

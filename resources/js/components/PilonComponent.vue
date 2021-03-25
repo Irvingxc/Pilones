@@ -1,13 +1,6 @@
 <template>
 <div>
 <div id="app" class="row justify-content-center">
-<div class="margin">
-    
-<label for="" class="">Variedad</label>
-<select v-model="seleccion3" id="inputState" class="form-control">
-        <option selected v-for="Variedad in Variedad" :key="Variedad.codigo_variedad" v-bind:value="Variedad.codigo_variedad">{{Variedad.nombre_variedad}}</option>
-      </select>
-</div>
 
     <div class="margin">
 <label for="" class="">Clase</label>
@@ -26,6 +19,14 @@
       </select>
       </div>
 
+      <div class="margin">
+    
+<label for="" class="">Variedad</label>
+<select v-model="seleccion3" id="inputState" class="form-control">
+        <option selected v-for="Variedad in Variedad" :key="Variedad.codigo_variedad" v-bind:value="Variedad.codigo_variedad">{{Variedad.nombre_variedad}}</option>
+      </select>
+</div>
+
 
       <div class="margin">
 <label for="" class="">Finca</label>
@@ -34,6 +35,14 @@
         <option v-for="Finca in Finca" :key="Finca.codigo_finca" selected v-bind:value="Finca.codigo_finca">{{Finca.nombre_finca}}</option>
       </select>
           </div>
+
+          <div class="margin">
+<label for="" class="">Peso</label>
+<input type="number" :value="peso" class="form-control">
+      </div>
+
+
+
 
 
           <div class="margin">
@@ -58,10 +67,11 @@
       <table border="solid" class="table">
 <thead class="thead-dark">
 			<tr>
-			<th>Variedad</th>
 			<th>Clase</th>
             <th>Textura</th>
+            <th>Variedad</th>
             <th>Finca</th>
+            <th>Peso</th>
 			<th>Eliminar</th>
 			
 			</tr>
@@ -69,10 +79,11 @@
 		<tbody>
 		
 			<tr v-for="detalles in detalles" :key="detalles.id">
-				<td>{{detalles.varied}}</td>
 				<td>{{detalles.class}}</td>
                 <td>{{detalles.text}}</td>
+                <td>{{detalles.varied}}</td>
                 <td>{{detalles.fincas}}</td>
+                <td>{{detalles.pes}}</td>
                 <td><button v-on:click.prevent="deletedetalles(detalles)" class="btn btn-outline-danger">Eliminar</button></td>
                     
                 </tr>
@@ -104,8 +115,8 @@ export default {
             seleccion1:{},
             seleccion2:{},
             seleccion3:{},
-            seleccion4:{}
-
+            seleccion4:{},
+            peso:0
 
         }
         },
@@ -117,8 +128,6 @@ export default {
                 this.datos = this.true;
                 this.id= this.mostrar;
                 this.texturas= this.textura;
-                
-
             },
 
             deletedetalles(data){
@@ -157,6 +166,7 @@ export default {
                     'codigo_finca':this.seleccion1,
                     'codigo_textura':this.seleccion4,
                     'pilon_id':this.mostrar,
+                    'peso':this.peso,
                 }).then(function (response) {
                     me.verDetalles();//llamamos al metodo getTask(); para que refresque nuestro array y muestro los nuevos datos
                 })
