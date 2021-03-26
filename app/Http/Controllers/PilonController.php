@@ -87,6 +87,7 @@ class PilonController extends Controller
      */
     public function index(Request $request)
     {
+        
        // $pilon = Pilon::all();
        $categoria = $request->get('filtro');
        if($categoria==null){

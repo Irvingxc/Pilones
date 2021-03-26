@@ -23,7 +23,7 @@ class VariedadController extends Controller
             $categoria="codigo_variedad";
         }
         $caracteres = $request->get('busqueda');
-          $variedad = Variedad::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+          $variedad = Variedad::where("$categoria", 'like', "%$caracteres%")->get();
         return view ('variedad.variedadmost',compact('variedad')); 
        
     }

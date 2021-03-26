@@ -37,17 +37,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($pilon as $pilon) 
+			@foreach($pilon as $pilons) 
 			<tr>
-				<td><a href="{{route('pilon.show', [$pilon->id])}}"> {{$pilon->codigo_pilon}}</a></td>
-				<td>{{$pilon->Fecha_datos_pilones}}</td>
-				<td>{{$pilon->Fecha_empilonamiento}}</td>
-				<td>{{$pilon->rer}} Días</td>
-				<td>{{$pilon->empilonamiento}} Días</td>
-				<td>{{$pilon->cod}}</td>
-				<td>{{$pilon->nombre}}</td>
+				<td><a href="{{route('pilon.show', [$pilons->id])}}"> {{$pilons->codigo_pilon}}</a></td>
+				<td>{{$pilons->Fecha_datos_pilones}}</td>
+				<td>{{$pilons->Fecha_empilonamiento}}</td>
+				<td>{{$pilons->rer}} Días</td>
+				<td>{{$pilons->empilonamiento}} Días</td>
+				<td>{{$pilons->cod}}</td>
+				<td>{{$pilons->nombre}}</td>
 				@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero'))
-                <td> <form method="post" action="{{route('pilon.destroy', [$pilon->id])}}" class="formulario-eliminar">
+                <td> <form method="post" action="{{route('pilon.destroy', [$pilons->id])}}" class="formulario-eliminar">
                     {{csrf_field()}}
 					{{method_field('DELETE')}}
                    
@@ -55,7 +55,7 @@
                 </form>
                     </td>
 					@endif
-					<td> <a class="btn btn-primary"  href="{{route('calendario', [$pilon->id])}}" >Calendario</button></td>
+					<td> <a class="btn btn-primary"  href="{{route('calendario', [$pilons->id])}}" >Calendario</button></td>
                 
                 </tr>
 				
@@ -63,6 +63,8 @@
 			@endforeach
 		</tbody>
 	</table>
+            {{ $pilon->links('vendor.pagination.bootstrap-4') }}
+			
 	<div class="btn-whatsapp">
 <a href="{{route('pilon.pilonindex')}}">
 <button class="btn btn-primary">Nuevo</button> 

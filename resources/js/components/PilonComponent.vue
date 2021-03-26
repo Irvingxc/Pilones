@@ -38,7 +38,7 @@
 
           <div class="margin">
 <label for="" class="">Peso</label>
-<input type="number" :value="peso" class="form-control">
+<input type="number" v-model="peso" class="form-control">
       </div>
 
 
@@ -83,7 +83,7 @@
                 <td>{{detalles.text}}</td>
                 <td>{{detalles.varied}}</td>
                 <td>{{detalles.fincas}}</td>
-                <td>{{detalles.pes}}</td>
+                <td>{{detalles.peso}}</td>
                 <td><button v-on:click.prevent="deletedetalles(detalles)" class="btn btn-outline-danger">Eliminar</button></td>
                     
                 </tr>

@@ -41525,9 +41525,25 @@ var render = function() {
           _c("label", { attrs: { for: "" } }, [_vm._v("Peso")]),
           _vm._v(" "),
           _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.peso,
+                expression: "peso"
+              }
+            ],
             staticClass: "form-control",
             attrs: { type: "number" },
-            domProps: { value: _vm.peso }
+            domProps: { value: _vm.peso },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.peso = $event.target.value
+              }
+            }
           })
         ]),
         _vm._v(" "),
@@ -41587,7 +41603,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(detalles.fincas))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(detalles.pes))]),
+            _c("td", [_vm._v(_vm._s(detalles.peso))]),
             _vm._v(" "),
             _c("td", [
               _c(

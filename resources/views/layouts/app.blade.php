@@ -84,6 +84,7 @@ h1 {
 
 }
 
+
     /*.card input{
         margin-left: 180px; jajajaja
     }*/

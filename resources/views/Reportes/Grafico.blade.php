@@ -2,13 +2,17 @@
 @section('content')
 @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
 
-<div id="container" style="width: 100%;height: 80vh">
+<div id="" style="width: 100%;height: 80vh">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <input type="hidden" value="{{ csrf_token() }}" name="_token">
 @isset($virado)
 <LAbel style="color:blue; text-align:right;">Virado: {{$virado->ot}} </LAbel>
 @endisset
-<canvas id="myChart"></canvas>
+<div style="overflow-x: scroll">
+  <div class="chart-container" style="position: relative; height:470px;  width:2000px;">
+    <canvas id="myChart"></canvas>
+  </div>
+</div>
 	  
 </div>
 @endif

@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+//use App\Support\Collection;
+use Illuminate\Support\Collection;
 use App\Models\Detalle_dato_pilon;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Chart;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
+
 
 class DetalleDatoPilonController extends Controller
 {
@@ -32,6 +36,10 @@ class DetalleDatoPilonController extends Controller
         ->orderByRaw('fecha_detalle ASC')// DB::raw('count(*) as total'))
       // ->groupBy('fecha_detalle')
         ->pluck('temperatura', 'fecha_detalle')->all();
+        $myCollectionObj = collect($temperatura);
+  
+        $data = $this->paginate($myCollectionObj);
+        
 
         $fechas = DB::table('Detalle_Dato_Pilons')->select('fecha_detalle')
         ->orderByRaw('fecha_detalle ASC')// DB::raw('count(*) as total'))
@@ -40,11 +48,17 @@ class DetalleDatoPilonController extends Controller
         $chart = new Detalle_dato_pilon();
         $chart->labels = (array_keys($temperatura));
         $chart->dataset = (array_values($temperatura));
-        //return view('Reportes.Grafico')->with('temperatura',json_encode($temperatura,JSON_NUMERIC_CHECK));
+       // return view('Reportes.Grafico', ['virado'=>$virado, 'chart'=>new LengthAwarePaginator($chart->take($perPage), $chart->count(), $perPage, $page, $options)]);
         return view('Reportes.Grafico', compact('chart', 'virado')); 
 //return view('charts.index', compact('chart'));
 //return Response::json($results);
 
+    }
+    public function paginate($items, $perPage = 5, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
     public function alle(Request $request)
