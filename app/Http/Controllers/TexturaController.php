@@ -23,7 +23,7 @@ class TexturaController extends Controller
             $categoria="codigo_textura";
         }
         $caracteres = $request->get('busqueda');
-        $Textura=Textura::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        $Textura=Textura::where("$categoria", 'like', "%$caracteres%")->get();
         return view('Textura.Texturamostrar', compact('Textura'));
     }
 

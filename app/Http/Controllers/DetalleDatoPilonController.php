@@ -38,7 +38,7 @@ class DetalleDatoPilonController extends Controller
         ->pluck('temperatura', 'fecha_detalle')->all();
         $myCollectionObj = collect($temperatura);
   
-        $data = $this->paginate($myCollectionObj);
+        $data = $this->get($myCollectionObj);
         
 
         $fechas = DB::table('Detalle_Dato_Pilons')->select('fecha_detalle')
@@ -54,7 +54,7 @@ class DetalleDatoPilonController extends Controller
 //return Response::json($results);
 
     }
-    public function paginate($items, $perPage = 5, $page = null, $options = [])
+    public function get($items, $perPage = 5, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);

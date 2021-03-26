@@ -23,7 +23,7 @@ class ProcedenciaController extends Controller
             $categoria="nombre";
         }
         $caracteres = $request->get('busqueda');
-        $procedencia = procedencia::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        $procedencia = procedencia::where("$categoria", 'like', "%$caracteres%")->get();
         return view('Procedencia.mostrar', compact('procedencia'));
     }
 

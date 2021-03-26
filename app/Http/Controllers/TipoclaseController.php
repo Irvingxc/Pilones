@@ -23,7 +23,7 @@ class TipoclaseController extends Controller
             $categoria="codigo_clase";
         }
         $caracteres = $request->get('busqueda');
-        $tipoclase=tipoclase::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        $tipoclase=tipoclase::where("$categoria", 'like', "%$caracteres%")->get();
         return view('tipoclase.tipoclasemostrar', compact('tipoclase'));
     }
 

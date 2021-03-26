@@ -34,7 +34,7 @@ class UbicacionController extends Controller
          'ubicacions.procedencias_id')->where('procedencias_id', '=', "$suc")
          //->join('pilons', 'pilons.ubicacion', '=', 'ubicacions.id')
          ->where("$categoria", 'like', "%$caracteres%")
-         ->select('ubicacions.*', 'procedencias.nombre')->paginate(50);
+         ->select('ubicacions.*', 'procedencias.nombre')->get();
          
          //('ubicacions.codigo_ubicacion', 'ubicacions.descripcion_ubicacion',
        // 'ubicacions.estado_ubicacion', '');
@@ -63,7 +63,7 @@ class UbicacionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'Codigo_ubicacion' => 'required|unique:ubicacions|max:10',
+            'Codigo_ubicacion' => 'required|max:10',
             'descripcion_ubicacion' => 'required|max:25',
             'procedencia'=>'required|max:255',
         ]);

@@ -27,7 +27,7 @@ class RoleController extends Controller
             $categoria="id";
         }
         $caracteres = $request->get('busqueda');
-        $role = role::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        $role = role::where("$categoria", 'like', "%$caracteres%")->get();
         return view('Role.rolemost', compact('role'));
     }
 

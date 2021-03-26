@@ -82,7 +82,7 @@ class userController extends Controller
          ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
          ->join('procedencias', 'procedencias.id', '=', 'users.sucursal')
          ->where("$categoria", 'like', "%$caracteres%")
-         ->select('users.*','users.id as sd', 'model_has_roles.*', 'roles.name as rol', 'procedencias.*')->paginate(50);
+         ->select('users.*','users.id as sd', 'model_has_roles.*', 'roles.name as rol', 'procedencias.*')->get();
         return view ('Usuarios.Verususarios',['Usuarios'=>$verusuario]); 
          
     }

@@ -63,7 +63,7 @@
 			@endforeach
 		</tbody>
 	</table>
-            {{ $pilon->links('vendor.pagination.bootstrap-4') }}
+            
 			
 	<div class="btn-whatsapp">
 <a href="{{route('pilon.pilonindex')}}">

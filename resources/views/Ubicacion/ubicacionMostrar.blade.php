@@ -6,7 +6,6 @@
 <form action="">
 <div class="row">
 <label for="" class="">Buscar por:</label>
-
 <div class="">
 <select id="inputState" class="form-control offset-md-1" name="filtro">
         <option value="codigo_ubicacion" selected >Codigo</option>
