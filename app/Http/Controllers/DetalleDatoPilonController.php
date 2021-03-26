@@ -37,6 +37,21 @@ class DetalleDatoPilonController extends Controller
       // ->groupBy('fecha_detalle')
         ->pluck('temperatura', 'fecha_detalle')->all();
         $myCollectionObj = collect($temperatura);
+        $vir= DB::table('Detalle_Dato_Pilons')->select('temperatura','virado', 'fecha_detalle')->where('pilon_id','=',$ids)
+        ->orderByRaw('fecha_detalle ASC')->get();
+        $arre=[];
+        foreach ($vir as $key => $value) {
+            $arre[]= [$value->virado==1 ? "$value->temperatura":"null"];
+            /*if ($value->virado==0) {
+                $value->virado=null;
+                $arre[]=[$value->virado];
+            }else{
+                $arre[]= [$value->temperatura];
+
+            }*/
+             
+            # code...
+        }
   
         $data = $this->get($myCollectionObj);
         
@@ -48,6 +63,7 @@ class DetalleDatoPilonController extends Controller
         $chart = new Detalle_dato_pilon();
         $chart->labels = (array_keys($temperatura));
         $chart->dataset = (array_values($temperatura));
+        $chart->vir = (array_values($arre));
        // return view('Reportes.Grafico', ['virado'=>$virado, 'chart'=>new LengthAwarePaginator($chart->take($perPage), $chart->count(), $perPage, $page, $options)]);
         return view('Reportes.Grafico', compact('chart', 'virado')); 
 //return view('charts.index', compact('chart'));
