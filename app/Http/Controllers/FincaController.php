@@ -23,7 +23,7 @@ class FincaController extends Controller
             $categoria="codigo_finca";
         }
         $caracteres = $request->get('busqueda');
-        $Finca = Finca::where("$categoria", 'like', "%$caracteres%")->paginate(50);
+        $Finca = Finca::where("$categoria", 'like', "%$caracteres%")->get();
      return view ('finca.fincamost', compact('Finca')); 
      
     }
