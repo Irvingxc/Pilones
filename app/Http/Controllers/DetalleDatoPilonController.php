@@ -31,14 +31,28 @@ class DetalleDatoPilonController extends Controller
        $virado= DB::table('detalle_dato_pilons')->selectRaw(DB::raw('SUM(virado) as ot'))
        ->where('pilon_id', '=', $ids)->first();
        $temp = Detalle_dato_pilon::all();
+
+
         $temperatura = DB::table('Detalle_Dato_Pilons')->where('pilon_id', '=', $ids)
         ->select('temperatura', 'fecha_detalle')
         ->orderByRaw('fecha_detalle ASC')// DB::raw('count(*) as total'))
       // ->groupBy('fecha_detalle')
         ->pluck('temperatura', 'fecha_detalle')->all();
-        $myCollectionObj = collect($temperatura);
-  
-        $data = $this->paginate($myCollectionObj);
+        $vir= DB::table('Detalle_Dato_Pilons')->select('temperatura','virado', 'fecha_detalle')->where('pilon_id','=',$ids)
+        ->orderByRaw('fecha_detalle ASC')->get();
+        $arre=[];
+        foreach ($vir as $key => $value) {
+            $arre[]= [$value->virado==1 ? "$value->temperatura":"null"];
+            /*if ($value->virado==0) {
+                $value->virado=null;
+                $arre[]=[$value->virado];
+            }else{
+                $arre[]= [$value->temperatura];
+
+            }*/
+             
+            # code...
+        }
         
 
         $fechas = DB::table('Detalle_Dato_Pilons')->select('fecha_detalle')
@@ -48,6 +62,7 @@ class DetalleDatoPilonController extends Controller
         $chart = new Detalle_dato_pilon();
         $chart->labels = (array_keys($temperatura));
         $chart->dataset = (array_values($temperatura));
+        $chart->vir = (array_values($arre));//(array_values($vir));
        // return view('Reportes.Grafico', ['virado'=>$virado, 'chart'=>new LengthAwarePaginator($chart->take($perPage), $chart->count(), $perPage, $page, $options)]);
         return view('Reportes.Grafico', compact('chart', 'virado')); 
 //return view('charts.index', compact('chart'));

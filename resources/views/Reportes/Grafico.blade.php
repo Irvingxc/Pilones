@@ -70,6 +70,12 @@ var chart = new Chart(ctx, {
             backgroundColor: 'rgb(255,255,255,0.1)',
             borderColor: 'rgb(0, 0, 128)',
             data: {!! json_encode($chart->dataset)!!}, 
+        },{
+            label: 'virado',
+            backgroundColor: 'rgb(255,255,255,0.1)',
+            borderColor: 'rgb(0, 0, 128)',
+            data: {!! json_encode($chart->vir)!!},
+
         }]  
     },
 
@@ -81,8 +87,8 @@ var chart = new Chart(ctx, {
             position:'top'
         },
         title:{
-                dislpay:true,
-                text:'Chart.js Line chart'
+                display:true,
+                text:'Temperaturas de Pilones'
         }
     }
 });
