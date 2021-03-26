@@ -88,6 +88,9 @@ value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
  >@isset($pilon)
 {{$pilon->descripcion_pilon}}
 @endisset</textarea>
+@if ($errors->has('descripcion_pilon'))
+<p style="color:red;">{{$errors->first('descripcion_pilon')}}</p>
+@endif
 </div>
 <input name="sucursal" value="{{Auth::user()->sucursal}}" type="hidden">
 
