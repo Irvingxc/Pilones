@@ -102,6 +102,7 @@ class PilonController extends Controller
         $first = $nuevo[0];
         $second = $nuevo[1];
         $three = $nuevo[2];
+        $cuatro = $nuevo[3];
         $pilon = DB::table('pilons')
         ->join('procedencias', 'procedencias.id','=',
          'pilons.sucursal_id')
@@ -109,11 +110,12 @@ class PilonController extends Controller
          ->join('detalle_pilons', 'detalle_pilons.pilon_id', '=', 'pilons.id')
          ->join('tipoclases', 'tipoclases.codigo_clase', '=', 'detalle_pilons.codigo_clase')
          ->join('variedads', 'variedads.codigo_variedad', '=', 'detalle_pilons.codigo_variedad')
+         ->join('texturas', 'texturas.codigo_textura', '=', 'detalle_pilons.codigo_textura')
          ->join('fincas', 'fincas.codigo_finca', '=', 'detalle_pilons.codigo_finca')
        // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
        
          ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
-         ->where('variedads.nombre_variedad', 'like', "%$first%")->where('tipoclases.nombre_clase', 'like', "%$second%")->where('fincas.nombre_finca', 'like', "%$three%")
+         ->where('variedads.nombre_variedad', 'like', "%$three%")->where('texturas.nombre_textura', 'like', "%$second%")->where('tipoclases.nombre_clase', 'like', "%$first%")->where('fincas.nombre_finca', 'like', "%$cuatro%")
          ->OrderByRaw('Fecha_datos_pilones DESC')->get();
     }else{
         $pilon = DB::table('pilons')
@@ -347,6 +349,8 @@ class PilonController extends Controller
         $this->validate($request, [
             'codigo_pilon' => 'required',
             'descripcion_pilon'=> 'required',
+            'Fecha_empilonamiento'=> 'required',
+            'ubicacion'=> 'required',
         ]);
         if ($request->input('ubicacion')==$request->input('disponible')) {
             $pilon->codigo_pilon = $request->input('codigo_pilon');

@@ -6,6 +6,7 @@ use App\Models\Detalle_pilon;
 use App\Models\Detalle_dato_pilon;
 use App\Models\Pilon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DetallePilonController extends Controller
 {
@@ -21,13 +22,18 @@ class DetallePilonController extends Controller
 
      public function mostrar($id){
          //$id=1;
-        $datos = Detalle_dato_pilon::where('pilon_id', '=', $id)->get();
+       // $datos = Detalle_dato_pilon::join('')->where('pilon_id', '=', $id)->get();
+        $datos= DB::table('detalle_dato_pilons')
+        ->join('pilons', 'pilons.id', '=', 'detalle_dato_pilons.pilon_id')
+        ->where('detalle_dato_pilons.pilon_id', '=', $id)->select('detalle_dato_pilons.*',
+        'pilons.Fecha_empilonamiento as empi')->get();
         $nueva_agenda=[];
 
         foreach($datos as $value){
             
             $nueva_agenda[] = [
                 "id"=> $value->id,
+                "end"=>$value->empi,
                 "start"=> $value->fecha_detalle,
                 $vir= $value->virado==1 ? "virado":"",
                 $moj= $value->mojado==1 ? "mojado":"",
@@ -38,8 +44,8 @@ class DetallePilonController extends Controller
                     "virado"=> $value->virado,
                     "mojado"=>$value->mojado,
                     "fumigado"=> $value->fumigado,
-                    "pilon_id"=> $value->pilon_id
-
+                    "pilon_id"=> $value->pilon_id,
+                    "Fecha_empilonamiento"=>$value->empi
                 ]
                 //"title"=> $value->virado,
                 //"borderColor"=> $value->mojado,

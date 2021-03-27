@@ -20,7 +20,12 @@ method="post" action="{{route('pilon.update',['pilones'=>$pilon->id])}}"
 <input class="col-md-10 form-control" type="text" name=codigo_pilon
 @isset($pilon)
 value="{{$pilon->codigo_pilon}}" readonly
-@endisset>
+@endisset value="{{ old ('codigo_pilon') }}">
+<br>
+@if ($errors->has('codigo_pilon'))
+<p style="color:red;">{{$errors->first('codigo_pilon')}}</p>
+@endif
+<br>
 </div>
 
 <input class="col-md-10 form-control" type="hidden" name=disponible
@@ -37,7 +42,7 @@ value="{{$pilon->ubicacion}}" readonly
 @isset($pilon)
 value="{{$pilon->Fecha_datos_pilones}}" @if($true==0) disabled @endif
 
-@endisset>
+@endisset value="{{ old ('fecha_inicio') }}">
 </div>
 
 <div class="margin">
@@ -48,7 +53,11 @@ value="{{$pilon->Fecha_datos_pilones}}" @if($true==0) disabled @endif
 @isset($pilon)
 value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
 
-@endisset>
+@endisset value="{{ old ('Fecha_empilonamiento') }}">
+@if ($errors->has('Fecha_empilonamiento'))
+<p style="color:red;">{{$errors->first('Fecha_empilonamiento')}}</p>
+@endif
+<br>
 </div>
 
 
@@ -70,6 +79,7 @@ value="{{$pilon->Fecha_empilonamiento}}" @if($true==0) disabled @endif
  @endisset
         @endforeach
       </select>
+      
       <p style="color:red;">
       @if(Session::has('message'))
    {!! Session::get('message') !!}

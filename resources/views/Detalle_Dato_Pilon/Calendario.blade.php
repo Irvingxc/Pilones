@@ -7,6 +7,7 @@
 <div class="card-title"> <a id="completado" href="{{route('pilon.index')}}">Pilones</a></div>
 @isset($pilon)
 <p>Pilon con Codigo: {{$pilon->codigo_pilon}}</p>
+<input type="hidden" id="emp" value="{{$pilon->Fecha_empilonamiento}}">
 @endisset
 <div class="row">
 @isset($id)
@@ -114,10 +115,18 @@ document.addEventListener('DOMContentLoaded', function() {
       selectable: true,
       selectMirror: true,
       select: function(arg) {
-        let m = moment(arg.start).format("YYYY-MM-DD")
+        let m = moment(arg.start).format("YYYY-MM-DD");
+        let alm= $("#emp").val();
+        let emp = moment(alm).format("YYYY-MM-DD");
+        let today = moment(new Date()).format('YYYY-MM-DD');
+        if (m>today || m<emp) {
+          alert('No puedes agregar datos en esta Fecha')
+          
+        }else{
         $("#agenda_modal").modal();
         $("#txtFecha").val(m);
         calendar.unselect()
+      }
       },
 
 
