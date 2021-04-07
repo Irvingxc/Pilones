@@ -4,7 +4,11 @@
 @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
 <div class="container">
 <div class="card">
+@if(@Auth::user()->hasRole('Analista'))
+<div class="card-header"><a href="{{route('pilon.gerentes')}}">Pilon</a></div>
+@else
 <div class="card-header"><a href="{{route('pilon.index')}}">Pilon</a></div>
+@endif
 <div class="card-body ">
 <form @isset($pilon)
 method="post" action="{{route('pilon.update',['pilones'=>$pilon->id])}}"
