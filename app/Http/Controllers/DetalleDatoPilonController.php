@@ -30,6 +30,10 @@ class DetalleDatoPilonController extends Controller
        $temperatu=[];
        $virado= DB::table('detalle_dato_pilons')->selectRaw(DB::raw('SUM(virado) as ot'))
        ->where('pilon_id', '=', $ids)->first();
+       $fumigados= DB::table('detalle_dato_pilons')->selectRaw(DB::raw('SUM(fumigado) as ot2'))
+       ->where('pilon_id', '=', $ids)->first();
+       $mojados= DB::table('detalle_dato_pilons')->selectRaw(DB::raw('SUM(mojado) as ot3'))
+       ->where('pilon_id', '=', $ids)->first();
        $temp = Detalle_dato_pilon::all();
         $temperatura = DB::table('Detalle_Dato_Pilons')->where('pilon_id', '=', $ids)
         ->select('temperatura', 'fecha_detalle')
@@ -65,7 +69,7 @@ class DetalleDatoPilonController extends Controller
         $chart->dataset = (array_values($temperatura));
         $chart->vir = (array_values($arre));
        // return view('Reportes.Grafico', ['virado'=>$virado, 'chart'=>new LengthAwarePaginator($chart->take($perPage), $chart->count(), $perPage, $page, $options)]);
-        return view('Reportes.Grafico', compact('chart', 'virado')); 
+        return view('Reportes.Grafico', compact('chart', 'virado', 'mojados', 'fumigados')); 
 //return view('charts.index', compact('chart'));
 //return Response::json($results);
 
