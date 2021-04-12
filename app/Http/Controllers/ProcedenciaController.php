@@ -67,7 +67,7 @@ class ProcedenciaController extends Controller
     public function show($id)
     {
         $procedencia = Procedencia::findOrFail($id);
-        return view('procedencia.procedencia')->with('procedencia', $procedencia);
+        return view('Procedencia.procedencia')->with('procedencia', $procedencia);
     }
 
     /**

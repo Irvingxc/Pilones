@@ -40,7 +40,7 @@ class UbicacionController extends Controller
        // 'ubicacions.estado_ubicacion', '');
 
        // $ubicacion = ubicacion::where("$categoria", 'like', "%$caracteres%")->paginate(50);
-        return view('ubicacion.ubicacionMostrar', compact('ubicacion'));
+        return view('Ubicacion.ubicacionMostrar', compact('ubicacion'));
         //return $caracteres;
     }
 
@@ -51,7 +51,7 @@ class UbicacionController extends Controller
      */
     public function create()
     {
-        return view('ubicacion.ubicacion');
+        return view('Ubicacion.ubicacion');
     }
 
     /**
@@ -93,7 +93,7 @@ class UbicacionController extends Controller
     public function show($id)
     {
         $ubicacion=ubicacion::where('id', '=',$id)->first();
-        return view('ubicacion.ubicacion')->with('ubicacion', $ubicacion);
+        return view('Ubicacion.ubicacion')->with('ubicacion', $ubicacion);
     }
 
     /**

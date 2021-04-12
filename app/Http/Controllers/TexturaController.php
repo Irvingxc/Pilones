@@ -24,7 +24,7 @@ class TexturaController extends Controller
         }
         $caracteres = $request->get('busqueda');
         $Textura=Textura::where("$categoria", 'like', "%$caracteres%")->get();
-        return view('Textura.Texturamostrar', compact('Textura'));
+        return view('Textura.TexturaMostrar', compact('Textura'));
     }
 
     /**

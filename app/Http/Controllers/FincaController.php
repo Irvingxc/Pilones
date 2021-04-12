@@ -24,7 +24,7 @@ class FincaController extends Controller
         }
         $caracteres = $request->get('busqueda');
         $Finca = Finca::where("$categoria", 'like', "%$caracteres%")->get();
-     return view ('finca.fincamost', compact('Finca')); 
+     return view ('Finca.fincamost', compact('Finca')); 
      
     }
 
@@ -35,7 +35,7 @@ class FincaController extends Controller
      */
     public function create()
     {
-        return view('finca.finca');
+        return view('Finca.finca');
         
     }
 

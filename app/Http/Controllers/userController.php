@@ -112,7 +112,7 @@ class userController extends Controller
         ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
         ->where('users.id', '=', $verusuario)->select('users.*', 'procedencias.id as procedencia_id', 'procedencias.nombre as procedencia', 'roles.name as rol')
         ->first();
-        return view('Auth.register', ['register'=>$verusuarios, 'procedencia'=>$procedencia, 'role'=>$role]);
+        return view('auth.register', ['register'=>$verusuarios, 'procedencia'=>$procedencia, 'role'=>$role]);
         //return view('Auth.register')->with('register',$verusuarios) ('procedencia',$procedencia) ('role',$role);
     } 
  
@@ -121,7 +121,7 @@ class userController extends Controller
     {
         $role = Role::all();
         $procedencia = Procedencia::all();
-        return view('Auth.register', ['procedencia'=>$procedencia, 'role'=>$role]);
+        return view('auth.register', ['procedencia'=>$procedencia, 'role'=>$role]);
        // return view('Auth.register')->with('procedencia',$procedencia);
         
     }

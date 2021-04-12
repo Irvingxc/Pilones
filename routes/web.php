@@ -87,17 +87,17 @@ Route::delete('/pilon/{pilon}',[App\Http\Controllers\PilonController::class,'des
 
 /*------------------------------VARIEDAD -------------------------------*/
 
-Route::get('/variedad', [App\Http\Controllers\variedadController::class,'var'])->name('variedad');
+Route::get('/variedad', [App\Http\Controllers\VariedadController::class,'var'])->name('variedad');
 
-Route::get('/variedad/index', [App\Http\Controllers\variedadController::class,'index'])->name('variedad.index');
+Route::get('/variedad/index', [App\Http\Controllers\VariedadController::class,'index'])->name('variedad.index');
 
-Route::post('/variedad/store', [App\Http\Controllers\variedadController::class,'store'])->name('variedad.store');
+Route::post('/variedad/store', [App\Http\Controllers\VariedadController::class,'store'])->name('variedad.store');
 
-Route::get('/variedad/edit/{codigo_variedade}', [App\Http\Controllers\variedadController::class,'show'])->name('variedad.show');
+Route::get('/variedad/edit/{codigo_variedade}', [App\Http\Controllers\VariedadController::class,'show'])->name('variedad.show');
 
-Route::post('/variedad/update/{variedade}', [App\Http\Controllers\variedadController::class,'update'])->name('variedad.update');
+Route::post('/variedad/update/{variedade}', [App\Http\Controllers\VariedadController::class,'update'])->name('variedad.update');
 
-Route::delete('/variedad/{variedad}',[App\Http\Controllers\variedadController::class,'destroy'])->name('variedad.destroy');
+Route::delete('/variedad/{variedad}',[App\Http\Controllers\VariedadController::class,'destroy'])->name('variedad.destroy');
 
     Route::post('/ubicacion/stored', [App\Http\Controllers\UbicacionController::class, 'store'])->name('ubicacion.store');
    // ->middleware('permission:ubicacion.stored');
@@ -117,12 +117,12 @@ Route::middleware(['role:cliente'])->group(function () {
 
 /*------------------------------CLASES-------------------------------*/
 
-Route::post('/tipoclase/stored', [App\Http\Controllers\tipoclaseController::class, 'store'])->name('tipoclase.store');
-Route::get('/tipoclase/index', [App\Http\Controllers\tipoclaseController::class, 'index'])->name('tipoclase.index');
-Route::get('/tipoclase/tipoclase', [App\Http\Controllers\tipoclaseController::class, 'create'])->name('tipoclase');
-Route::get('/tipoclase/edit/{codigo_clase}', [App\Http\Controllers\tipoclaseController::class, 'show'])->name('tipoclase.show');
-Route::post('/tipoclase/update/{tipoclases}', [App\Http\Controllers\tipoclaseController::class, 'update'])->name('tipoclase.update');
-Route::delete('/tipoclase/{codigo_clase}', [App\Http\Controllers\tipoclaseController::class, 'destroy'])->name('tipoclase.destroy');
+Route::post('/tipoclase/stored', [App\Http\Controllers\VariedadController::class, 'store'])->name('tipoclase.store');
+Route::get('/tipoclase/index', [App\Http\Controllers\VariedadController::class, 'index'])->name('tipoclase.index');
+Route::get('/tipoclase/tipoclase', [App\Http\Controllers\VariedadController::class, 'create'])->name('tipoclase');
+Route::get('/tipoclase/edit/{codigo_clase}', [App\Http\Controllers\VariedadController::class, 'show'])->name('tipoclase.show');
+Route::post('/tipoclase/update/{tipoclases}', [App\Http\Controllers\VariedadController::class, 'update'])->name('tipoclase.update');
+Route::delete('/tipoclase/{codigo_clase}', [App\Http\Controllers\VariedadController::class, 'destroy'])->name('tipoclase.destroy');
 
 /*------------------------------TEXTURA-------------------------------*/
 Route::post('/Textura/stored', [App\Http\Controllers\TexturaController::class, 'store'])->name('Textura.store');
