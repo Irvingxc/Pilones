@@ -117,12 +117,12 @@ Route::middleware(['role:cliente'])->group(function () {
 
 /*------------------------------CLASES-------------------------------*/
 
-Route::post('/tipoclase/stored', [App\Http\Controllers\tipoclaseController::class, 'store'])->name('tipoclase.store');
-Route::get('/tipoclase/index', [App\Http\Controllers\tipoclaseController::class, 'index'])->name('tipoclase.index');
-Route::get('/tipoclase/tipoclase', [App\Http\Controllers\tipoclaseController::class, 'create'])->name('tipoclase');
-Route::get('/tipoclase/edit/{codigo_clase}', [App\Http\Controllers\tipoclaseController::class, 'show'])->name('tipoclase.show');
-Route::post('/tipoclase/update/{tipoclases}', [App\Http\Controllers\tipoclaseController::class, 'update'])->name('tipoclase.update');
-Route::delete('/tipoclase/{codigo_clase}', [App\Http\Controllers\tipoclaseController::class, 'destroy'])->name('tipoclase.destroy');
+Route::post('/tipoclase/stored', [App\Http\Controllers\TipoclaseController::class, 'store'])->name('tipoclase.store');
+Route::get('/tipoclase/index', [App\Http\Controllers\TipoclaseController::class, 'index'])->name('tipoclase.index');
+Route::get('/tipoclase/tipoclase', [App\Http\Controllers\TipoclaseController::class, 'create'])->name('tipoclase');
+Route::get('/tipoclase/edit/{codigo_clase}', [App\Http\Controllers\TipoclaseController::class, 'show'])->name('tipoclase.show');
+Route::post('/tipoclase/update/{tipoclases}', [App\Http\Controllers\TipoclaseController::class, 'update'])->name('tipoclase.update');
+Route::delete('/tipoclase/{codigo_clase}', [App\Http\Controllers\TipoclaseController::class, 'destroy'])->name('tipoclase.destroy');
 
 /*------------------------------TEXTURA-------------------------------*/
 Route::post('/Textura/stored', [App\Http\Controllers\TexturaController::class, 'store'])->name('Textura.store');
