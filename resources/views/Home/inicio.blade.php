@@ -14,12 +14,6 @@
 
 </div> 
 
-@if(@Auth::user()->hasRole('cliente'))
-
-
-
-@endif
-
 
 </div>
 </div> 

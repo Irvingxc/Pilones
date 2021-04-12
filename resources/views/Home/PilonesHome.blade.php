@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h4 class="text-center text-muted font-weight-bold">Menú</h4>
+    <h4 class="text-center text-muted font-weight-bold">Menú Pilones</h4>
   </div>
   <div class="row">
   @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
@@ -64,6 +64,13 @@
       <div class="text-center col-md-6 pt-5 tintar">
       <a href="{{route('role.index')}}">
         <h1>Roles</h1>
+      </div>
+      @endif
+
+      @if(@Auth::user()->hasRole('Admin'))
+      <div class="text-center col-md-6 pt-5 tintar">
+      <a href="{{asset('images/Manual.pdf')}}" target="_blank">
+        <h1>Manual de Usuario</h1>
       </div>
       @endif
       

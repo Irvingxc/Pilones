@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         locale: 'es',
       plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'momentTimezone'],
       header: {
-        left: 'prev,next today',
+        left: 'prev,next',
         center: 'title',
         right: 'dayGridMonth'
       },      
