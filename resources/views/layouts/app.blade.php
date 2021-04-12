@@ -44,7 +44,7 @@ h1 {
     height:280px;
   background: linear-gradient(
     rgba(144, 144, 144, 1),
-    rgba(0, 0, 0, .0)), url("{{asset('images/cosecha.jpg')}}")  center / cover;
+    rgba(0, 0, 0, .0)), url("{{asset('images/Cosecha.jpg')}}")  center / cover;
   
    
   padding: 2.9em;
