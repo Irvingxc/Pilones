@@ -35,13 +35,13 @@ class DetalleDatoPilonController extends Controller
        $mojados= DB::table('detalle_dato_pilons')->selectRaw(DB::raw('SUM(mojado) as ot3'))
        ->where('pilon_id', '=', $ids)->first();
        $temp = Detalle_dato_pilon::all();
-        $temperatura = DB::table('Detalle_Dato_Pilons')->where('pilon_id', '=', $ids)
+        $temperatura = DB::table('detalle_dato_pilons')->where('pilon_id', '=', $ids)
         ->select('temperatura', 'fecha_detalle')
         ->orderByRaw('fecha_detalle ASC')// DB::raw('count(*) as total'))
       // ->groupBy('fecha_detalle')
         ->pluck('temperatura', 'fecha_detalle')->all();
         $myCollectionObj = collect($temperatura);
-        $vir= DB::table('Detalle_Dato_Pilons')->select('temperatura','virado', 'fecha_detalle')->where('pilon_id','=',$ids)
+        $vir= DB::table('detalle_dato_pilons')->select('temperatura','virado', 'fecha_detalle')->where('pilon_id','=',$ids)
         ->orderByRaw('fecha_detalle ASC')->get();
         $arre=[];
         foreach ($vir as $key => $value) {
@@ -60,7 +60,7 @@ class DetalleDatoPilonController extends Controller
         $data = $this->get($myCollectionObj);
         
 
-        $fechas = DB::table('Detalle_Dato_Pilons')->select('fecha_detalle')
+        $fechas = DB::table('detalle_dato_pilons')->select('fecha_detalle')
         ->orderByRaw('fecha_detalle ASC')// DB::raw('count(*) as total'))
       // ->groupBy('fecha_detalle')
         ->pluck('fecha_detalle')->all();
