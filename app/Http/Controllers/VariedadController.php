@@ -76,7 +76,7 @@ class VariedadController extends Controller
     public function show($variedade) 
     {
         $variedad= Variedad::where('codigo_variedad', '=', $variedade)->first();
-        return view('Variedad.variedad')->with('variedad',$variedad);
+        return view('variedad.variedad')->with('variedad',$variedad);
     
     }
 
