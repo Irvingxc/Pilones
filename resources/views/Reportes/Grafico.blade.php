@@ -2,6 +2,7 @@
 @section('content')
 @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
 
+<div class="container">
 <div id="" style="width: 100%;height: 80vh">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <input type="hidden" value="{{ csrf_token() }}" name="_token">
@@ -86,6 +87,7 @@
   </div>
 </div>
 	  
+</div>
 </div>
 @endif
 @endsection

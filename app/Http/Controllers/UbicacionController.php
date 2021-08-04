@@ -131,7 +131,7 @@ class UbicacionController extends Controller
     $ubicacion->descripcion_ubicacion = $request->input('descripcion_ubicacion');
     $ubicacion->save();
 
-    return redirect('/ubicacion/index');  //
+    return redirect('/ubicacion/index');
     }
 
     /**

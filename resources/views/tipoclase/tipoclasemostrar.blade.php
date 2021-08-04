@@ -1,6 +1,6 @@
-<div class= "container"> 
 @extends('layouts.app')
 @section('content')
+<div class= "container"> 
 <h4 class="text-center text-muted font-weight-bold">Clases</h4>
 <form action="">
 <div class="row">
@@ -52,6 +52,7 @@
 <a href="{{route('tipoclase')}}">
 <button class="btn btn-primary">Nuevo</button> 
 </a>
+</div>
 </div>
     @endsection
 

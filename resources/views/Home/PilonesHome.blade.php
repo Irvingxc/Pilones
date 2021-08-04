@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h4 class="text-center text-muted font-weight-bold">Menú Pilones</h4>
-  </div>
+
   <div class="row">
   @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
   <div class="text-center col-md-6 pt-5  tintar"> 
@@ -79,7 +79,7 @@
   </div>
 </div>
 </div>
-
+</div>
 
 
 <!--=================================================================================================================================

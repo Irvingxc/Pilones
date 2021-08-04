@@ -59,6 +59,5 @@ value="{{$variedad->descripcion_variedad}}"
 </div>
 </div>
 </div>
-</div>
 @endif
 @endsection

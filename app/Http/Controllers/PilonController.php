@@ -59,7 +59,8 @@ class PilonController extends Controller
          ->join('variedads', 'variedads.codigo_variedad', '=', 'detalle_pilons.codigo_variedad')
          ->join('fincas', 'fincas.codigo_finca', '=', 'detalle_pilons.codigo_finca')
        // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
-         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
+         ->select('pilons.*', 'procedencias.nombre','pilons.id as tema', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'),
+         DB::raw('(select SUM(peso) from detalle_pilons where pilon_id= tema) as suma'))
          ->where('procedencias.nombre','=', "$region")->where('variedads.nombre_variedad', 'like', "%$first%")->where('tipoclases.nombre_clase', 'like', "%$second%")->where('fincas.nombre_finca', 'like', "%$three%")
          ->get();
     }else{
@@ -68,7 +69,8 @@ class PilonController extends Controller
          'pilons.sucursal_id')
          ->join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')
        // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
-         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
+         ->select('pilons.*', 'pilons.id as tema', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'),
+         DB::raw('(select SUM(peso) from detalle_pilons where pilon_id= tema) as suma'))
          ->where('procedencias.nombre','=', "$region")->where("$categoria", 'like', "%$caracteres%")
          ->get();
         }
@@ -114,7 +116,8 @@ class PilonController extends Controller
          ->join('fincas', 'fincas.codigo_finca', '=', 'detalle_pilons.codigo_finca')
        // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
        
-         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
+         ->select('pilons.*','pilons.id as tema', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'),
+         DB::raw('(select SUM(peso) from detalle_pilons where pilon_id= tema) as suma'))
          ->where('variedads.nombre_variedad', 'like', "%$three%")->where('texturas.nombre_textura', 'like', "%$second%")->where('tipoclases.nombre_clase', 'like', "%$first%")->where('fincas.nombre_finca', 'like', "%$cuatro%")
          ->OrderByRaw('Fecha_datos_pilones DESC')->get();
     }else{
@@ -123,7 +126,8 @@ class PilonController extends Controller
          'pilons.sucursal_id')->where('sucursal_id', '=', "$suc")
          ->join('ubicacions', 'ubicacions.id', '=', 'pilons.ubicacion')
        // ->selectRaw('DATEDIFF(pilons.Fecha_datos_pilones, pilons.Fecha_empilonamiento) as rer')
-         ->select('pilons.*', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'))
+         ->select('pilons.*','pilons.id as tema', 'procedencias.nombre', 'ubicacions.codigo_ubicacion as cod', DB::raw('DATEDIFF(now(), pilons.Fecha_datos_pilones) as rer'), DB::raw('DATEDIFF(now(), pilons.Fecha_empilonamiento) as empilonamiento'),
+         DB::raw('(select SUM(peso) from detalle_pilons where pilon_id= tema) as suma'))
          ->where("$categoria", 'like', "%$caracteres%")->OrderByRaw('Fecha_datos_pilones DESC')->get();
     }
         $ubicacion = Ubicacion::all();

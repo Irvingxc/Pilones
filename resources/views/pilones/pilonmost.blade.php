@@ -27,6 +27,7 @@
 			<th>Fecha de Empilonamiento</th>
 			<th>Días Totales Desde Que Inició</th>
 			<th>Días Totales Desde Empilonamiento</th>
+			<th>Peso Pilon</th>
 			<th>Ubicación del Pilon</th>
 			<th>Sucursal</th>
 			@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero'))
@@ -44,6 +45,7 @@
 				<td>{{$pilons->Fecha_empilonamiento}}</td>
 				<td>{{$pilons->rer}} Días</td>
 				<td>{{$pilons->empilonamiento}} Días</td>
+				<td>{{$pilons->suma}}</td>
 				<td>{{$pilons->cod}}</td>
 				<td>{{$pilons->nombre}}</td>
 				@if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero'))

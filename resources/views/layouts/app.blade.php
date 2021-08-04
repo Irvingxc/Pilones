@@ -83,6 +83,84 @@ h1 {
     max-width:300px;
 
 }
+#sidebar{
+   background: black;  
+    /*height: 100%;*/
+    height: var(--atura-almacen);
+    width:20%;
+    transition: all 500ms linear;
+    
+}
+#sidebar.active{
+    margin-left:-19%;
+}
+
+#sidebar ul li{
+    color: rgba(230, 230, 230, .9);
+    text-align: center;
+    padding: 15px 10px;
+    list-style: none;
+    border-bottom: 1px solid rgba(100,100,100,.3);
+}
+#toggle-btn{
+    position: absolute;
+    left: 230px;
+    top: 20px;
+    transition: all 500ms linear;
+    cursor: pointer;
+}
+
+#toggle-btn span{
+    display: block;
+    width: 40px;
+    text-align: center;
+    font-size: 30px;
+    border: 1px solid black; 
+}
+#activador{
+    cursor: pointer;
+    display: block;
+    width: 40px;
+    text-align: center;
+    font-size: 30px;
+    border: 1px solid black; 
+}
+#toggle-btn.active {
+    left:15px;
+    background:#777;
+  }
+  .desplegar{
+      height: 100%;
+    overflow-y: scroll;
+  }
+  .desplegar::-webkit-scrollbar{
+      width: 6px;
+  }
+  .desplegar::-webkit-scrollbar-thumb{
+      background: #414141;
+  }
+  .desplegar a{
+    color: white;
+   
+  }
+  a:hover{
+     color:white;
+     
+  }
+  body{
+    -altura-almacen: 100%;
+    -ancho-almacen: 80%;
+  }
+  .mvp{
+      width:80%;
+      height:100%;
+  }
+
+
+
+
+  
+
 
 
     /*.card input{
@@ -105,15 +183,69 @@ h1 {
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
+<body class="row tam">
+@guest 
+@else
+<div id="sidebar" class="active">
+            <div class="desplegar">
+            <ul>
+             @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
+             <li><a href="{{route('pilon.gerentes')}}">Reportes</a></li>
+             @endif
+             @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Pilonero')||@Auth::user()->hasRole('Sub-Pilonero'))
+            <li> <a href="{{route('pilon.index')}}">Pilones</a></li>
+            @endif
+            @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
+            <li> <a href="{{route('fincas.index')}}">Fincas</a></li>
+            @endif
+            @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
+            <li> <a href="{{route('variedad.index')}}">Variedad</a> </li>
+            @endif
+            @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Sub-Admin'))
+            <li> <a href="{{route('tipoclase.index')}}">Clases</a></li>
+            @endif
+            @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista')||@Auth::user()->hasRole('Pilonero'))
+            <li><a href="{{route('ubicacion.index')}}">Ubicacion</a></li>
+            @endif
+            @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
+            <li><a href="{{route('procedencia.index')}}">Sucursales</a></li>
+            @endif
+            @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
+            <li><a href="{{route('Textura.index')}}">Texturas</a></li>
+            @endif
+            @if(@Auth::user()->hasRole('Admin')||@Auth::user()->hasRole('Analista'))
+            <li> <a href="{{route('verusuario.index')}}">Usuarios </a>          
+            </li>
+            @endif
+            @if(@Auth::user()->hasRole('Admin'))
+            <li>
+            <a href="{{route('role.index')}}">Roles</a>
+            </li>
+            @endif
+            @if(@Auth::user()->hasRole('Admin'))
+            <li>
+            <a href="{{asset('images/Manual.pdf')}}" target="_blank"> Manual de Usuario</a>
+            </li>
+      @endif
+            </ul>
+            </div>
+ 
+            
+            </div>
+            @endguest
+
+
+    <div id="app" class="mvp">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-            
+
+            <span id="activador">&#9776;</span>
+            <br>
                 <a class="navbar-brand" href="{{ url('/home') }}">
                 <img src="{{asset('images/logo.png')}}" alt="" style="width: 2rem">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -168,16 +300,36 @@ h1 {
                 </div>
             </div>
         </nav>
-        
 
         <main class="py-4">
-        
+     
             @yield('content')
+
+        
         </main>
     </div>
-  
-
+    
     @yield('js')
+    <script>
+  window.onload = function() {
+  // Variable para controlar el botón
+  let btn = document.getElementById('activador');
+
+  // Variable para controlar el menú
+  let side = document.getElementById('sidebar');
+
+  // Agregar evento "onclick" al botón
+  btn.addEventListener('click', function() {
+    // Agregar o quitar clase "active" a botón y menú
+    btn.classList.toggle('active');
+    side.classList.toggle('active');
+  });
+}
+    </script>
+
 
 </body>
+
+
 </html>
+
